@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Appointment;
+use App\Models\Doctor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,10 +21,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
+
+        \App\Models\Appointment::factory(7)->create();
+
         $this->call([
             UserSeeder::class,
             AdminSeeder::class,
-            // AppointmentSeeder::class,
             SectionSeeder::class,
             DoctorSeeder::class,
             ImageSeeder::class,

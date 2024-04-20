@@ -2,29 +2,22 @@
 
 namespace Database\Factories;
 
-use App\Models\Section;
-use App\Models\Appointment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Appointment>
+ */
 class AppointmentFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Appointment::class;
-
-    /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
-   
         return [
-            'name' => $this->faker->randomElement(['Saturday','Sunday', 'Monday', 'Tuesday','Wednesday', 'Thursday', 'Friday']),
+            'name' => $this->faker->unique()->randomElement(['السبت ','الأحد ', 'الإثنين ', 'الثلاثاء ','الأربعاء ', 'الخميس ', 'الجمعة ']),
         ];
-}
+    }
 }
