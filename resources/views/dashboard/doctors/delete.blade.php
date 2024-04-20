@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                        {{ trans('sections_trans.warning') }}
+                        تحذير
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -14,7 +14,7 @@
                         @method('DELETE')
                         <div class="form-group">
                             <div class="modal-body">
-                                {{ trans('doctors.warning_message') }} <strong class="text-danger"></strong> ?
+                                هل تريد حذف الطبيب <strong class="text-danger"></strong> ?
                             </div>
                         </div>
                         <div class="form-group">
@@ -27,9 +27,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger">{{ trans('sections_trans.delete') }}</button>
-                            <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">{{ trans('sections_trans.close') }}</button>
+                            <button type="submit" class="btn btn-danger">حذف</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
                         </div>
                     </form>
                 </div>

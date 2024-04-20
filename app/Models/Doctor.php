@@ -37,8 +37,8 @@ class Doctor extends Model
         return $this->belongsTo(Section::class);
     }
 
-    public function appointments(){
-        return $this->hasMany(Appointment::class);
+    public function appointment(){
+        return $this->belongsTo(Appointment::class);
     }
 
 }

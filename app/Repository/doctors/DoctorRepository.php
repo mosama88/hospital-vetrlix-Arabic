@@ -31,10 +31,8 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->phone = $request->phone;
             $doctors->price =$request->price;
             $doctors->status =$request->status;
-            $doctors->save();
-            //Store Translate
             $doctors->name = $request->name;
-            $doctors->appointments =$request->appointments;
+            $doctors->appointment_id =$request->appointment_id;
             $doctors->save();
             //Upload img
             $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
