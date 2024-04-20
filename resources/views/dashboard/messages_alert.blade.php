@@ -21,7 +21,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: "{{ trans('messages.add') }}",
+                msg: "تم أضافة الطبيب بنجاح",
                 type: "success"
             });
         }
@@ -32,7 +32,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: "{{ trans('messages.edit') }}",
+                msg: "تم تعديل بيانات الطبيب بنجاح",
                 type: "success"
             });
         }
@@ -43,7 +43,7 @@
     <script>
         window.onload = function() {
             notif({
-                msg: "{{ trans('messages.delete') }}",
+                msg: "تم حذف الطبيب بنجاح",
                 type: "success"
             });
         }
