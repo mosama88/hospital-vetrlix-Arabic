@@ -66,7 +66,7 @@
                                     <td>{{ $doctor->phone }}</td>
                                     <td>{{ $doctor->price }}</td>
                                     <td>{{ $doctor->section->name }}</td>
-                                    <td>{{ $doctor->appointment->name }}</td>
+                                    <td>{{ $doctor->appointment?->name }}</td>
                                     <td>
                                         {{ $doctor->status }}
                                     </td>

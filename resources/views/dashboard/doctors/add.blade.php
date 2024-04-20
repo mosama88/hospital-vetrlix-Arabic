@@ -87,8 +87,8 @@
                             <div class="col-sm-10">
                                 <select name="status" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
-                                    <option value="1">مفعل</option>
-                                    <option value="2">غير مفعل</option>2
+                                    <option value="active">مفعل</option>
+                                    <option value="inactive">غير مفعل</option>2
                                 </select>
                             </div>
                         </div>
