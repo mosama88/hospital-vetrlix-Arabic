@@ -31,6 +31,7 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->phone = $request->phone;
             $doctors->price =$request->price;
             $doctors->status =$request->status;
+            //Store Translate
             $doctors->name = $request->name;
             $doctors->appointment_id =$request->appointment_id;
             $doctors->save();
