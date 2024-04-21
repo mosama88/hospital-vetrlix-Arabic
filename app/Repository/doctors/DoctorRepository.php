@@ -22,7 +22,17 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function store($request)
     {
-   DB::beginTransaction();
+
+        DB::beginTransaction();
+        $request->validate([
+            'name'=> 'required|string|min:3| max:50',
+            'email'=> 'required|string|min:5| max:50',
+            'phone'=> 'required|string|min:1| max:18',
+            'price'=> 'required|string|min:1| max:10',
+            'status'=> 'required|in:active,inactive',
+            'appointment_id'=> 'required|exists:appointments,id',
+            'section_id'=> 'required|exists:sections,id'
+        ]);
             $doctors = new Doctor();
             $doctors->email =$request->email;
             $doctors['password'] = $request->has('password') ? bcrypt( $request->password) :
