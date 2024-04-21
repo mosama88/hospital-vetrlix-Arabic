@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
 
 
-        \App\Models\Appointment::factory(7)->create();
 
         $this->call([
             UserSeeder::class,
             AdminSeeder::class,
+            AppointmentSeedr::class,
             SectionSeeder::class,
             DoctorSeeder::class,
             ImageSeeder::class,
