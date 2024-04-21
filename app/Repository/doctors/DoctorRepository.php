@@ -86,8 +86,17 @@ DB::commit();
     public function destroy( $request)
     {
         if($request->page_id==1){
-            echo "حذف المستخدم";
-        }else{
+
+            if($request->filename){
+                $this->Delete_attachment('upload_image', 'doctors/'.$request->filename,$request->id, $request->filename);
+            }
+            {
+                Doctor::destroy($request->id);
+                return back()->with('delete', 'تم حذف الدكتور ');
+            }
+//----------------------------------------------
+        }
+        else{
 
         }
         }

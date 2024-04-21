@@ -52,7 +52,7 @@
                             @foreach ($doctors as $doctor)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         @if ($doctor->image)
                                             <img src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctor->image->filename) }}"
                                                 class="rounded avatar-md" alt="">

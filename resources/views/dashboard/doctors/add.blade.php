@@ -31,6 +31,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" name="name" placeholder="اسم الطبيب"
                                     id="example-text-input">
+
                             </div>
                         </div>
                         <!-- end row -->
