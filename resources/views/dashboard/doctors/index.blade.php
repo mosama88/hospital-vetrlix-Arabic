@@ -25,18 +25,31 @@
                                 <!-- Satic modal -->
                                 <a href="{{ route('dashboard.doctors.create') }}"
                                     class="btn btn-primary btn-lg waves-effect waves-light">
-                                    أضف دكتور
+                                    أضف دكتور <i class="fas fa-plus-square"></i>
                                 </a>
+                                <!-- Satic modal -->
+                                <a id="btn_delete_all" class="btn btn-danger btn-lg waves-effect waves-light">
+                                    حذف مجموعة أطباء <i class="fas fa-trash-alt"></i>
+                                </a>
+                                @include('dashboard.doctors.delete_select')
+
                             </div>
                         </div>
 
                     </div>
 
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                    <table id="datatable-buttons" class="table  table-bordered dt-responsive nowrap"
                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th class="table-primary">#</th>
+                                <th>
+                                    <input class="form-check-input" type="checkbox" value="" name="select_all"
+                                        id="example-select-all">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        أختر الكل
+                                    </label>
+                                </th>
                                 <th>صورة الطبيب</th>
                                 <th>اسم الطبيب</th>
                                 <th>البريد الالكتروني</th>
@@ -51,7 +64,11 @@
                         <tbody>
                             @foreach ($doctors as $doctor)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="table-primary">{{ $loop->iteration }}</td>
+                                    <td class="text-center">
+                                        <input type="checkbox" name="delete_select" value="{{ $doctor->id }}"
+                                            class="form-check-input">
+                                    </td>
                                     <td class="text-center">
                                         @if ($doctor->image)
                                             <img src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctor->image->filename) }}"
@@ -96,7 +113,33 @@
 
 
     @include('dashboard.layouts.scripts')
+    <script>
+        $(function() {
+            jQuery("[name=select_all]").click(function(source) {
+                checkboxes = jQuery("[name=delete_select]");
+                for (var i in checkboxes) {
+                    checkboxes[i].checked = source.target.checked;
+                }
+            });
+        })
+    </script>
 
+
+    <script type="text/javascript">
+        $(function() {
+            $("#btn_delete_all").click(function() {
+                var selected = [];
+                $("#datatable-buttons input[name=delete_select]:checked").each(function() {
+                    selected.push(this.value);
+                });
+
+                if (selected.length > 0) {
+                    $('#delete_select').modal('show')
+                    $('input[id="delete_select_id"]').val(selected);
+                }
+            });
+        });
+    </script>
     <!--Internal  Notify js -->
     <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifIt.js"></script>
     <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifit-custom.js"></script>

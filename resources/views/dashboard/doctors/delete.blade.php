@@ -14,7 +14,8 @@
                         @method('DELETE')
                         <div class="form-group">
                             <div class="modal-body">
-                                هل تريد حذف الطبيب <strong class="text-danger"></strong> ?
+                                هل تريد حذف الطبيب <strong
+                                    class="text-danger">{{ $doctor->name }}</strong> ؟
                             </div>
                         </div>
                         <div class="form-group">

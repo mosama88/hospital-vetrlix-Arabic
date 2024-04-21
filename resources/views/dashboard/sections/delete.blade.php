@@ -15,8 +15,7 @@
                         @csrf
                         <div class="form-group">
                             <div class="modal-body">
-                                هل تريد حذف قسم <strong
-                                    class="text-danger">{{ $section->name }}</strong> ?
+                                هل تريد حذف قسم <strong class="text-danger">{{ $section->name }}</strong> ؟
                             </div>
                         </div>
                         <div class="form-group">
@@ -24,10 +23,8 @@
                                 id="recipient-name">
                         </div>
                         <div class="modal-footer">
-                            <button type="submit"
-                                class="btn btn-danger">حذف</button>
-                            <button type="button" class="btn btn-secondary"
-                                data-bs-dismiss="modal">اغلاق</button>
+                            <button type="submit" class="btn btn-danger">حذف</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                         </div>
                     </form>
                 </div>

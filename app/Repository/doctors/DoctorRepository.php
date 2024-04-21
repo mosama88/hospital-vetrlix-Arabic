@@ -96,8 +96,18 @@ DB::commit();
             }
 //----------------------------------------------
         }
-        else{
+                  // delete selector doctor
+                  $delete_select_id = explode(",", $request->delete_select_id);
+                  foreach ($delete_select_id as $ids_doctors){
+                      $doctor = Doctor::findorfail($ids_doctors);
+                      if($doctor->image){
+                          $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
+                      }
+                  }
 
-        }
+                  Doctor::destroy($delete_select_id);
+                  return back()->with('delete', 'تم حذف الدكتور ');
+
+
         }
 }
