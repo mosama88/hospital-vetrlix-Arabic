@@ -29,7 +29,7 @@
                         <div class="row mb-4">
                             <label for="example-text-input" class="col-sm-2 col-form-label">أسم الطبيب</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" placeholder="اسم الطبيب"
+                                <input class="form-control" type="text" name="name" autofocus placeholder="اسم الطبيب"
                                     id="example-text-input">
 
                             </div>
@@ -109,16 +109,6 @@
                         </div>
                         <!-- end row -->
 
-
-                        {{-- Price Inputs --}}
-                        <div class="row mb-4">
-                            <label for="example-number-input" class="col-sm-2 col-form-label">سعر الكشف</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" placeholder="500" name="price" type="number" value=""
-                                    id="example-number-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
 
                         {{-- Image Inputs --}}
                         <div class="row mb-4">

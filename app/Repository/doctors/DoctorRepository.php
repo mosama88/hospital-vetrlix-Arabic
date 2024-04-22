@@ -28,7 +28,6 @@ class DoctorRepository implements DoctorRepositoryInterface
             'name'=> 'required|string|min:3| max:50',
             'email'=> 'required|string|min:5| max:50',
             'phone'=> 'required|string|min:1| max:18',
-            'price'=> 'required|string|min:1| max:10',
             'status'=> 'required|in:active,inactive',
             'appointment_id'=> 'required|exists:appointments,id',
             'section_id'=> 'required|exists:sections,id'
@@ -39,7 +38,6 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctors->password;
             $doctors->section_id =$request->section_id;
             $doctors->phone = $request->phone;
-            $doctors->price =$request->price;
             $doctors->status =$request->status;
             //Store Translate
             $doctors->name = $request->name;

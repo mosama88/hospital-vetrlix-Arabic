@@ -16,7 +16,6 @@ class Doctor extends Model
     'email_verified_at',
     'password',
     'phone',
-    'price',
     'section_id',
     'appointment_id',
 ];
@@ -37,8 +36,8 @@ class Doctor extends Model
         return $this->belongsTo(Section::class);
     }
 
-    public function appointment(){
-        return $this->belongsTo(Appointment::class);
+    public function doctorappointments(){
+        return $this->belongsToMany(Appointment::class, 'appointment_doctor');
     }
 
 }

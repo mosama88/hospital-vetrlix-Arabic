@@ -54,7 +54,6 @@
                                 <th>اسم الطبيب</th>
                                 <th>البريد الالكتروني</th>
                                 <th>الموبايل</th>
-                                <th>سعر الكسف</th>
                                 <th>القسم</th>
                                 <th>المواعيد</th>
                                 <th>الحاله</th>
@@ -81,22 +80,48 @@
                                     <td><a href="#">{{ $doctor->name }}</a> </td>
                                     <td>{{ $doctor->email }}</td>
                                     <td>{{ $doctor->phone }}</td>
-                                    <td>{{ $doctor->price }}</td>
                                     <td>{{ $doctor->section->name }}</td>
-                                    <td>{{ $doctor->appointment?->name }}</td>
                                     <td>
-                                        {{ $doctor->status }}
+                                        @foreach ($doctor->doctorappointments as $appointment)
+                                            {{ $appointment->name }}
+                                        @endforeach
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-info"
-                                            href="{{ route('dashboard.doctors.edit', $doctor->id) }}"><i
-                                                class="fas fa-edit"></i></a>
-
-                                        <a class="modal-effect btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            href="#delete{{ $doctor->id }}"><i class="fas fa-trash-alt"></i></a>
-
+                                        @if ($doctor->status == 'active')
+                                            <span class="badge bg-success">مفعل</span>
+                                        @else
+                                            <span class="badge bg-danger">غير مفعل</span>
+                                        @endif
+                                        <div
+                                            class="dot-label bg-{{ $doctor->status == 'active' ? 'success' : 'danger' }} ml-1">
+                                        </div>
                                     </td>
-                                    @include('dashboard.doctors.delete')
+                                    <td>
+                                        <div class="btn-group dropend">
+                                            <button type="button"
+                                                class="btn btn-info waves-effect waves-light dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                العمليات <i class="mdi mdi-chevron-left"></i>
+                                            </button>
+                                            <div class="dropdown-menu" style="">
+                                                <a class="dropdown-item"
+                                                    href="{{ route('dashboard.doctors.edit', $doctor->id) }}"><i
+                                                        style="color: #0ba360"
+                                                        class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
+                                                    البيانات</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                                    data-target="#update_password{{ $doctor->id }}"><i
+                                                        class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                                    data-target="#update_status{{ $doctor->id }}"><i
+                                                        class="text-warning ti-back-left"></i>&nbsp;&nbsp;تغير الحالة</a>
+                                                <a class="dropdown-item modal-effect" href="#delete{{ $doctor->id }}"
+                                                    data-bs-toggle="modal"><i
+                                                        class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
+                                            </div>
+                                            @include('dashboard.doctors.delete')
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
