@@ -19,7 +19,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="col-12 ">
                         <div class="col-sm-12 col-md-12 col-xl-12 text-end">
                             <div class="my-4">
                                 <!-- Satic modal -->
@@ -118,9 +117,9 @@
                                                 <a class="dropdown-item modal-effect" href="#delete{{ $doctor->id }}"
                                                     data-bs-toggle="modal"><i
                                                         class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
-                                            </div>
-                                            @include('dashboard.doctors.delete')
-                                        </div>
+                                                    </div>
+                                                </div>
+                                                @include('dashboard.doctors.delete')
                                     </td>
                                 </tr>
                             @endforeach
@@ -128,7 +127,6 @@
                     </table>
                 </div>
             </div>
-        </div> <!-- end col -->
     </div> <!-- end row -->
 
     </div> <!-- container-fluid -->

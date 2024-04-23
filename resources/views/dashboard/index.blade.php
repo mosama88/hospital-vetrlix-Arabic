@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.master')
-@section('title', 'Home')
+@section('title', 'الرئيسية')
 @section('page-title', 'Admin Dashboard')
 @section('content')
-@include('dashboard.layouts.header-title')
+    @include('dashboard.layouts.header-title')
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card mini-stat bg-primary text-white">

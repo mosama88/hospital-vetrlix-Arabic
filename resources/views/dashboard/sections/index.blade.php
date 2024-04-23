@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', 'Sections')
+@section('title', 'الأقسام')
 @section('page-title', 'الأقسام')
 @section('page-link-back')
     <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">لوحة التحكم</a>

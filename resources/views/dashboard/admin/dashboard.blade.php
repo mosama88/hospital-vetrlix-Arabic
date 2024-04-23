@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', 'Home')
+@section('title', 'الرئيسية')
 @section('page-title', 'Admin Dashboard')
 @section('content')
     @include('dashboard.layouts.header-title')

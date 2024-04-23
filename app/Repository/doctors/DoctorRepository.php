@@ -16,7 +16,7 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     use UploadTrait;
     public function index(){
-        $doctors = Doctor::orderBy('created_at', 'desc')->get();
+        $doctors = Doctor::orderBy('created_at', 'desc')->with('doctorappointments')->get();
         return view('dashboard.doctors.index', compact('doctors'));
     }
 
@@ -24,33 +24,40 @@ class DoctorRepository implements DoctorRepositoryInterface
     {
 
         DB::beginTransaction();
-        $request->validate([
-            'name'=> 'required|string|min:3| max:50',
-            'email'=> 'required|string|min:5| max:50',
-            'phone'=> 'required|string|min:1| max:18',
-            'status'=> 'required|in:active,inactive',
-            'appointment_id'=> 'required|exists:appointments,id',
-            'section_id'=> 'required|exists:sections,id'
-        ]);
-            $doctors = new Doctor();
-            $doctors->email =$request->email;
-            $doctors['password'] = $request->has('password') ? bcrypt( $request->password) :
-            $doctors->password;
-            $doctors->section_id =$request->section_id;
-            $doctors->phone = $request->phone;
-            $doctors->status =$request->status;
-            //Store Translate
-            $doctors->name = $request->name;
-            $doctors->appointment_id =$request->appointment_id;
-            $doctors->save();
-            //Upload img
-            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
-DB::commit();
-            // Doctor::create($doctors);
-            return redirect()->route('dashboard.doctors.index')->with('add', 'تم أضافة دكتور ');
+        try{
+            $request->validate([
+                'name'=> 'required|string|min:3| max:50',
+                'email'=> 'required|string|min:5| max:50',
+                'phone'=> 'required|string|min:1| max:18',
+                'status'=> 'required|in:active,inactive',
+                'section_id'=> 'required|exists:sections,id'
+            ]);
+                $doctors = new Doctor();
+                $doctors->email =$request->email;
+                $doctors['password'] = $request->has('password') ? bcrypt( $request->password) :
+                $doctors->password;
+                $doctors->section_id =$request->section_id;
+                $doctors->phone = $request->phone;
+                $doctors->status =$request->status;
+                //Store Translate
+                $doctors->name = $request->name;
+                $doctors->save();
+                $doctors->doctorappointments()->attach($request->appointments);
+                // $doctors->doctorappointments()->sync($request->appointment);
+
+                //Upload img
+                $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
+    DB::commit();
+                // Doctor::create($doctors);
+                return redirect()->route('dashboard.doctors.index')->with('add', 'تم أضافة دكتور ');
+        }
+   
+       
+    catch (\Exception $e) {
+        DB::rollback();
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
-
-
+    }
 
     public function create()
     {
@@ -63,20 +70,51 @@ DB::commit();
 
 
     public function edit($id){
-        $doctor = Doctor::find($id);
-
-       return view('dashboard.doctors.edit', ['doctor'=>$doctor ]);
+        $doctors = Doctor::find($id);
+        $sections = Section::all();
+        $appointments = Appointment::all();
+       return view('dashboard.doctors.edit', compact('sections','doctors','appointments'));
    }
-
-   public function update( $request)
+   public function update($request)
    {
-       $data = $request->validate([
-        'name'=> 'required|string|min:2|max:100',
-       ]);
-       $name = $request->name;
-       Doctor::findOrFail($request->id)->update($data);
-       return redirect()->route('dashboard.doctors.index')->with('edit', 'تم تعديل الدكتور الى '. $name);
-    }
+       DB::beginTransaction();
+
+       try {
+
+           $doctor = Doctor::findorfail($request->id);
+
+           $doctor->email = $request->email;
+           $doctor->section_id = $request->section_id;
+           $doctor->phone = $request->phone;
+           $doctor->save();
+           // store trans
+           $doctor->name = $request->name;
+           $doctor->save();
+
+           // update pivot tABLE
+           $doctor->doctorappointments()->sync($request->appointments);
+
+           // update photo
+           if ($request->has('photo')){
+               // Delete old photo
+               if ($doctor->image){
+                   $old_img = $doctor->image->filename;
+                   $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
+               }
+               //Upload img
+               $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
+           }
+
+           DB::commit();
+           session()->flash('edit');
+           return redirect()->route('dashboard.doctors.index')->with('edit', 'تم تعديل دكتور ');
+
+       }
+       catch (\Exception $e) {
+           DB::rollback();
+           return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+       }
+   }
 
 
 

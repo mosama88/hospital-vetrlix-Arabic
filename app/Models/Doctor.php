@@ -17,7 +17,6 @@ class Doctor extends Model
     'password',
     'phone',
     'section_id',
-    'appointment_id',
 ];
 
 //protected $guared=[];
@@ -36,7 +35,7 @@ class Doctor extends Model
         return $this->belongsTo(Section::class);
     }
 
-    public function doctorappointments(){
+    public function doctorappointments(){                                    //Pivot Table
         return $this->belongsToMany(Appointment::class, 'appointment_doctor');
     }
 

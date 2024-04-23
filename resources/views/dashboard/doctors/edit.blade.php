@@ -22,7 +22,7 @@
 
                     <h4 class="card-title mb-5 text-center">تعديل طبيب</h4>
 
-                    <form action="{{ route('dashboard.doctors.edit', $doctors->id) }}" method="POST"
+                    <form action="{{ route('dashboard.doctors.update', $doctors->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -30,7 +30,7 @@
                         <div class="row mb-4">
                             <label for="example-text-input" class="col-sm-2 col-form-label">أسم الطبيب</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" value="name"
+                                <input class="form-control" type="text" name="name" value="{{ $doctors->name }}"
                                     placeholder="اسم الطبيب" id="example-text-input">
 
                             </div>
@@ -42,8 +42,8 @@
                             <label for="example-email-input" class="col-sm-2 col-form-label">البريد الالكترونى</label>
                             <div class="col-sm-10">
                                 <input class="form-control" name="email" type="email"
-                                    placeholder="bootstrap@example.com" value="email" id="example-email-input"
-                                    autocomplete="none">
+                                    placeholder="bootstrap@example.com" value="{{ $doctors->email }}"
+                                    id="example-email-input" autocomplete="none">
                             </div>
                         </div>
                         <!-- end row -->
@@ -52,7 +52,7 @@
                         <div class="row mb-4">
                             <label for="example-password-input" class="col-sm-2 col-form-label">كلمة المرور</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="password" name="password" value="password"
+                                <input class="form-control" type="password" name="password" value="{{ $doctors->password }}"
                                     placeholder="كلمة المرور" id="example-password-input" autocomplete="none">
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="row mb-4">
                             <label for="example-tel-input" class="col-sm-2 col-form-label">الموبايل</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="tel" name="phone" value="phone"
+                                <input class="form-control" type="tel" name="phone" value="{{ $doctors->phone }}"
                                     placeholder="1-(555)-555-5555" id="example-tel-input">
                             </div>
                         </div>
@@ -75,7 +75,9 @@
                                 <select name="section_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach ($sections as $section)
-                                        <option value={{ $section->id }}@selected($doctor->section_id == $section->id)>{{ $section->name }}
+                                        <option value="{{ $section->id }}"
+                                            {{ $section->id == $doctors->section_id ? 'selected' : '' }}>
+                                            {{ $section->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -90,8 +92,11 @@
                             <div class="col-sm-10">
                                 <select name="status" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
-                                    <option value="1">مفعل</option>
-                                    <option value="2">غير مفعل</option>2
+                                    <option value="active"{{ $doctors->status === 'active' ? 'selected' : '' }}>مفعل
+                                    </option>
+                                    <option value="inactive"{{ $doctors->status === 'inactive' ? 'selected' : '' }}>غير
+                                        مفعل
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -103,9 +108,10 @@
                         <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">المواعيد</label>
                             <div class="col-sm-10">
-                                <select class="form-select" name="appointment_id" id="appointments" multiple>
+                                <select class="form-select" name="appointments" id="appointments" multiple>
                                     @foreach ($appointments as $appointment)
-                                        <option value="{{ $appointment->id }}"@selected($doctor->appointment_id == $appointment->id)>
+                                        <option
+                                            value="{{ $appointment->id }}"{{ $appointment->id == $doctors->appointment ? 'selected' : '' }}>
                                             {{ $appointment->name }}</option>
                                     @endforeach
                                 </select>
@@ -114,16 +120,6 @@
                         <!-- end row -->
 
 
-                        {{-- Price Inputs --}}
-                        <div class="row mb-4">
-                            <label for="example-number-input" class="col-sm-2 col-form-label">سعر الكشف</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" placeholder="500" name="price" value="price" type="number"
-                                    value="" id="example-number-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-
                         {{-- Image Inputs --}}
                         <div class="row mb-4">
                             <label for="example-text-input" class="col-sm-2 col-form-label">صورة الطبيب</label>
@@ -131,6 +127,19 @@
                                 <input class="form-control" accept="image/*" name="photo" type="file"
                                     id="example-text-input" onchange="loadFile(event)">
                                 <img class="rounded-circle avatar-xl my-3" id="output" />
+
+
+                                @if ($doctors->image)
+                                    <img style="border-radius:20% my-3"
+                                        src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctors->image->filename) }}"
+                                        height="150px" width="150px" alt="">
+                                @else
+                                    <img style="border-radius:50% my-3"
+                                        src="{{ asset('Dashboard/img/doctor_default.png') }}" height="50px"
+                                        width="50px" alt="">
+                                @endif
+
+
 
                             </div>
                         </div>

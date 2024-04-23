@@ -13,7 +13,7 @@ interface DoctorRepositoryInterface
     public function create();
 
     public function edit($id);
-    public function update( $request);
+    public function update($request);
 
     public function destroy( $request);
 
