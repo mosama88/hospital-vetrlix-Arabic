@@ -6,9 +6,9 @@ use App\Models\Section;
 use App\Models\Appointment;
 // use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
-// use Illuminate\Support\Facades\Hash;
 // use App\Http\Requests\Dashboard\DoctorRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
 
 class DoctorRepository implements DoctorRepositoryInterface
@@ -81,38 +81,38 @@ class DoctorRepository implements DoctorRepositoryInterface
 
        try {
 
-           $doctors = Doctor::findorfail($request->id);
+        $doctors = Doctor::findorfail($request->id);
 
-           $doctors->name = $request->name;
-           $doctors->email = $request->email;
-           $doctors->section_id = $request->section_id;
-           $doctors->phone = $request->phone;
+        $doctors->name = $request->name;
+        $doctors->email = $request->email;
+        $doctors->section_id = $request->section_id;
+        $doctors->phone = $request->phone;
 
-           // update pivot tABLE
-           $doctors->doctorappointments()->sync($request->appointments);
-           $doctors->save();
+        // update pivot tABLE
+        $doctors->doctorappointments()->sync($request->appointments);
+        $doctors->save();
 
-           // update photo
-           if ($request->has('photo')){
-               // Delete old photo
-               if ($doctors->image){
-                   $old_img = $doctors->image->filename;
-                   $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
-               }
-               //Upload img
-               $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
-           }
+        // update photo
+        if ($request->has('photo')){
+            // Delete old photo
+            if ($doctors->image){
+                $old_img = $doctors->image->filename;
+                $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
+            }
+            //Upload img
+            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
+        }
 
-           DB::commit();
-           session()->flash('edit');
-           return redirect()->route('dashboard.doctors.index')->with('edit', 'تم تعديل دكتور ');
+        DB::commit();
+        session()->flash('edit');
+        return redirect()->route('dashboard.doctors.index')->with('edit', 'تم تعديل دكتور ');
 
-       }
-       catch (\Exception $e) {
-           DB::rollback();
-           return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-       }
-   }
+    }
+    catch (\Exception $e) {
+        DB::rollback();
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+}
 
 
 
@@ -131,17 +131,35 @@ class DoctorRepository implements DoctorRepositoryInterface
 //----------------------------------------------
         }
                   // delete selector doctor
-                  $delete_select_id = explode(",", $request->delete_select_id);
-                  foreach ($delete_select_id as $ids_doctors){
-                      $doctor = Doctor::findorfail($ids_doctors);
-                      if($doctor->image){
-                          $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
-                      }
-                  }
+                $delete_select_id = explode(",", $request->delete_select_id);
+                foreach ($delete_select_id as $ids_doctors){
+                    $doctor = Doctor::findorfail($ids_doctors);
+                    if($doctor->image){
+                    $this->Delete_attachment('upload_image','doctors/'.$doctor->image->filename,$ids_doctors,$doctor->image->filename);
+                    }
+                }
 
-                  Doctor::destroy($delete_select_id);
-                  return back()->with('delete', 'تم حذف الدكتور ');
+                Doctor::destroy($delete_select_id);
+                return back()->with('delete', 'تم حذف الدكتور ');
 
 
+        }
+
+
+        public function update_password($request)
+        {
+            try {
+                $doctor = Doctor::findorfail($request->id);
+                $doctor->update([
+                    'password'=>Hash::make($request->password)
+                ]);
+
+                session()->flash('edit');
+                return redirect()->back();
+            }
+
+            catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            }
         }
 }

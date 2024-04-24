@@ -69,4 +69,9 @@ class DoctorController extends Controller
     {
         return $this->doctors->destroy($request);
     }
+
+    public function update_password(Request $request)
+    {
+        return $this->doctors->update_password($request);
+    }
 }

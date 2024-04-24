@@ -22,12 +22,12 @@
 
 
                     @if ($doctors->image)
-                        <img style="border-radius:20% my-3"
+                        <img class="img-thumbnail rounded me-2" alt="200x200" style="width: 200px; height:200px"
                             src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctors->image->filename) }}"
-                            height="150px" width="150px" alt="">
+                            data-holder-rendered="true">
                     @else
-                        <img style="border-radius:50% my-3" src="{{ asset('Dashboard/img/doctor_default.png') }}"
-                            height="50px" width="50px" alt="">
+                        <img class="img-thumbnail rounded me-2" alt="200x200" style="width: 200px; height:200px"
+                            src="{{ asset('Dashboard/img/doctor_default.png') }}" data-holder-rendered="true">
                     @endif
 
 
@@ -68,7 +68,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="tel" name="phone" value="{{ $doctors->phone }}"
                                     placeholder="1-(555)-555-5555" id="example-tel-input">
-                                    <input class="form-control" value="{{$doctors->id}}" name="id" type="hidden">
+                                <input class="form-control" value="{{ $doctors->id }}" name="id" type="hidden">
                             </div>
                         </div>
                         <!-- end row -->
