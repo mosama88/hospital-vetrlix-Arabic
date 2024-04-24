@@ -150,6 +150,10 @@ class DoctorRepository implements DoctorRepositoryInterface
         public function update_password($request)
         {
             try {
+                $request->validate([
+                    'password' => "required|string|min:3|max:20",
+                    'password_confirmation' => "required|string|min:3|max:20",
+                ]);
                 $doctor = Doctor::findorfail($request->id);
                 $doctor->update([
                     'password'=>Hash::make($request->password)
@@ -168,12 +172,16 @@ class DoctorRepository implements DoctorRepositoryInterface
         public function update_status($request)
         {
             try {
+
+                $request->validate([
+                    'status' => "required|string|in:active,inactive",
+                ]);
                 $doctor = Doctor::findorfail($request->id);
                 $doctor->status = $request->status;
                 $doctor->save();
 
 
-                session()->flash('edit');
+                session()->flash('edit_status');
                 return redirect()->back();
             }
 

@@ -1,6 +1,4 @@
 @if ($errors->any())
-
-
     @foreach ($errors->all() as $error)
         <div class="col-6 my-3">
             <div class="alert alert-danger bg-danger text-white mb-0 border-0" role="alert">
@@ -9,6 +7,8 @@
         </div>
     @endforeach
 @endif
+
+
 
 
 
@@ -56,6 +56,17 @@
         window.onload = function() {
             notif({
                 msg: "تم تغيير كلمة المرور بنجاح",
+                type: "success"
+            });
+        }
+    </script>
+@endif
+
+@if (session()->has('edit_status'))
+    <script>
+        window.onload = function() {
+            notif({
+                msg: "تم تغيير حالة الحساب بنجاح",
                 type: "success"
             });
         }
