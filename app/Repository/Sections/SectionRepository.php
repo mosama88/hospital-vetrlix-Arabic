@@ -61,5 +61,17 @@ class SectionRepository implements SectionRepositoryInterface
          // Return a response indicating success
          return redirect()->route('dashboard.sections.index')->with('delete', 'تم حذف القسم بنجاح ');
         }
+
+
+
+        public function show( $id)
+        {
+            // Find the post by its ID
+            $doctors = Section::findOrFail($id)->doctors;
+            $section = Section::findOrFail($id);
+    
+             // Return a response indicating success
+             return view ('dashboard.sections.show', compact('doctors', 'section'));
+            }
 }
 
