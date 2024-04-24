@@ -91,8 +91,8 @@
                         <!-- end row -->
 
 
-                        {{-- Section Inputs --}}
-                        <div class="row mb-4">
+                        {{-- Status  Inputs --}}
+                        {{-- <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">حالة الحساب</label>
                             <div class="col-sm-10">
                                 <select name="status" class="form-select" aria-label="Default select example">
@@ -104,7 +104,7 @@
                                     </option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- end row -->
 
 

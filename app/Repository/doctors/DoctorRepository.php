@@ -87,6 +87,7 @@ class DoctorRepository implements DoctorRepositoryInterface
         $doctors->email = $request->email;
         $doctors->section_id = $request->section_id;
         $doctors->phone = $request->phone;
+        $doctors->status = $request->status;
 
         // update pivot tABLE
         $doctors->doctorappointments()->sync($request->appointments);
@@ -154,6 +155,24 @@ class DoctorRepository implements DoctorRepositoryInterface
                     'password'=>Hash::make($request->password)
                 ]);
 
+                session()->flash('changePassword');
+                return redirect()->back();
+            }
+
+            catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            }
+        }
+
+
+        public function update_status($request)
+        {
+            try {
+                $doctor = Doctor::findorfail($request->id);
+                $doctor->status = $request->status;
+                $doctor->save();
+
+
                 session()->flash('edit');
                 return redirect()->back();
             }
@@ -162,4 +181,6 @@ class DoctorRepository implements DoctorRepositoryInterface
                 return redirect()->back()->withErrors(['error' => $e->getMessage()]);
             }
         }
+
+
 }

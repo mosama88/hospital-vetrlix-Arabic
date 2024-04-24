@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Route;
           ##################################### Start Dashboard sections ################################
           Route::resource('/doctors', DoctorController::class);
           Route::post('/update-password', [DoctorController::class, 'update_password'])->name('update-password');
+          Route::post('/update-status', [DoctorController::class, 'update_status'])->name('update-status');
 
           ##################################### End Dashboard sections ################################
     });

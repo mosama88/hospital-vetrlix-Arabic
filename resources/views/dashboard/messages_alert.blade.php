@@ -14,7 +14,7 @@
 
 {{-- <div class="alert alert-danger">
         <ul>
-           
+
         </ul>
     </div> --}}
 @if (session()->has('add'))
@@ -44,6 +44,18 @@
         window.onload = function() {
             notif({
                 msg: "تم حذف الطبيب بنجاح",
+                type: "success"
+            });
+        }
+    </script>
+@endif
+
+
+@if (session()->has('changePassword'))
+    <script>
+        window.onload = function() {
+            notif({
+                msg: "تم تغيير كلمة المرور بنجاح",
                 type: "success"
             });
         }

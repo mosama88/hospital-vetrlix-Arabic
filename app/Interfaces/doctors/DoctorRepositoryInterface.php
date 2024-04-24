@@ -19,4 +19,7 @@ interface DoctorRepositoryInterface
 
     public function update_password( $request);
 
+    public function update_status( $request);
+
 }
+
