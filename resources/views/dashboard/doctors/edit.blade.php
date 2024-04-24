@@ -113,7 +113,7 @@
                         <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">المواعيد</label>
                             <div class="col-sm-10">
-                                <select class="form-select" name="appointments" id="appointments" multiple>
+                                <select class="form-select" name="appointments[]" id="appointments" multiple>
                                     @foreach ($appointments as $appointment)
                                         @php $check = []; @endphp
                                         @foreach ($doctors->doctorappointments as $key => $appointmentDOC)

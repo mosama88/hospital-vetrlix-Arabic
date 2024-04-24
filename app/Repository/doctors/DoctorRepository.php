@@ -87,10 +87,10 @@ class DoctorRepository implements DoctorRepositoryInterface
            $doctors->email = $request->email;
            $doctors->section_id = $request->section_id;
            $doctors->phone = $request->phone;
-           $doctors->save();
 
            // update pivot tABLE
            $doctors->doctorappointments()->sync($request->appointments);
+           $doctors->save();
 
            // update photo
            if ($request->has('photo')){
