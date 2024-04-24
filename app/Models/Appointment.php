@@ -12,6 +12,7 @@ class Appointment extends Model
 
     protected $fillable = ['name'];
 
+    
 
 
 }

@@ -51,8 +51,8 @@ class DoctorRepository implements DoctorRepositoryInterface
                 // Doctor::create($doctors);
                 return redirect()->route('dashboard.doctors.index')->with('add', 'تم أضافة دكتور ');
         }
-   
-       
+
+
     catch (\Exception $e) {
         DB::rollback();
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -81,24 +81,22 @@ class DoctorRepository implements DoctorRepositoryInterface
 
        try {
 
-           $doctor = Doctor::findorfail($request->id);
+           $doctors = Doctor::findorfail($request->id);
 
-           $doctor->email = $request->email;
-           $doctor->section_id = $request->section_id;
-           $doctor->phone = $request->phone;
-           $doctor->save();
-           // store trans
-           $doctor->name = $request->name;
-           $doctor->save();
+           $doctors->name = $request->name;
+           $doctors->email = $request->email;
+           $doctors->section_id = $request->section_id;
+           $doctors->phone = $request->phone;
+           $doctors->save();
 
            // update pivot tABLE
-           $doctor->doctorappointments()->sync($request->appointments);
+           $doctors->doctorappointments()->sync($request->appointments);
 
            // update photo
            if ($request->has('photo')){
                // Delete old photo
-               if ($doctor->image){
-                   $old_img = $doctor->image->filename;
+               if ($doctors->image){
+                   $old_img = $doctors->image->filename;
                    $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
                }
                //Upload img

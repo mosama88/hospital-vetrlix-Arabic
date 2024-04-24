@@ -20,6 +20,18 @@
             <div class="card">
                 <div class="card-body">
 
+
+                    @if ($doctors->image)
+                        <img style="border-radius:20% my-3"
+                            src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctors->image->filename) }}"
+                            height="150px" width="150px" alt="">
+                    @else
+                        <img style="border-radius:50% my-3" src="{{ asset('Dashboard/img/doctor_default.png') }}"
+                            height="50px" width="50px" alt="">
+                    @endif
+
+
+
                     <h4 class="card-title mb-5 text-center">تعديل طبيب</h4>
 
                     <form action="{{ route('dashboard.doctors.update', $doctors->id) }}" method="POST"
@@ -48,15 +60,7 @@
                         </div>
                         <!-- end row -->
 
-                        {{-- Password Inputs --}}
-                        <div class="row mb-4">
-                            <label for="example-password-input" class="col-sm-2 col-form-label">كلمة المرور</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="password" name="password" value="{{ $doctors->password }}"
-                                    placeholder="كلمة المرور" id="example-password-input" autocomplete="none">
-                            </div>
-                        </div>
-                        <!-- end row -->
+
 
                         {{-- Phone Inputs --}}
                         <div class="row mb-4">
@@ -64,6 +68,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="tel" name="phone" value="{{ $doctors->phone }}"
                                     placeholder="1-(555)-555-5555" id="example-tel-input">
+                                    <input class="form-control" value="{{$doctors->id}}" name="id" type="hidden">
                             </div>
                         </div>
                         <!-- end row -->
@@ -110,8 +115,14 @@
                             <div class="col-sm-10">
                                 <select class="form-select" name="appointments" id="appointments" multiple>
                                     @foreach ($appointments as $appointment)
-                                        <option
-                                            value="{{ $appointment->id }}"{{ $appointment->id == $doctors->appointment ? 'selected' : '' }}>
+                                        @php $check = []; @endphp
+                                        @foreach ($doctors->doctorappointments as $key => $appointmentDOC)
+                                            @php
+                                                $check[] = $appointmentDOC->id;
+                                            @endphp
+                                        @endforeach
+                                        <option value="{{ $appointment->id }}"
+                                            {{ in_array($appointment->id, $check) ? 'selected' : '' }}>
                                             {{ $appointment->name }}</option>
                                     @endforeach
                                 </select>
@@ -129,15 +140,7 @@
                                 <img class="rounded-circle avatar-xl my-3" id="output" />
 
 
-                                @if ($doctors->image)
-                                    <img style="border-radius:20% my-3"
-                                        src="{{ asset('dashboard/assets/images/uploads/doctors/' . $doctors->image->filename) }}"
-                                        height="150px" width="150px" alt="">
-                                @else
-                                    <img style="border-radius:50% my-3"
-                                        src="{{ asset('Dashboard/img/doctor_default.png') }}" height="50px"
-                                        width="50px" alt="">
-                                @endif
+
 
 
 
