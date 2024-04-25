@@ -1,13 +1,12 @@
 <?php
 
 namespace  App\Repository\Services;
-use App\Models\Service;
-use App\Interfaces\Doctors\ServiceRepositoryInterface;
+use App\Interfaces\Services\ServiceRepositoryInterface;
 
 class ServiceRepository implements ServiceRepositoryInterface
 {
     public function index(){
-       //
+       return view ('dashboard.services.single-service-index');
     }
 
     public function store( $request)

@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\Services\ServiceRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SingleServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    
+    private $singleSerice;
+
+    public function __construct(ServiceRepositoryInterface $singleSerice)
+    {
+        $this->singleSerice = $singleSerice;
+    }
+
+
+
     public function index()
     {
-        echo "Services";
+        return $this->singleSerice->index();
     }
 
     /**

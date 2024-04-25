@@ -7,7 +7,7 @@ use App\Repository\Doctors\DoctorRepository;
 use App\Repository\Sections\SectionRepository;
 use App\Repository\Services\ServiceRepository;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
-use App\Interfaces\Doctors\ServiceRepositoryInterface;
+use App\Interfaces\Services\ServiceRepositoryInterface;
 use App\Interfaces\Sections\SectionRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider

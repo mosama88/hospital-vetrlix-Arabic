@@ -1,5 +1,5 @@
 <?php
-namespace App\Interfaces\Doctors;
+namespace App\Interfaces\Services;
 
 
 
