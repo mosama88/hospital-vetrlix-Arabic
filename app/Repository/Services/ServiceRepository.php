@@ -28,13 +28,24 @@ class ServiceRepository implements ServiceRepositoryInterface
 
 
 
-    public function edit($id){
-       //
+    public function edit($request){
+
+        $service = Service::findOrFail($request->id);
+        return view ('dashboard.services.single-service.edit', compact('service'));
    }
 
    public function update( $request)
    {
-       //
+       $singleService = Service::findOrFail($request->id);
+       $singleService->name = $request->name;
+       $singleService->price = $request->price;
+       $singleService->description = $request->description;
+       $singleService->status = $request->status;
+
+       $singleService->save();
+
+       session()->flash('update');
+       return redirect()->route('dashboard.services.index');
     }
 
 

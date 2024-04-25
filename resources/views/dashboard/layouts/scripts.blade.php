@@ -57,3 +57,5 @@
 <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifit-custom.js"></script>
 
 @yield('scriptsJs')
+
+@livewireScripts

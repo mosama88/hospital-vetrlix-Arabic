@@ -2,6 +2,7 @@
     <html lang="en" dir="rtl">
 
     <head>
+        @livewireStyles
         <meta charset="utf-8">
         <title>لوحة التحكم | @yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

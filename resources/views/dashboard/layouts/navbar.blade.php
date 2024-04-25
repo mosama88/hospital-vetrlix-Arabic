@@ -236,11 +236,7 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="mdi mdi-cog-outline"></i>
-                </button>
-            </div>
+
 
         </div>
     </div>

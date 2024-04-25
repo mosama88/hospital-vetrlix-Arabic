@@ -11,11 +11,7 @@
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
     <div class="page-content">
-
         <div class="container-fluid">
-
-
-
             {{-- Start Row --}}
             <div class="row">
                 <div class="col-12">
@@ -44,11 +40,11 @@
 
 
 
-                    <table id="datatable-buttons" class="table  table-bordered dt-responsive nowrap"
+                    <table class="table  table-bordered "
                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th class="table-primary">#</th>
+                                <th class="table-primary">م</th>
                                 <th>الأسم</th>
                                 <th>سعر الخدمه</th>
                                 <th>الحاله</th>
@@ -85,21 +81,11 @@
                                             <div class="dropdown-menu" style="">
 
                                                 {{-- Change Data --}}
-                                                <a class="dropdown-item"
-                                                    href="{{ route('dashboard.doctors.edit', $service->id) }}"><i
+                                                <a class="dropdown-item modal-effect" href="#edit{{ $service->id }}"
+                                                   data-bs-toggle="modal"><i
                                                         style="color: #0ba360"
                                                         class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
                                                     البيانات</a>
-
-                                                {{-- Change Password --}}
-                                                <a class="dropdown-item modal-effect"
-                                                    href="#update_password{{ $service->id }}" data-bs-toggle="modal">
-                                                    <i class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
-
-                                                {{-- Change Status --}}
-                                                <a class="dropdown-item modal-effect"
-                                                    href="#update_status{{ $service->id }}" data-bs-toggle="modal"><i
-                                                        class="text-warning ti-back-left"></i>&nbsp;&nbsp;تغير الحالة</a>
 
                                                 {{-- Delete Doctor --}}
                                                 <a class="dropdown-item modal-effect" href="#delete{{ $service->id }}"
@@ -112,9 +98,8 @@
 
                                          @include('dashboard.services.single-service.delete')
                                     </td>
-                                    {{-- @include('dashboard.doctors.update_status') --}}
+                                    @include('dashboard.services.single-service.edit')
                                 </tr>
-                                {{-- @include('dashboard.doctors.update_password') --}}
                             @endforeach
                         </tbody>
                     </table>
