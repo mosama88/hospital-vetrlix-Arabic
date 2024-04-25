@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
           Route::post('/update-status', [DoctorController::class, 'update_status'])->name('update-status');
           ##################################### End Dashboard sections ################################
         ##################################### Start Dashboard Services ################################
-        Route::resource('/service', SingleServiceController::class);
+        Route::resource('/services', SingleServiceController::class);
         ##################################### End Dashboard Services ################################
     });
 

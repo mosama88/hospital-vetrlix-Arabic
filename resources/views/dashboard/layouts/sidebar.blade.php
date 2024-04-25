@@ -36,7 +36,7 @@
                         <span>الخدمات</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('dashboard.service.index') }}">خدمة مفرده</a></li>
+                        <li><a href="{{ route('dashboard.services.index') }}">خدمة مفرده</a></li>
                         <li><a href="email-read.html">مجموعة خدمات</a></li>
                         <li><a href="email-compose.html">شركات التأمين</a></li>
                         <li><a href="email-compose.html">الاسعاف</a></li>

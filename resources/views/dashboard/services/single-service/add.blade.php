@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('dashboard.sections.store') }}" autocomplete="off">
+                <form method="POST" action="{{ route('dashboard.services.store') }}" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">أسم الخدمه</label>
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">سعر الخدمه</label>
                         <input type="text" name="price" class="form-control" id="recipient-name">
-                        @error('name')
+                        @error('price')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

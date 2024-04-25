@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class SingleServiceController extends Controller
 {
 
-    
+
     private $singleSerice;
 
     public function __construct(ServiceRepositoryInterface $singleSerice)
@@ -37,7 +37,7 @@ class SingleServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->singleSerice->store($request);
     }
 
     /**
@@ -67,8 +67,8 @@ class SingleServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        return $this->singleSerice->destroy($request);
     }
 }

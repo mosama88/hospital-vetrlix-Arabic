@@ -20,10 +20,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="col-12 ">
-                        <div class="col-sm-12 col-md-12 col-xl-12 text-end">
+                        <div class="col-sm-12 col-md-12 col-xl-12">
                             <div class="my-4">
                                 <!-- Satic modal -->
-                                <button type="button" class="btn btn-primary btn-lg waves-effect waves-light"
+                                <button type="button" class="btn btn-primary btn-md waves-effect waves-light"
                                     data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     أضافة قسم
                                 </button>

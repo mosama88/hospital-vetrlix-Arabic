@@ -13,43 +13,42 @@
     <div class="page-content">
 
         <div class="container-fluid">
+
+
+
+            {{-- Start Row --}}
             <div class="row">
                 <div class="col-12">
-                    <div class="card-body">
-                        <div class="col-sm-12 col-md-12 col-xl-12 text-end">
-                            <div class="my-4">
-                                <!-- Satic modal -->
-                                <button type="button" class="btn btn-primary btn-lg waves-effect waves-light"
-                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    أضافة خدمه
-                                </button>
-                            </div>
-                            @include('dashboard.services.single-service.add')
-                            <!-- /.modal -->
-                        </div>
-                                <!-- Satic modal -->
-                                <a id="btn_delete_all" class="btn btn-danger btn-lg waves-effect waves-light">
-                                    حذف مجموعة خدمات <i class="fas fa-trash-alt"></i>
-                                </a>
-                                {{-- @include('dashboard.doctors.delete_select') --}}
+                    @include('dashboard.messages_alert')
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col-12 ">
+                                <div class="col-sm-12 col-md-12 col-xl-12">
+                                    <div class="my-4">
+                                        <!-- Satic modal -->
+                                        <button type="button" class="btn btn-primary btn-md waves-effect waves-light"
+                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            أضافة خدمه
+                                        </button>
+                                    </div>
+                                    @include('dashboard.services.single-service.add')
+                                    <!-- /.modal -->
+                                </div>
 
                             </div>
-                        </div>
 
-                    </div>
+                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+
+
+
 
                     <table id="datatable-buttons" class="table  table-bordered dt-responsive nowrap"
                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th class="table-primary">#</th>
-                                <th>
-                                    <input class="form-check-input" type="checkbox" value="" name="select_all"
-                                        id="example-select-all">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        الكل
-                                    </label>
-                                </th>
                                 <th>الأسم</th>
                                 <th>سعر الخدمه</th>
                                 <th>الحاله</th>
@@ -62,11 +61,6 @@
                             @foreach ($services as $service)
                                 <tr>
                                     <td class="table-primary">{{ $loop->iteration }}</td>
-                                    <td class="text-center">
-                                        <input type="checkbox" name="delete_select" value="{{ $service->id }}"
-                                            class="form-check-input">
-                                    </td>
-
                                     <td><a href="#">{{ $service->name }}</a> </td>
                                     <td>{{ $service->price }}</td>
                                     <td>
@@ -116,7 +110,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- @include('dashboard.doctors.delete') --}}
+                                         @include('dashboard.services.single-service.delete')
                                     </td>
                                     {{-- @include('dashboard.doctors.update_status') --}}
                                 </tr>
@@ -135,33 +129,9 @@
 
 
     @include('dashboard.layouts.scripts')
-    <script>
-        $(function() {
-            jQuery("[name=select_all]").click(function(source) {
-                checkboxes = jQuery("[name=delete_select]");
-                for (var i in checkboxes) {
-                    checkboxes[i].checked = source.target.checked;
-                }
-            });
-        })
-    </script>
 
 
-    <script type="text/javascript">
-        $(function() {
-            $("#btn_delete_all").click(function() {
-                var selected = [];
-                $("#datatable-buttons input[name=delete_select]:checked").each(function() {
-                    selected.push(this.value);
-                });
 
-                if (selected.length > 0) {
-                    $('#delete_select').modal('show')
-                    $('input[id="delete_select_id"]').val(selected);
-                }
-            });
-        });
-    </script>
     <!--Internal  Notify js -->
     <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifIt.js"></script>
     <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifit-custom.js"></script>

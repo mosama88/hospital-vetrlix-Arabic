@@ -2,6 +2,7 @@
 
 namespace  App\Repository\Services;
 use App\Interfaces\Services\ServiceRepositoryInterface;
+use App\Models\Section;
 use App\Models\Service;
 
 class ServiceRepository implements ServiceRepositoryInterface
@@ -13,7 +14,16 @@ class ServiceRepository implements ServiceRepositoryInterface
 
     public function store( $request)
     {
-       //
+        $singleService = new Service();
+        $singleService->name = $request->name;
+        $singleService->price = $request->price;
+        $singleService->description = $request->description;
+        $singleService->status = 1;
+
+        $singleService->save();
+    session()->flash('add');
+    return redirect()->route('dashboard.services.index');
+
     }
 
 
@@ -30,10 +40,14 @@ class ServiceRepository implements ServiceRepositoryInterface
 
 
 
-    public function destroy( $request)
+    public function destroy($request)
     {
-        //
-        }
+        // Find the post by its ID
+        Service::findOrFail($request->id)->delete();
+
+        // Return a response indicating success
+        return redirect()->route('dashboard.services.index')->with('delete', 'تم حذف الخدمه بنجاح ');
+    }
 
 
 
