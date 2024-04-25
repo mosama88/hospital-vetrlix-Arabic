@@ -82,7 +82,7 @@
 
 
                         {{-- Section Inputs --}}
-                        <div class="row mb-4">
+                        {{-- <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">حالة الحساب</label>
                             <div class="col-sm-10">
                                 <select name="status" class="form-select" aria-label="Default select example">
@@ -91,7 +91,7 @@
                                     <option value="inactive">غير مفعل</option>2
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- end row -->
 
 
@@ -144,6 +144,8 @@
         new MultiSelectTag('appointments') // id
     </script>
 
+
+{{-- photo --}}
     <script>
         var loadFile = function(event) {
             var output = document.getElementById('output');

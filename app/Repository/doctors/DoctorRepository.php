@@ -29,7 +29,6 @@ class DoctorRepository implements DoctorRepositoryInterface
                 'name'=> 'required|string|min:3| max:50',
                 'email'=> 'required|string|min:5| max:50',
                 'phone'=> 'required|string|min:1| max:18',
-                'status'=> 'required|in:active,inactive',
                 'section_id'=> 'required|exists:sections,id'
             ]);
                 $doctors = new Doctor();
@@ -173,12 +172,12 @@ class DoctorRepository implements DoctorRepositoryInterface
         {
             try {
 
-                $request->validate([
-                    'status' => "required|string|in:active,inactive",
+                $data = $request->validate([
+                    'status' => "required|in:active,inactive",
                 ]);
                 $doctor = Doctor::findorfail($request->id);
                 $doctor->status = $request->status;
-                $doctor->save();
+                $doctor->update($data);
 
 
                 session()->flash('edit_status');

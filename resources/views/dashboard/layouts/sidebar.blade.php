@@ -32,13 +32,15 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ti-email"></i>
-                        <span>Email</span>
+                        <i class="fas fa-allergies"></i>
+                        <span>الخدمات</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Email Read</a></li>
-                        <li><a href="email-compose.html">Email Compose</a></li>
+                        <li><a href="{{ route('dashboard.service.index') }}">خدمة مفرده</a></li>
+                        <li><a href="email-read.html">مجموعة خدمات</a></li>
+                        <li><a href="email-compose.html">شركات التأمين</a></li>
+                        <li><a href="email-compose.html">الاسعاف</a></li>
+                        <li><a href="email-compose.html">مكالمات الاسعاف</a></li>
                     </ul>
                 </li>
 

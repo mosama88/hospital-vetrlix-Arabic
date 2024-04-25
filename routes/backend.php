@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\SingleServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,8 +42,10 @@ use Illuminate\Support\Facades\Route;
           Route::resource('/doctors', DoctorController::class);
           Route::post('/update-password', [DoctorController::class, 'update_password'])->name('update-password');
           Route::post('/update-status', [DoctorController::class, 'update_status'])->name('update-status');
-
           ##################################### End Dashboard sections ################################
+        ##################################### Start Dashboard Services ################################
+        Route::resource('/service', SingleServiceController::class);
+        ##################################### End Dashboard Services ################################
     });
 
 
