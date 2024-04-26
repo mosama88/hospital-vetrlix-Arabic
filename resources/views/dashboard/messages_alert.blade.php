@@ -9,66 +9,13 @@
 @endif
 
 
-
-
-
-{{-- <div class="alert alert-danger">
-        <ul>
-
-        </ul>
-    </div> --}}
-@if (session()->has('add'))
+@if (session()->has('success'))
     <script>
         window.onload = function() {
-            notif({
-                msg: "تم أضافة الطبيب بنجاح",
-                type: "success"
-            });
-        }
-    </script>
-@endif
-
-@if (session()->has('edit'))
-    <script>
-        window.onload = function() {
-            notif({
-                msg: "تم تعديل بيانات الطبيب بنجاح",
-                type: "success"
-            });
-        }
-    </script>
-@endif
-
-@if (session()->has('delete'))
-    <script>
-        window.onload = function() {
-            notif({
-                msg: "تم حذف الطبيب بنجاح",
-                type: "success"
-            });
+            var message = "{{ session('success') }}"; // Retrieve the value of the session variable
+            notif({ msg: message, type: "success" }); // Assuming notif is a function that displays a notification
         }
     </script>
 @endif
 
 
-@if (session()->has('changePassword'))
-    <script>
-        window.onload = function() {
-            notif({
-                msg: "تم تغيير كلمة المرور بنجاح",
-                type: "success"
-            });
-        }
-    </script>
-@endif
-
-@if (session()->has('edit_status'))
-    <script>
-        window.onload = function() {
-            notif({
-                msg: "تم تغيير حالة الحساب بنجاح",
-                type: "success"
-            });
-        }
-    </script>
-@endif

@@ -35,6 +35,10 @@ use Illuminate\Support\Facades\Route;
         ##################################### End Dashboard Admin #################################
         Route::middleware(['auth:admin', 'verified'])->name('dashboard.')->group(function(){
         Route::get('dashboard/index',[DashboardController::class,'index'])->name('index');
+            ##################################### Start Dashboard Profile ################################
+            Route::view('/Profile', 'profile.profile')->name('my-profile');
+            ##################################### End Dashboard Profile ################################
+
          ##################################### Start Dashboard sections ################################
             Route::resource('/sections', SectionController::class);
          ##################################### End Dashboard sections ################################
@@ -46,6 +50,9 @@ use Illuminate\Support\Facades\Route;
         ##################################### Start Dashboard Services ################################
         Route::resource('/services', SingleServiceController::class);
         ##################################### End Dashboard Services ################################
+            ##################################### Start Dashboard Services ################################
+            Route::view('/Service/Group', 'livewire.GroupService.includeCreateGroup')->name('add-Service-Group');
+            ##################################### End Dashboard Services ################################
     });
 
 

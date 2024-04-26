@@ -23,9 +23,9 @@
                         <div class="col-sm-12 col-md-12 col-xl-12">
                             <div class="my-4">
                                 <!-- Satic modal -->
-                                <button type="button" class="btn btn-primary btn-md waves-effect waves-light"
+                                <button type="button" class="btn btn-outline-primary btn-md"
                                     data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    أضافة قسم
+                                    <i class="fas fa-plus-square"></i> أضافة قسم
                                 </button>
                             </div>
                             @include('dashboard.sections.add')
@@ -61,10 +61,10 @@
                                     <td>{{ Str::limit($section->description, 50) }}</td>
                                     <td>{{ $section->created_at->diffForHumans() }}</td>
                                     <td>
-                                        <a class="modal-effect btn btn-sm btn-info" data-bs-toggle="modal"
+                                        <a class="modal-effect btn btn-outline-info btn-sm" data-bs-toggle="modal"
                                             href="#edit{{ $section->id }}"><i class="fas fa-edit"></i></a>
 
-                                        <a class="modal-effect btn btn-sm btn-danger" data-bs-toggle="modal"
+                                        <a class="modal-effect btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                                             href="#delete{{ $section->id }}"><i class="fas fa-trash-alt"></i></a>
                                         @include('dashboard.sections.delete')
                                     </td>

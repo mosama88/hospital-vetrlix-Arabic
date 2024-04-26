@@ -47,8 +47,9 @@ class DoctorRepository implements DoctorRepositoryInterface
                 //Upload img
                 $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$doctors->id,'App\Models\Doctor');
     DB::commit();
+            session()->flash('success', 'تم أضافة الطبيب بنجاح');
                 // Doctor::create($doctors);
-                return redirect()->route('dashboard.doctors.index')->with('add', 'تم أضافة دكتور ');
+                return redirect()->route('dashboard.doctors.index');
         }
 
 
@@ -104,8 +105,8 @@ class DoctorRepository implements DoctorRepositoryInterface
         }
 
         DB::commit();
-        session()->flash('edit');
-        return redirect()->route('dashboard.doctors.index')->with('edit', 'تم تعديل دكتور ');
+           session()->flash('success', 'تم تعديل الطبيب بنجاح');
+        return redirect()->route('dashboard.doctors.index');
 
     }
     catch (\Exception $e) {
@@ -126,7 +127,8 @@ class DoctorRepository implements DoctorRepositoryInterface
             }
             {
                 Doctor::destroy($request->id);
-                return back()->with('delete', 'تم حذف الدكتور ');
+                session()->flash('success', 'تم حذف الطبيب بنجاح');
+                return back();
             }
 //----------------------------------------------
         }
@@ -140,7 +142,8 @@ class DoctorRepository implements DoctorRepositoryInterface
                 }
 
                 Doctor::destroy($delete_select_id);
-                return back()->with('delete', 'تم حذف الدكتور ');
+        session()->flash('success', 'تم حذف الطبيب بنجاح');
+        return back();
 
 
         }

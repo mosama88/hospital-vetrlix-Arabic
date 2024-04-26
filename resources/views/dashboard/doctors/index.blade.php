@@ -24,11 +24,11 @@
                             <div class="my-4">
                                 <!-- Satic modal -->
                                 <a href="{{ route('dashboard.doctors.create') }}"
-                                    class="btn btn-primary btn-md waves-effect waves-light">
+                                   class="btn btn-outline-primary btn-md">
                                     أضف دكتور <i class="fas fa-plus-square"></i>
                                 </a>
                                 <!-- Satic modal -->
-                                <a id="btn_delete_all" class="btn btn-danger btn-md waves-effect waves-light">
+                                <a id="btn_delete_all" class="btn btn-outline-danger btn-md">
                                     حذف مجموعة أطباء <i class="fas fa-trash-alt"></i>
                                 </a>
                                 @include('dashboard.doctors.delete_select')
@@ -98,8 +98,9 @@
                                     </td>
                                     <td>
                                         <div class="btn-group dropend">
+
                                             <button type="button"
-                                                class="btn btn-info waves-effect waves-light dropdown-toggle"
+                                                class="btn btn-outline-info btn-md"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                 العمليات <i class="mdi mdi-chevron-left"></i>
                                             </button>

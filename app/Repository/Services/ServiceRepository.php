@@ -21,7 +21,7 @@ class ServiceRepository implements ServiceRepositoryInterface
         $singleService->status = 1;
 
         $singleService->save();
-    session()->flash('add');
+        session()->flash('success', 'تم إضافة الخدمة بنجاح');
     return redirect()->route('dashboard.services.index');
 
     }
@@ -43,8 +43,7 @@ class ServiceRepository implements ServiceRepositoryInterface
        $singleService->status = $request->status;
 
        $singleService->save();
-
-       session()->flash('update');
+       session()->flash('success', 'تم تعديل الخدمة بنجاح');
        return redirect()->route('dashboard.services.index');
     }
 
@@ -56,8 +55,9 @@ class ServiceRepository implements ServiceRepositoryInterface
         // Find the post by its ID
         Service::findOrFail($request->id)->delete();
 
+        session()->flash('success', 'تم حذف الخدمة بنجاح');
         // Return a response indicating success
-        return redirect()->route('dashboard.services.index')->with('delete', 'تم حذف الخدمه بنجاح ');
+        return back();
     }
 
 

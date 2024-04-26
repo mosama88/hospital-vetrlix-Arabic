@@ -26,20 +26,12 @@
                 <i class="mdi mdi-menu"></i>
             </button>
 
-            <div class="d-none d-sm-block">
-                <div class="dropdown pt-3 d-inline-block">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Create <i class="mdi mdi-chevron-down"></i>
-                    </a>
+            <div class="d-none d-md-block">
+                <div class=" pt-4 d-inline-block">
+                    <span class="">{{ now()->timezone('Africa/Cairo')->format('d M Y') }}</span>
+                    <span id="current-time"></span>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -210,7 +202,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i
+                    <a class="dropdown-item" href="{{route('dashboard.my-profile')}}"><i
                             class="mdi mdi-account-circle font-size-17 align-middle me-1"></i>
                         صفحتى</a>
                     <a class="dropdown-item" href="#"><i
@@ -241,3 +233,34 @@
         </div>
     </div>
 </header>
+
+
+
+
+<script>
+    // Select the element where you want to display the time
+    const currentTimeElement = document.getElementById('current-time');
+
+    // Define a function to update the time
+    function updateTime() {
+        // Create a new Date object to get the current time
+        const currentTime = new Date();
+
+        // Extract hours, minutes, and seconds from the current time
+        const hours = currentTime.getHours();
+        const minutes = currentTime.getMinutes();
+        const seconds = currentTime.getSeconds();
+
+        // Format the time to display it nicely
+        const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+        // Update the content of the element with the formatted time
+        currentTimeElement.textContent = formattedTime;
+    }
+
+    // Call updateTime() initially to display the time immediately
+    updateTime();
+
+    // Set an interval to update the time every second
+    setInterval(updateTime, 1000);
+</script>

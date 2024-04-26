@@ -22,9 +22,10 @@ class SectionRepository implements SectionRepositoryInterface
             ]);
 
             Section::create($section);
-            return redirect()->route('dashboard.sections.index')->with('add', 'تم أضافة قسم ');
+            session()->flash('success', 'تم أضافة القسم بنجاح');
+            return redirect()->route('dashboard.sections.index');
         }
-        
+
 
         catch (\Exception $e) {
             DB::rollback();
@@ -47,7 +48,8 @@ class SectionRepository implements SectionRepositoryInterface
         'description'=> 'required|string|min:10|max:2000',
        ]);
        Section::findOrFail($request->id)->update($data);
-       return redirect()->route('dashboard.sections.index')->with('edit', 'تم تعديل القسم  ');
+       session()->flash('success', 'تم تعديل القسم بنجاح');
+       return redirect()->route('dashboard.sections.index');
     }
 
 
@@ -59,7 +61,8 @@ class SectionRepository implements SectionRepositoryInterface
          Section::findOrFail($request->id)->delete();
 
          // Return a response indicating success
-         return redirect()->route('dashboard.sections.index')->with('delete', 'تم حذف القسم بنجاح ');
+        session()->flash('success', 'تم حذف القسم بنجاح');
+        return redirect()->route('dashboard.sections.index');
         }
 
 
@@ -69,7 +72,7 @@ class SectionRepository implements SectionRepositoryInterface
             // Find the post by its ID
             $doctors = Section::findOrFail($id)->doctors;
             $section = Section::findOrFail($id);
-    
+
              // Return a response indicating success
              return view ('dashboard.sections.show', compact('doctors', 'section'));
             }
