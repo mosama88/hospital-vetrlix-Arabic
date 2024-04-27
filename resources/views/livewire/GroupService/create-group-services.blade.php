@@ -91,6 +91,7 @@
                                                    class="form-control" wire:model="GroupsItems.{{$index}}.quantity"/>
                                         @endif
                                     </td>
+{{-- Add--}}
                                     <td>
                                         @if($groupItem['is_saved'])
                                             <button class="btn btn-sm btn-primary"

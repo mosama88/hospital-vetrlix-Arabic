@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->decimal('price', 8, 3 )->nullable();
             $table->text('description')->nullable();
-            $table->boolean('status')->default(1)->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

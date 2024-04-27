@@ -11,18 +11,15 @@
                 <form action="{{ route('dashboard.update-status') }}" method="POST" autocomplete="off">
                     @csrf
 
-
-
-
                     <div class="modal-body">
 
                         <div class="form-group">
                             <label for="status">تغيير حالة الحساب</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="" selected disabled>--أختر حالة الحساب--</option>
-                                <option value="active"{{ $doctor->status === 'active' ? 'selected' : '' }}>مفعل
+                                <option value="active">مفعل
                                 </option>
-                                <option value="inactive"{{ $doctor->status === 'inactive' ? 'selected' : '' }}>غير
+                                <option value="inactive">غير
                                     مفعل</option>
                             </select>
                         </div>

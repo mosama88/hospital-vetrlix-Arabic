@@ -48,9 +48,9 @@
                         <label for="status">تغيير حالة الحساب</label>
                         <select class="form-control" id="status" name="status" required>
                             <option value="" selected disabled>--أختر حالة الحساب--</option>
-                            <option value="1"{{ $service->status === '1' ? 'selected' : '' }}>مفعل
+                            <option value="1">مفعل
                             </option>
-                            <option value="0"{{ $service->status === '0' ? 'selected' : '' }}>غير
+                            <option value="0">غير
                                 مفعل</option>
                         </select>
                     </div>

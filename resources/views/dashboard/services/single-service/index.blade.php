@@ -55,7 +55,7 @@
                                 <tr>
                                     <td class="table-primary">{{ $loop->iteration }}</td>
                                     <td><a href="#">{{ $service->name }}</a> </td>
-                                    <td>{{ $service->price }}</td>
+                                    <td>{{ number_format($service->price, 2) }}</td>
                                     <td>
                                         @if ($service->status == '1')
                                             <span class="badge bg-success">مفعل</span>
