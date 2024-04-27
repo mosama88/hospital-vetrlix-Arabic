@@ -25,8 +25,9 @@
                         <input type="hidden" name="id" value="{{ $doctor->id }}">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-                        <button type="submit" class="btn btn-primary">تأكيد</button>
+                        <input class="btn btn-outline-success" type="submit" value="تعديل البيانات">
+
+                        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">إغلاق</button>
                     </div>
                 </form>
             </div>
