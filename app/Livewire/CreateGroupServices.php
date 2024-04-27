@@ -15,9 +15,9 @@ class CreateGroupServices extends Component
     public $allServices = [];
     public $discount_value = 0;
     public $taxes = 15;
-    public $name_group;
+    public $name_group;   //أسم المجموعه
 
-    public $notes;
+    public $notes;      //الملاحظات
 
     public $ServiceSaved=false;
 
@@ -54,10 +54,10 @@ class CreateGroupServices extends Component
 
         $this->GroupsItems[] = [
             'service_id' => '',
-            'quantity' => 1,
+            'quantity' => 1,                //العدد
             'is_saved' => false,
-            'service_name' => '',
-            'service_price' => 0
+            'service_name' => '',           //أسم الخدمه
+            'service_price' => 0            //سعر الخدمه
         ];
 
         $this->ServiceSaved = false;

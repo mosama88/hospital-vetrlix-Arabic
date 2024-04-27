@@ -28,8 +28,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger">حذف</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                            <button type="submit" class="btn btn-outline-danger">حذف</button>
+                            <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">اغلاق</button>
                         </div>
                     </form>
                 </div>

@@ -4,17 +4,14 @@
     <div class="alert alert-info">تم حفظ البيانات بنجاح.</div>
 @endif
 
-
-
-
     <form wire:submit.prevent="saveGroup" autocomplete="off">
         @csrf
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>اسم المجموعة</label>
             <input wire:model="name_group" type="text" name="name_group" class="form-control" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>ملاحظات</label>
             <textarea wire:model="notes" name="notes" class="form-control" rows="5"></textarea>
         </div>

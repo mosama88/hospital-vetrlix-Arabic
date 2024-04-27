@@ -40,8 +40,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">أضف</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                <input class="btn btn-outline-success" type="submit" value="تأكيد البيانات">
+
+                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">إغلاق</button>
             </div>
             </form>
         </div>

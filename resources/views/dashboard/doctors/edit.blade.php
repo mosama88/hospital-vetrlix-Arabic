@@ -150,9 +150,9 @@
 
                         {{-- Submit --}}
                         <div class="col-12 mb-4 text-center">
-                            <button type="submit" class="btn btn-primary waves-effect btn-lg mx-3">أضف</button>
+                            <input class="btn btn-outline-success" type="submit" value="تعديل البيانات">
                             <a href="{{ route('dashboard.doctors.index') }}"
-                                class="btn btn-secondary waves-effect btn-lg">رجوع</a>
+                               class="btn btn-outline-dark mx-2">رجوع</a>
                         </div>
 
 
