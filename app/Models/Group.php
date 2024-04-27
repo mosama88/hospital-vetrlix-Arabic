@@ -17,4 +17,11 @@ class Group extends Model
             'tax_rate',
             'total_with_tax',
     ];
+
+
+    public function group_service()
+    {
+        return $this->belongsToMany(Service::class,'group_service')->withPivot('quantity');
+
+    }
 }
