@@ -23,7 +23,7 @@
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteGroup{{$group->id}}"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
-              @include('livewire.GroupServices.delete')
+              @include('livewire.GroupService.delete')
             @endforeach
     </table>
 

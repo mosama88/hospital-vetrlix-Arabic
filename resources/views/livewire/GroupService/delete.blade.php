@@ -11,11 +11,11 @@
             </div>
 
                 <div class="modal-body">
-                    <h5>{{trans('Dashboard/sections_trans.Warning')}}</h5>
+                    <h5>هل انت متاكد من عملية الحذف ؟</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Dashboard/sections_trans.Close')}}</button>
-                    <button type="button" wire:click="delete({{ $group->id }})" class="btn btn-danger">{{trans('Dashboard/sections_trans.submit')}}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                    <button type="button" wire:click="delete({{ $group->id }})" class="btn btn-danger">تاكيد</button>
                 </div>
         </div>
     </div>
