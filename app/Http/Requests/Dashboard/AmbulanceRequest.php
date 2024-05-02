@@ -28,8 +28,6 @@ class AmbulanceRequest extends FormRequest
             'car_year_model'=>'required|string|min:3|max:30',
             'phone' => 'required|string|min:3|max:20',
             'license_number'=>'required|string|min:3|max:30',
-            'available'=> 'required',
-            'type'=> 'required',
             'notes'=> 'nullable|string|min:10|max:2500',
         ];
     }
@@ -62,7 +60,6 @@ class AmbulanceRequest extends FormRequest
             'license_number.min'=>'يجب ان يكون رخصة القيادة أكثر من 3 أرقام',
             'license_number.max'=>'يجب ان يكون رخصة القيادة أقل من 30 رقم',
             ########################################################
-            'type.required' => 'نوع السيارة مطلوب',
             ########################################################
             'notes.min'=>'يجب ان يكون ملاحظاتك أكثر من 10 أحرف',
             'notes.max'=>'يجب ان يكون ملاحظاتك أقل من 2500 أحرف',

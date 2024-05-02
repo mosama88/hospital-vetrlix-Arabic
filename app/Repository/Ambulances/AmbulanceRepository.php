@@ -4,6 +4,7 @@ namespace App\Repository\Ambulances;
 use App\Interfaces\Ambulances\AmbulanceRepositoryInterface;
 use App\Models\Ambulance;
 use App\Http\Requests\Dashboard\AmbulanceRequest;
+use Illuminate\Support\Facades\DB;
 
 class AmbulanceRepository implements AmbulanceRepositoryInterface
 {
@@ -21,6 +22,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
 
     public function store(AmbulanceRequest $request)
     {
+        try{
     $ambulance = new Ambulance();
     $ambulance->name = $request->name;
     $ambulance->car_number = $request->car_number;
@@ -32,9 +34,12 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
     $ambulance->type = $request->type;
     $ambulance->notes = $request->notes;
     $ambulance->save();
-        session()->flash('success', 'تم أضافة سيارة الإسعاف بنجاح');
+            session()->flash('success', 'تم أضافة سيارة الإسعاف بنجاح');
         return redirect()->route('dashboard.ambulances.index');
-    }
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }}
 
     public function edit($id){
         //
