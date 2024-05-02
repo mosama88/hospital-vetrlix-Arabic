@@ -3,16 +3,22 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\AmbulanceRequest;
+use App\Interfaces\Ambulances\AmbulanceRepositoryInterface;
 use Illuminate\Http\Request;
 
 class AmbulanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private $ambulances;
+
+    public function __construct(AmbulanceRepositoryInterface $ambulances)
+    {
+        $this->ambulances = $ambulances;
+    }
     public function index()
     {
-        //
+        return $this->ambulances->index();
+
     }
 
     /**
@@ -20,15 +26,16 @@ class AmbulanceController extends Controller
      */
     public function create()
     {
-        //
+        return $this->ambulances->create();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AmbulanceRequest $request)
     {
-        //
+        return $this->ambulances->store();
+
     }
 
     /**

@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.master')
-@section('title', 'شركات التأمين')
-@section('page-title', 'شركات التأمين')
+@section('title', 'سيارات الإسعاف')
+@section('page-title', 'سيارات الإسعاف')
 @section('page-link-back')
     <li class="breadcrumb-item"><a href="{{ route('dashboard.services.index') }}">الخدمات</a>
     </li>
 @endsection
-@section('current-page', 'شركات التأمين')
+@section('current-page', 'سيارات الإسعاف')
 @section('content')
     @include('dashboard.layouts.page-link')
     <!--Internal   Notify -->
@@ -21,8 +21,8 @@
                                 <div class="col-sm-12 col-md-12 col-xl-12">
                                     <div class="my-4">
                                         <!-- Satic modal -->
-                                        <a type="button" href="{{route('dashboard.insurances.create')}}" class="btn btn-outline-primary btn-md">
-                                            <i class="fas fa-plus-square"></i> أضافة شركة تأمين
+                                        <a type="button" href="{{route('dashboard.ambulances.create')}}" class="btn btn-outline-primary btn-md">
+                                            <i class="fas fa-plus-square"></i> أضافة سيارة إسعاف
                                         </a>
                                     </div>
                                 </div>
@@ -44,24 +44,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($insurances as $insurance)
                                         <tr>
                                             <td>#</td>
-                                            <td>{{$insurance->insurance_code}}</td>
-                                            <td>{{$insurance->name}}</td>
-                                            <td>{{$insurance->discount_percentage}}</td>
-                                            <td>{{$insurance->company_rate}}</td>
-                                            <td>{{ Str::limit($insurance->notes, 20) }}</td>
-                                            <td>
-                                                @if ($insurance->status == '1')
-                                                    <span class="badge bg-success">مفعل</span>
-                                                @else
-                                                    <span class="badge bg-danger">غير مفعل</span>
-                                                @endif
-                                                <div
-                                                    class="dot-label bg-{{ $insurance->status == '1' ? 'success' : 'danger' }} ml-1">
-                                                </div>
-                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+{{--                                            <td>{{ Str::limit($insurance->notes, 20) }}</td>--}}
+{{--                                            <td>--}}
+{{--                                                @if ($insurance->status == '1')--}}
+{{--                                                    <span class="badge bg-success">مفعل</span>--}}
+{{--                                                @else--}}
+{{--                                                    <span class="badge bg-danger">غير مفعل</span>--}}
+{{--                                                @endif--}}
+{{--                                                <div--}}
+{{--                                                    class="dot-label bg-{{ $insurance->status == '1' ? 'success' : 'danger' }} ml-1">--}}
+{{--                                                </div>--}}
+{{--                                            </td>--}}
                                             <td>
                                                 <div class="btn-group dropend">
                                                     <button type="button"
@@ -72,13 +71,13 @@
                                                     <div class="dropdown-menu" style="">
 
                                                         {{-- Change Data --}}
-                                                        <a class="dropdown-item" href="{{route('dashboard.insurances.edit', $insurance->id)}}"><i
+                                                        <a class="dropdown-item" href="#"><i
                                                                 style="color: #0ba360"
                                                                 class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
                                                             البيانات</a>
 
                                                         {{-- Delete Doctor --}}
-                                                        <a class="dropdown-item modal-effect" href="#delete{{$insurance->id}}"
+                                                        <a class="dropdown-item modal-effect" href="#"
                                                            data-bs-toggle="modal"><i
                                                                 class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف
                                                             البيانات</a>
@@ -86,10 +85,9 @@
                                                     </div>
                                                 </div>
 
-                                                @include('dashboard.insurances.delete')
+{{--                                                @include('dashboard.ambulances.delete')--}}
                                             </td>
                                         </tr>
-                                    @endforeach
                                     </tbody>
                                 </table>
                         </div>

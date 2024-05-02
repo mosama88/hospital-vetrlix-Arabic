@@ -2,7 +2,7 @@
 @section('title', 'سيارات الاسعاف')
 @section('page-title', 'سيارات الاسعاف')
 @section('page-link-back')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard.services.index') }}">الخدمات</a>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard.ambulances.index') }}">الخدمات</a>
     </li>
 @endsection
 @section('current-page', 'سيارات الاسعاف')
@@ -17,49 +17,74 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                <form action="{{route('dashboard.insurances.store')}}" method="POST">
+                <form action="{{route('dashboard.ambulances.store')}}" method="POST">
                     @csrf
+
                     <div class="row mx-auto">
-                    <div class="col-lg-5">
-                            <div>
-                                <div class="mb-4">
-                                    <label class="form-label" for="input-mask-code">كود الشركة</label>
-                                    <input id="input-mask-code" type="number" class="form-control input-mask"  name="insurance_code" im-insert="false" style="background: #d8d9e9" disabled>
+                            <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-car_number">رقم السياره</label>
+                                    <input id="input-car_number" type="text" value="{{old('car_number')}}" class="form-control input-mask @error('car_number') is-invalid @enderror"  name="car_number" im-insert="false">
+                                    @error('car_number')
+                                    <div class="alert alert-danger p-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label" for="input-mask-code2">نسبة خصم المريض %</label>
-                                    <input id="input-mask-code2" type="number" placeholder="20%" class="form-control input-mask @error('discount_percentage') is-invalid @enderror"  name="discount_percentage" im-insert="false">
-                                    @error('discount_percentage')
+                                <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-car_model">موديل السيارة</label>
+                                    <input id="input-car_model" type="text" value="{{old('car_model')}}" placeholder="موديل" class="form-control input-mask @error('car_model') is-invalid @enderror"  name="car_model" im-insert="false">
+                                    @error('car_model')
+                                    <div class="alert alert-danger p-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                        <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-car_year_model">سنة الصنع</label>
+                                    <input id="input-car_year_model" value="{{old('car_year_model')}}" type="text" placeholder="2020" class="form-control input-mask @error('car_year_model') is-invalid @enderror"  name="car_year_model" im-insert="false">
+                                    @error('car_year_model')
+                                    <div class="alert alert-danger p-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                        <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-type">نوع السيارة</label>
+                            <select id="input-type" name="type" type="text" value="{{old('type')}}" placeholder="BMW" class="form-select @error('type') is-invalid @enderror"  im-insert="false">
+                                <option value="0">إيجار</option>
+                                <option value="1">مملوكه</option>
+                            </select>
+                                    @error('type')
                                     <div class="alert alert-danger p-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="mt-4 mt-lg-0">
-                                <div class="mb-4">
-                                    <label class="form-label" for="input-mask-name">أسم الشركة</label>
-                                    <input id="input-mask-name" class="form-control input-mask @error('name') is-invalid @enderror" type="text" name="name" im-insert="true">
+
+                    <div class="row mx-auto">
+                        <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-mask-name">أسم السائق</label>
+                                    <input id="input-mask-name" name="name" value="{{old('name')}}" class="form-control input-mask @error('name') is-invalid @enderror" type="text" im-insert="true">
                                     @error('name')
                                     <div class="alert alert-danger p-1">{{ $message }}</div>
                                     @enderror
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label" for="input-mask-company_rate">نسبة تحمل شركة التأمين %</label>
-                                    <input id="input-mask-company_rate" placeholder="80%" type="number" class="form-control input-mask @error('company_rate') is-invalid @enderror"  name="company_rate" im-insert="true">
-                                    @error('company_rate')
+                        </div>
+                        <div class="col-3 mb-4">
+                                    <label class="form-label" for="input-mask-license_number">رقم رخصة القيادة</label>
+                                    <input id="input-mask-license_number" value="{{old('license_number')}}" name="license_number" placeholder="123" type="number" class="form-control input-mask @error('license_number') is-invalid @enderror"   im-insert="true">
+                                    @error('license_number')
                                     <div class="alert alert-danger p-1">{{ $message }}</div>
                                     @enderror
-                                </div>
-                            </div>
+                        </div>
+
+                        <div class="col-6 mb-4">
+                            <label class="form-label" for="input-phone">رقم الهاتف</label>
+                            <input id="input-phone" value="{{old('phone')}}" placeholder="tel" type="text" class="form-control input-mask @error('phone') is-invalid @enderror"  name="phone" im-insert="true">
+                            @error('phone')
+                            <div class="alert alert-danger p-1">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
                     <div calss="row mx-auto">
-                        <div class="col-lg-10">
+                        <div class="col-lg-12">
                             <div class="mt-4 my-4 mt-lg-0">
                                 <label class="form-label" for="txtAddress2Billing">ملاحظات</label>
-                                <textarea id="txtAddress2Billing"  rows="4" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes" placeholder="أكتب ملاحظاتك"></textarea>
+                                <textarea id="txtAddress2Billing"  rows="4" type="text" class="form-control @error('notes') is-invalid @enderror" name="notes" placeholder="أكتب ملاحظاتك">{{old('notes')}}</textarea>
                                 @error('notes')
                                 <div class="alert alert-danger p-1">{{ $message }}</div>
                                 @enderror
@@ -67,7 +92,7 @@
                             {{-- Submit --}}
                             <div class="col-12 mb-4 text-center">
                         <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
-                        <a href="{{ route('dashboard.insurances.index') }}"
+                        <a href="{{ route('dashboard.ambulances.index') }}"
                            class="btn btn-outline-dark mx-2">رجوع</a>
                     </div>
                         </div>
