@@ -32,14 +32,14 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-allergies"></i>
+                        <i class="fas fa-ambulance"></i>
                         <span>الخدمات</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('dashboard.services.index') }}">خدمة مفرده</a></li>
                         <li><a href="{{route('dashboard.add-Service-Group')}}">مجموعة خدمات</a></li>
                         <li><a href="{{route('dashboard.insurances.index')}}">شركات التأمين</a></li>
-                        <li><a href="email-compose.html">الاسعاف</a></li>
+                        <li><a href="{{route('dashboard.ambulances.index')}}">الإسعاف</a></li>
                         <li><a href="email-compose.html">مكالمات الاسعاف</a></li>
                     </ul>
                 </li>

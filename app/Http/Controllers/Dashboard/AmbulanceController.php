@@ -3,26 +3,16 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\ServiceRequest;
-use App\Interfaces\Services\ServiceRepositoryInterface;
 use Illuminate\Http\Request;
 
-class SingleServiceController extends Controller
+class AmbulanceController extends Controller
 {
-
-
-    private $singleSerice;
-
-    public function __construct(ServiceRepositoryInterface $singleSerice)
-    {
-        $this->singleSerice = $singleSerice;
-    }
-
-
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        return $this->singleSerice->index();
+        //
     }
 
     /**
@@ -36,9 +26,9 @@ class SingleServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceRequest $request)
+    public function store(Request $request)
     {
-        return $this->singleSerice->store($request);
+        //
     }
 
     /**
@@ -52,9 +42,9 @@ class SingleServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(string $id)
     {
-        return $this->singleSerice->edit($request);
+        //
     }
 
     /**
@@ -62,14 +52,14 @@ class SingleServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return $this->singleSerice->update($request);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
-        return $this->singleSerice->destroy($request);
+        //
     }
 }

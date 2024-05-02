@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\SectionController;
@@ -19,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 
 */
-
-
-
-
 
         ##################################### Dashboard User #################################
         Route::get('/dashboard/user', function () {
@@ -57,6 +54,9 @@ use Illuminate\Support\Facades\Route;
             ##################################### Start Dashboard insurances ################################
             Route::resource( '/insurances',InsuranceController::class);
             ##################################### End Dashboard insurances ################################
+            ##################################### Start Dashboard Ambulance ################################
+            Route::resource( '/ambulances',AmbulanceController::class);
+            ##################################### End Dashboard Ambulance ################################
     });
 
 

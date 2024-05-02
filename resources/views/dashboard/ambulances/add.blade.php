@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.master')
-@section('title', 'شركات التأمين')
-@section('page-title', 'شركات التأمين')
+@section('title', 'سيارات الاسعاف')
+@section('page-title', 'سيارات الاسعاف')
 @section('page-link-back')
     <li class="breadcrumb-item"><a href="{{ route('dashboard.services.index') }}">الخدمات</a>
     </li>
 @endsection
-@section('current-page', 'شركات التأمين')
+@section('current-page', 'سيارات الاسعاف')
 @section('content')
     @include('dashboard.layouts.page-link')
     <!--Internal   Notify -->
