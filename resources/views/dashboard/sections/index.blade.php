@@ -12,7 +12,7 @@
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
 
 
-
+    <div class="container-fluid">
     {{-- Start Row --}}
     <div class="row">
         <div class="col-12">
@@ -80,6 +80,7 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
     {{-- End Row --}}
+    </div> <!-- end container-fluid -->
 
 
 

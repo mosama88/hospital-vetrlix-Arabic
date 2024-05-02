@@ -10,9 +10,7 @@
     @include('dashboard.layouts.page-link')
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
-    <div class="page-content">
         <div class="container-fluid">
-
             {{-- Start Row --}}
             <div class="row">
                 <div class="col-12">

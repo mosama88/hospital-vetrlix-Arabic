@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('insurances', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->decimal('price', 8, 3 )->nullable();
-            $table->text('description')->nullable();
-            $table->boolean('status')->default(1)->nullable;;
+            $table->string('name');
+            $table->string('notes')->nullable();
+            $table->string('insurance_code');
+            $table->string('discount_percentage');
+            $table->string('company_rate');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('insurances');
     }
 };

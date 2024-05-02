@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['active', 'inactive'])->default('active')->nullable();
             $table->foreignId('section_id')->references('id')->on('sections')->cascadeOnDelete();
             $table->timestamps();
         });

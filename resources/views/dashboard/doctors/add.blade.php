@@ -11,8 +11,8 @@
 
     @include('dashboard.layouts.page-link')
 
+    <div class="container-fluid">
     {{-- Start Row --}}
-
     <div class="row">
         <div class="col-12">
             @include('dashboard.messages_alert')
@@ -137,7 +137,6 @@
         </div><!-- end cardbody -->
     </div><!-- end card -->
     </div> <!-- end col -->
-
     @include('dashboard.layouts.scripts')
     <script src="{{ asset('dashboard') }}/assets/js/pages/multi-select-tag.js"></script>
     <script>

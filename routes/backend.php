@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DoctorController;
+use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
@@ -53,6 +54,9 @@ use Illuminate\Support\Facades\Route;
             ##################################### Start Dashboard Services ################################
             Route::view('/Service/Group', 'livewire.GroupService.includeCreateGroup')->name('add-Service-Group');
             ##################################### End Dashboard Services ################################
+            ##################################### Start Dashboard insurances ################################
+            Route::resource( '/insurances',InsuranceController::class);
+            ##################################### End Dashboard insurances ################################
     });
 
 

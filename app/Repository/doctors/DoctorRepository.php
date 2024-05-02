@@ -29,7 +29,8 @@ class DoctorRepository implements DoctorRepositoryInterface
                 'name'=> 'required|string|min:3| max:50',
                 'email'=> 'required|string|min:5| max:50',
                 'phone'=> 'required|string|min:1| max:18',
-                'section_id'=> 'required|exists:sections,id'
+                'section_id'=> 'required|exists:sections,id',
+                'status'=> 'nullable|in:active,inactive'
             ]);
                 $doctors = new Doctor();
                 $doctors->email =$request->email;

@@ -11,12 +11,10 @@
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
 
-    {{-- Start Row --}}
     @include('dashboard.messages_alert')
 
-    <div class="page-content">
-
         <div class="container-fluid">
+    {{-- Start Row --}}
             <div class="row">
                 <div class="col-12">
                     <div class="card-body">

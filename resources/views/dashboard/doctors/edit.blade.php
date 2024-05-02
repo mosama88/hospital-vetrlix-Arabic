@@ -10,9 +10,8 @@
 @section('content')
 
     @include('dashboard.layouts.page-link')
-
+    <div class="container-fluid">
     {{-- Start Row --}}
-
     <div class="row">
         <div class="col-12">
             @include('dashboard.messages_alert')
