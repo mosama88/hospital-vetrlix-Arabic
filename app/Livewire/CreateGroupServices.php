@@ -120,9 +120,9 @@ class CreateGroupServices extends Component
             $Groups->notes=$this->notes;
             $Groups->save();
             // حفظ العلاقة
-            $Groups->service_group()->detach();
+            $Groups->group_service()->detach();
             foreach ($this->GroupsItems as $GroupsItem) {
-                $Groups->service_group()->attach($GroupsItem['service_id'],['quantity' => $GroupsItem['quantity']]);
+                $Groups->group_service()->attach($GroupsItem['service_id'],['quantity' => $GroupsItem['quantity']]);
             }
 
             $this->ServiceSaved = false;

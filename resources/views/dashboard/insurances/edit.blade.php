@@ -28,7 +28,7 @@
                             <div>
                                 <div class="mb-4">
                                     <label class="form-label" for="input-mask-code">كود الشركة</label>
-                                    <input id="input-mask-code" type="number" class="form-control input-mask"  value="{{$insurance->insurance_code}}" name="insurance_code" im-insert="false">
+                                    <input id="input-mask-code" type="number" class="form-control input-mask"  name="insurance_code" im-insert="false" style="background: #d8d9e9" disabled>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="input-mask-code2">نسبة خصم المريض %</label>

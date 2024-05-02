@@ -23,10 +23,10 @@ class InsuranceRequest extends FormRequest
     {
         return [
 'name'=> 'required|string|min:10|max:100',
-'insurance_code' => 'required|string|regex:/^\d+(\.\d+)?%?$/',
+//'insurance_code' => 'required|string|regex:/^\d+(\.\d+)?%?$/',
 'discount_percentage'=> 'required|string|regex:/^\d+(\.\d+)?%?$/',
 'company_rate'=> 'required|string|regex:/^\d+(\.\d+)?%?$/',
-'notes'=> 'nullable|string|min:10|max:1500',
+'notes'=> 'nullable|string|min:10|max:2500',
 'status'=> 'nullable',
         ];
     }
@@ -39,14 +39,14 @@ class InsuranceRequest extends FormRequest
             'name.min'=>'يجب ان يكون أسم الشركه أكثر من 10 أحرف',
             'name.max'=>'يجب ان يكون أسم الشركه أقل من 100 أحرف',
             #######################################################################
-            'insurance_code.required'=>'كود الشركه مطلوب',
+//            'insurance_code.required'=>'كود الشركه مطلوب',
             #######################################################################
             'discount_percentage.required'=>'نسبة خصم المريض مطلوب',
             #######################################################################
             'company_rate.required'=>'نسبة تحمل شركة التأمين مطلوب',
             #######################################################################
             'notes.min'=>'يجب ان يكون أسم الشركه أكثر من 10 أحرف',
-            'notes.max'=>'يجب ان يكون أسم الشركه أقل من 1500 أحرف',
+            'notes.max'=>'يجب ان يكون أسم الشركه أقل من 2500 أحرف',
             #######################################################################
 
         ];

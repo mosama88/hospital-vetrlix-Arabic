@@ -51,7 +51,7 @@
                                             <td>{{$insurance->name}}</td>
                                             <td>{{$insurance->discount_percentage}}</td>
                                             <td>{{$insurance->company_rate}}</td>
-                                            <td>{{$insurance->notes}}</td>
+                                            <td>{{ Str::limit($insurance->notes, 20) }}</td>
                                             <td>
                                                 @if ($insurance->status == '1')
                                                     <span class="badge bg-success">مفعل</span>

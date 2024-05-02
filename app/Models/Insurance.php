@@ -16,4 +16,20 @@ class Insurance extends Model
 'notes',
 'status',
     ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($company) {
+            $lastCompany = static::orderBy('id', 'desc')->first();
+
+            // Set the starting code if no companies exist yet
+            $code = ($lastCompany) ? $lastCompany->id + 1 : 1001;
+
+            $company->insurance_code = 'COMP' . $code;
+        });
+    }
+
 }
