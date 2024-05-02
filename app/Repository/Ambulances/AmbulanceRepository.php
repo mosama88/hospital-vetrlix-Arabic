@@ -29,7 +29,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
     $ambulance->license_number = $request->license_number;
     $ambulance->phone = $request->phone;
     $ambulance->available = 1;
-    $ambulance->type = 1;
+    $ambulance->type = $request->type;
     $ambulance->notes = $request->notes;
     $ambulance->save();
         session()->flash('success', 'تم أضافة سيارة الإسعاف بنجاح');

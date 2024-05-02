@@ -29,13 +29,10 @@ class AmbulanceController extends Controller
         return $this->ambulances->create();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(AmbulanceRequest $request)
     {
-        return $this->ambulances->store();
-
+        return $this->ambulances->store($request);
     }
 
     /**

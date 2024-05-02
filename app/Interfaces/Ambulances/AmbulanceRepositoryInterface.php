@@ -7,7 +7,6 @@ use App\Http\Requests\Dashboard\AmbulanceRequest;
 
 interface AmbulanceRepositoryInterface
 {
-
     public function index();
     public function store(AmbulanceRequest $request);
     public function create();
@@ -16,8 +15,6 @@ interface AmbulanceRepositoryInterface
     public function update($request);
 
     public function destroy( $request);
-
-
 
 }
 
