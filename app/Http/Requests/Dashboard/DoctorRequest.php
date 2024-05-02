@@ -26,7 +26,6 @@ class DoctorRequest extends FormRequest
             'email'=>'required|email|min:3|unique:users,email',
             'password'=>'required|string|min:6|max:255',
             'phone'=>'required|string|min:3|max:20',
-            'price'=>'required|string|min:2|max:20',
             'appointments' => 'required',
             'section_id'=> 'required|exists:sections,id',
         ];
@@ -52,10 +51,6 @@ class DoctorRequest extends FormRequest
             'phone.required'=>'الموبايل مطلوب',
             'phone.min'=>'يجب ان يكون كلمة المرور أكثر من 3 أحرف',
             'phone.max'=>'برجاء كتابة الموبايل بطريقة صحيحه',
-            ########################################################
-            'price.required'=>'السعر مطلوب',
-            'price.min'=>'يجب ان يكون السعر أكثر من رقمين',
-            'price.max'=>'برجاء كتابة السعر بطريقة صحيحه',
             ########################################################
             'section_id.exists' => 'القسم المحدد غير موجود.',
             ########################################################
