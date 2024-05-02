@@ -40,7 +40,7 @@
                         <div class="row mb-4">
                             <label for="example-email-input" class="col-sm-2 col-form-label">البريد الالكترونى</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="email" type="email"
+                                <input class="form-control" name="email" type="text"
                                     placeholder="bootstrap@example.com" id="example-email-input" autocomplete="none">
                             </div>
                         </div>

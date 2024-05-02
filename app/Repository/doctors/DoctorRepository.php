@@ -4,9 +4,8 @@ namespace  App\Repository\Doctors;
 use App\Models\Doctor;
 use App\Models\Section;
 use App\Models\Appointment;
-// use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
-// use App\Http\Requests\Dashboard\DoctorRequest;
+ use App\Http\Requests\Dashboard\DoctorRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Interfaces\Doctors\DoctorRepositoryInterface;
@@ -20,7 +19,7 @@ class DoctorRepository implements DoctorRepositoryInterface
         return view('dashboard.doctors.index', compact('doctors'));
     }
 
-    public function store($request)
+    public function store(DoctorRequest $request)
     {
 
         DB::beginTransaction();
@@ -29,8 +28,7 @@ class DoctorRepository implements DoctorRepositoryInterface
                 'name'=> 'required|string|min:3| max:50',
                 'email'=> 'required|string|min:5| max:50',
                 'phone'=> 'required|string|min:1| max:18',
-                'section_id'=> 'required|exists:sections,id',
-                'status'=> 'nullable|in:active,inactive'
+                'section_id'=> 'required|exists:sections,id'
             ]);
                 $doctors = new Doctor();
                 $doctors->email =$request->email;

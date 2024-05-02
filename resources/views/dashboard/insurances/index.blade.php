@@ -53,8 +53,13 @@
                                             <td>{{$insurance->company_rate}}</td>
                                             <td>{{$insurance->notes}}</td>
                                             <td>
-                                                <div class="dot-label bg-{{ $insurance->status == '1' ? 'success' : 'danger' }} ml-1">
-
+                                                @if ($insurance->status == '1')
+                                                    <span class="badge bg-success">مفعل</span>
+                                                @else
+                                                    <span class="badge bg-danger">غير مفعل</span>
+                                                @endif
+                                                <div
+                                                    class="dot-label bg-{{ $insurance->status == '1' ? 'success' : 'danger' }} ml-1">
                                                 </div>
                                             </td>
                                             <td>
@@ -73,7 +78,7 @@
                                                             البيانات</a>
 
                                                         {{-- Delete Doctor --}}
-                                                        <a class="dropdown-item modal-effect" href="#"
+                                                        <a class="dropdown-item modal-effect" href="#delete{{$insurance->id}}"
                                                            data-bs-toggle="modal"><i
                                                                 class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف
                                                             البيانات</a>

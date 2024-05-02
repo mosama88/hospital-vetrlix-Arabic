@@ -15,9 +15,13 @@
         {{-- Start Row --}}
         <div class="row">
             <div class="col-10">
+                @include('dashboard.messages_alert')
+
                 <form action="{{route('dashboard.insurances.update', $insurance->id)}}" method="POST">
                     @csrf
                     @method('PUT')
+                    {{-- input hidden value => id   --}}
+                    <input type="hidden" name="id" value="{{$insurance->id}}">
                     <div class="row mx-auto">
 
                         <div class="col-lg-5">
@@ -57,7 +61,7 @@
                                 <label class="form-check-label" for="flexCheckDefault">
                                     حالة التفعيل
                                 </label>
-                                <input class="form-check-input" name="status" type="checkbox" value="" id="flexCheckDefault">
+                                <input name="status" {{$insurance->status == 1 ? 'checked' : ''}} value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
                             </div>
 
                             {{-- Submit --}}

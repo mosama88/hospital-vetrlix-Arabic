@@ -3,6 +3,7 @@
 namespace  App\Repository\Sections;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use App\Http\Requests\Dashboard\SectionRequest;
 use Illuminate\Support\Facades\DB;
 use App\Interfaces\Sections\SectionRepositoryInterface;
 
@@ -13,15 +14,14 @@ class SectionRepository implements SectionRepositoryInterface
         return view('dashboard.sections.index',compact('sections'));
     }
 
-    public function store( $request)
+    public function store(SectionRequest $request)
     {
         try{
-            $section = $request->validate([
-                'name'=> 'required|string|min:2|max:100',
-                'description'=> 'required|string|min:10|max:2000',
-            ]);
 
-            Section::create($section);
+            $section = new Section();
+            $section->name = $request->name;
+            $section->description = $request->description;
+            $section->save();
             session()->flash('success', 'تم أضافة القسم بنجاح');
             return redirect()->route('dashboard.sections.index');
         }

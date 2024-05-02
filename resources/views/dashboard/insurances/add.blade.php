@@ -11,6 +11,7 @@
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
 
+                        @include('dashboard.messages_alert')
     <div class="container-fluid">
         {{-- Start Row --}}
         <div class="row">

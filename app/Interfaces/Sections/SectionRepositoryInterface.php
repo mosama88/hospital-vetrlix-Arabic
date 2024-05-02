@@ -3,12 +3,14 @@ namespace App\Interfaces\Sections;
 
 
 
+use App\Http\Requests\Dashboard\SectionRequest;
+
 interface SectionRepositoryInterface
 {
 
     public function index();
 
-    public function store($request);
+    public function store(SectionRequest $request);
 
 
     public function edit($id);
@@ -18,5 +20,5 @@ interface SectionRepositoryInterface
     public function destroy( $request);
 
     public function show( $id);
-    
+
 }

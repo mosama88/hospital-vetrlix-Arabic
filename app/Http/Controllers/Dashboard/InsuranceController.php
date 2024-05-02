@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\InsuranceRequest;
 use App\Interfaces\Insurances\InsuranceRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Models\Insurance;
@@ -36,7 +37,7 @@ class InsuranceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(InsuranceRequest  $request)
     {
         return $this->insurances->store($request);
     }
@@ -60,7 +61,7 @@ class InsuranceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(InsuranceRequest $request)
     {
         return $this->insurances->update($request);
     }
@@ -68,7 +69,7 @@ class InsuranceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $request)
+    public function destroy(Request $request)
     {
         return $this->insurances->destroy($request);
     }

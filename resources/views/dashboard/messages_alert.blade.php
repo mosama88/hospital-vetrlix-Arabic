@@ -2,7 +2,7 @@
     @foreach ($errors->all() as $error)
         <div class="col-6 my-3">
             <div class="alert alert-danger bg-danger text-white mb-0 border-0" role="alert">
-                <strong>Oh snap! </strong>{{ $error }}
+                <strong>{{ $error }}</strong>
             </div>
         </div>
     @endforeach
