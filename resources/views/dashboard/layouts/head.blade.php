@@ -13,6 +13,9 @@
 
         <link href="{{ asset('dashboard') }}/assets/libs/chartist/chartist.min.css" rel="stylesheet">
 
+        <link href="{{ asset('dashboard') }}/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css"
+            rel="stylesheet">
+
         {{-- Font Arabic font-family: DroidKufi-Regular; --}}
         <link href="{{ asset('dashboard') }}/assets/fonts_ar/stylesheet.css" rel="stylesheet">
 

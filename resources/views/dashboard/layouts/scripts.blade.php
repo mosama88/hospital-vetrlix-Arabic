@@ -51,7 +51,6 @@
 <!-- Datatable init js -->
 <script src="{{ asset('dashboard') }}/assets/js/pages/datatables.init.js"></script>
 
-
 <!--Internal  Notify js -->
 <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifIt.js"></script>
 <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifit-custom.js"></script>
@@ -59,3 +58,7 @@
 @yield('scriptsJs')
 
 @livewireScripts
+  
+
+    
+

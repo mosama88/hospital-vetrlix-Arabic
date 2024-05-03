@@ -43,9 +43,19 @@
                         <li><a href="email-compose.html">مكالمات الاسعاف</a></li>
                     </ul>
                 </li>
-
-
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-user-injured"></i>
+                        <span>المرضى</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('dashboard.patients.index') }}">كل المرضى</a></li>
+                    </ul>
+                </li>
+                </li>
+
 
             </ul>
         </div>
