@@ -2,7 +2,7 @@
 @section('title', 'المرضى')
 @section('page-title', 'المرضى')
 @section('page-link-back')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">لوحة التحكم</a>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="fas fa-home"></i></a>
     </li>
 @endsection
 @section('current-page', 'المرضى')

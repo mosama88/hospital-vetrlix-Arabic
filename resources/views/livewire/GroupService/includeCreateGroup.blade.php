@@ -2,7 +2,7 @@
 @section('title', 'خدمات مجمعه')
 @section('page-title', 'خدمات مجمعه')
 @section('page-link-back')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">لوحة التحكم</a>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard.services.index') }}">الخدمات</a>
     </li>
 @endsection
 @section('current-page', 'خدمات مجمعه')

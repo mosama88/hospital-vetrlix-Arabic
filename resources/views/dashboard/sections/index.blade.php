@@ -2,7 +2,7 @@
 @section('title', 'الأقسام')
 @section('page-title', 'الأقسام')
 @section('page-link-back')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">لوحة التحكم</a>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}"><i class="fas fa-home"></i></a>
     </li>
 @endsection
 @section('current-page', 'الأقسام')

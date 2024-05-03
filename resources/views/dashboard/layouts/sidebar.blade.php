@@ -36,13 +36,12 @@
                         <span>الخدمات</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('dashboard.services.index') }}">خدمة مفرده</a></li>
-                        <li><a href="{{route('dashboard.add-Service-Group')}}">مجموعة خدمات</a></li>
-                        <li><a href="{{route('dashboard.insurances.index')}}">شركات التأمين</a></li>
-                        <li><a href="{{route('dashboard.ambulances.index')}}">الإسعاف</a></li>
-                        <li><a href="email-compose.html">مكالمات الاسعاف</a></li>
+                        <li><a href="{{ route('dashboard.services.index') }}"><i class="far fa-circle"></i> خدمة مفرده</a></li>
+                        <li><a href="{{route('dashboard.add-Service-Group')}}"><i class="far fa-circle"></i>مجموعة خدمات</a></li>
+                        <li><a href="{{route('dashboard.insurances.index')}}"><i class="far fa-circle"></i>شركات التأمين</a></li>
+                        <li><a href="{{route('dashboard.ambulances.index')}}"><i class="far fa-circle"></i>الإسعاف</a></li>
+                        <li><a href="email-compose.html"><i class="far fa-circle"></i>مكالمات الاسعاف</a></li>
                     </ul>
-                </li>
                 </li>
 
                 <li>
@@ -51,9 +50,18 @@
                         <span>المرضى</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('dashboard.patients.index') }}">كل المرضى</a></li>
+                        <li><a href="{{ route('dashboard.patients.index') }}"><i class="far fa-circle"></i>كل المرضى</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>الفواتير</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#"><i class="far fa-circle"></i>فاتورة خدمة مفرده</a></li>
+                    </ul>
                 </li>
 
 
