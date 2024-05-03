@@ -22,7 +22,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
 
     public function store(AmbulanceRequest $request)
     {
-        try{
+
     $ambulance = new Ambulance();
     $ambulance->name = $request->name;
     $ambulance->car_number = $request->car_number;
@@ -37,23 +37,28 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
             session()->flash('success', 'تم أضافة سيارة الإسعاف بنجاح');
         return redirect()->route('dashboard.ambulances.index');
         }
-        catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }}
+
 
     public function edit($id){
-        //
+        $ambulance = Ambulance::findOrFail($id);
+        return view('dashboard.ambulances.edit', compact('ambulance'));
     }
-    public function update($request)
+    public function update(AmbulanceRequest $request)
     {
-        //
+        $ambulance = Ambulance::findOrFail($request->id);
+        $ambulance->update($request->all());
+        session()->flash('success', 'تم تعديل بيانات السيارة بنجاح');
+        return redirect()->route('dashboard.ambulances.index');
     }
 
 
 
 
-    public function destroy( $request)
+    public function destroy($request)
     {
-        //
+        $ambulance = Ambulance::findOrFail($request->id);
+        $ambulance->delete($request->id);
+        session()->flash('success', 'تم حذف سيارة الإسعاف بنجاح');
+        return back();
     }
 }

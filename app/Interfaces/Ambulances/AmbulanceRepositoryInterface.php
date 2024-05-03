@@ -12,7 +12,7 @@ interface AmbulanceRepositoryInterface
     public function create();
 
     public function edit($id);
-    public function update($request);
+    public function update(AmbulanceRequest $request);
 
     public function destroy( $request);
 
