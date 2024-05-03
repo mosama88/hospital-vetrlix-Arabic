@@ -73,7 +73,7 @@
                                                     </button>
                                                     <div class="dropdown-menu" style="">
                                                         {{-- Change Data --}}
-                                                        <a class="dropdown-item" href="#"><i
+                                                        <a class="dropdown-item" href="{{route('dashboard.patients.edit', $patient->id)}}"><i
                                                                 style="color: #0ba360"
                                                                 class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
                                                             البيانات</a>
@@ -86,7 +86,7 @@
 
                                                     </div>
                                             </div>
-{{--                                                @include('dashboard.ambulances.delete')--}}
+                                                @include('dashboard.patients.delete')
                                             </td>
                                         </tr>
                                     @endforeach

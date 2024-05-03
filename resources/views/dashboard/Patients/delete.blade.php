@@ -1,4 +1,4 @@
-<div class="modal fade" id="delete{{$ambulance->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete{{$patient->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -9,17 +9,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('dashboard.ambulances.destroy', $ambulance->id) }}" method="POST">
+                    <form action="{{ route('dashboard.patients.destroy', $patient->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <div class="form-group">
                             <div class="modal-body">
-                                هل تريد حذف سيارة الاسعاف برقم  <strong
-                                    class="text-danger">{{ $ambulance->car_number }}</strong> ؟
+                                هل تريد حذف المريض بأسم  <strong
+                                    class="text-danger">{{ $patient->name }}</strong> ؟
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="hidden" name="id" value="{{ $ambulance->id }}">
+                            <input type="hidden" name="id" value="{{ $patient->id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline-danger">حذف</button>

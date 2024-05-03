@@ -50,15 +50,19 @@ class PatientRepository implements PatientRepositoryInterface
 
 
     public function edit($id){
-        //
+        $patient = Patient::findOrFail($id);
+        $addresses = Address::get();
+        return view('dashboard.patients.edit',compact('addresses','patient'));
 
     }
 
 
-    public function update($request)
+    public function update(PatientRequest $request)
     {
-
-        //
+        $patient = Patient::findOrFail($request->id);
+        $patient->update($request->all());
+        session()->flash('success', 'تم تعديل بيانات المريض بنجاح');
+        return redirect()->route('dashboard.patients.index');
     }
 
 
@@ -66,7 +70,10 @@ class PatientRepository implements PatientRepositoryInterface
 
     public function destroy($request)
     {
-        //
+        $patients = Patient::findOrFail($request->id);
+        $patients->delete($patients);
+        session()->flash('success', 'تم حذف المريض بنجاح');
+        return back();
     }
 
 

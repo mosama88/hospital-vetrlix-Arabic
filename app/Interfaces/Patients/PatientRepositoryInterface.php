@@ -2,7 +2,7 @@
 namespace App\Interfaces\Patients;
 
 use App\Http\Requests\Dashboard\PatientRequest;
-
+use Illuminate\Http\Request;
 
 
 interface PatientRepositoryInterface
@@ -13,7 +13,7 @@ interface PatientRepositoryInterface
     public function create();
 
     public function edit($id);
-    public function update($request);
+    public function update(PatientRequest $request);
 
     public function destroy($request);
 
