@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('nation_number')->nullable()->unique();
+            $table->string('nation_number')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->string('phone')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('type_blood')->nullable();
+            $table->unique(['email', 'phone','nation_number']); // التحقق من فرادة كل من البريد الإلكتروني ورقم الهاتف
             $table->enum('gender', ['male', 'female'])->default('male')->nullable();
             $table->text('sick_history')->nullable();
             $table->foreignId('address_id')->references('id')->on('addresses')->cascadeOnDelete();

@@ -23,14 +23,14 @@
                     <div class="row">
                             <div class="col-3 mb-4">
                                     <label class="form-label" for="input-id_number">الرقم القومى</label>
-                                    <input id="input-nation_number" type="text" name="nation_number" value="{{old('nation_number')}}" placeholder="14 رقم" class="form-control input-mask @error('nation_number') is-invalid @enderror"  im-insert="false">
+                                    <input id="input-nation_number" type="text" name="nation_number" value="{{old('nation_number')}}" placeholder="14 رقم" class="form-control input-mask @error('nation_number') is-invalid @enderror" >
                                     @error('nation_number')
                                     <div class="alert alert-danger p-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-3 mb-4">
                                     <label class="form-label" for="input-name">الأسم</label>
-                                    <input id="input-name" type="text" name="name" value="{{old('name')}}" placeholder="الأسم" class="form-control input-mask @error('car_model') is-invalid @enderror"   im-insert="false">
+                                    <input id="input-name" type="text" name="name" value="{{old('name')}}" placeholder="الأسم" class="form-control input-mask @error('car_model') is-invalid @enderror"  >
                                     @error('name')
                                     <div class="alert alert-danger p-1">{{ $message }}</div>
                                     @enderror
@@ -61,8 +61,8 @@
                         </div>
                         <div class="col-3 mb-4">
                             <label for="example-date-input" class="form-label">تاريخ الميلاد</label>
-                                <input class="form-control @error('birth_date') is-invalid @enderror"" type="date" name="birth_date" value="2020-08-04" id="example-date-input">
-                                @error('birth_date')
+                            <input class="form-control @error('birth_date') is-invalid @enderror" name="birth_date" type="date" value="2020-08-04" id="example-date-input">
+                            @error('birth_date')
                                 <div class="alert alert-danger p-1">{{ $message }}</div>
                                 @enderror
                         </div>
@@ -121,7 +121,7 @@
                             {{-- Submit --}}
                             <div class="col-12 mb-4 text-center">
                         <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
-                        <a href="{{ route('dashboard.ambulances.index') }}"
+                        <a href="{{ route('dashboard.patients.index') }}"
                            class="btn btn-outline-dark mx-2">رجوع</a>
                     </div>
                         </div>

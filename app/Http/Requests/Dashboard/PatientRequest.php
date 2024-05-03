@@ -22,7 +22,8 @@ class PatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nation_number'=>"required|numeric|min:10|max:17",
+            'nation_number' => 'required|numeric',
+//            'nation_number' => 'required|numeric|min:14|max:14',
             'name'=>"required|string|min:3|max:100",
             'email'=>"required|min:3",
             'password'=>"required|min:6|max:50",
@@ -40,8 +41,8 @@ class PatientRequest extends FormRequest
         return [
             'nation_number.required'=>'الرقم القومى مطلوب',
             'nation_number.numeric'=>'برجاء كتابة الرقم القومى بطريقة صحيحة',
-            'nation_number.min'=>'يجب ان يكون الرقم القومى لا يقل عن 10 رقم',
-            'nation_number.max'=>'يجب ان يكون الرقم القومى لا يزيد عن 17 رقم',
+//            'nation_number.min'=>'يجب ان يكون الرقم القومى لا يقل عن 14 رقم',
+//            'nation_number.max'=>'يجب ان يكون الرقم القومى لا يزيد عن 14 رقم',
             ########################################################
             'name.required'=>'الاسم مطلوب',
             'name.min'=>'يجب ان يكون الأسم أكثر من 3 أحرف',

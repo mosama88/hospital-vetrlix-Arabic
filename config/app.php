@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+
+
+    'locale' => 'ar',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -95,7 +99,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'ar',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------

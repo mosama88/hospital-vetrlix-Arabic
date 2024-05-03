@@ -25,4 +25,30 @@ class Patient extends Model
     {
         return $this->belongsTo(Address::class);
     }
-}
+
+
+    public function getAgeAttribute()
+    {
+        return now()->diffInYears($this->birth_date);
+    }
+
+    public function type_blood() {
+        // تحقق مباشرة مما إذا كانت القيمة المعرفة باسم "type_blood" تساوي 1
+        if ($this->type_blood == 1) {
+            echo "A";
+        } elseif ($this->type_blood == 2){
+            echo "A+";
+        }elseif ($this->type_blood == 3){
+                echo "B";
+        }elseif ($this->type_blood == 4){
+            echo "B+";
+        }elseif ($this->type_blood == 5){
+            echo "O";
+        }elseif ($this->type_blood == 6){
+            echo "O+";
+        }elseif ($this->type_blood == 7){
+            echo "AB";
+        }
+    }
+    }
+

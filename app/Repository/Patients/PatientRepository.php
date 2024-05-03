@@ -31,7 +31,6 @@ class PatientRepository implements PatientRepositoryInterface
         $patients->password = $request->password;
         $patients->phone = $request->phone;
         $patients->birth_date = $request->birth_date;
-        $patients['birth_date'] = date('Y-m-d', strtotime('1918-10-17'));
         $patients->type_blood = $request->type_blood;
         $patients->gender = $request->gender;
         $patients->sick_history = $request->sick_history;

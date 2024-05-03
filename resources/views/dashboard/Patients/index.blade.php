@@ -34,30 +34,37 @@
                                     <thead>
                                     <tr>
                                         <th class="table-primary">م</th>
-                                        <th>رقم السياره</th>
-                                        <th>موديل السيارة</th>
-                                        <th>سنة الصنع</th>
-                                        <th>نوع السيارة</th>
-                                        <th>أسم السائق</th>
-                                        <th>رقم رخصة القيادة</th>
+                                        <th>الرقم القومى</th>
+                                        <th>الأسم</th>
+                                        <th>البريد الالكترونى</th>
                                         <th>رقم الهاتف</th>
-                                        <th>الحاله</th>
-                                        <th>ملاحظات</th>
+                                        <th>العمر</th>
+                                        <th> فصيلة الدم</th>
+                                        <th>الجنس</th>
+                                        <th>محافظة</th>
+                                        <th>التاريخ المرضى</th>
                                         <th>العمليات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($patients as $patient)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$patient->nation_number}}</td>
+                                            <td>{{$patient->name}}</td>
+                                            <td>{{$patient->email}}</td>
+                                            <td>{{$patient->phone}}</td>
+                                            <td>{{$patient->age}}</td>
+                                            <td>{{$patient->type_blood()}}</td>
+                                            <td>
+                                                @php
+                                                    $genderTranslation = __('enums.'.$patient->gender);
+                                                @endphp
+                                                {{$genderTranslation}}
+                                            </td>
+                                            <td>{{$patient->address->city}}</td>
+                                            <td>{{Str::limit($patient->sick_history,20)}}</td>
+                                            <td>
                                             <div class="btn-group dropend">
                                                     <button type="button"
                                                             class="btn btn-outline-info btn-md"
@@ -65,7 +72,6 @@
                                                         العمليات <i class="mdi mdi-chevron-left"></i>
                                                     </button>
                                                     <div class="dropdown-menu" style="">
-
                                                         {{-- Change Data --}}
                                                         <a class="dropdown-item" href="#"><i
                                                                 style="color: #0ba360"
@@ -73,17 +79,17 @@
                                                             البيانات</a>
 
                                                         {{-- Delete Doctor --}}
-{{--                                                        <a class="dropdown-item modal-effect" href="#delete{{$ambulance->id}}"--}}
+                                                        <a class="dropdown-item modal-effect" href="#delete{{$patient->id}}"
                                                            data-bs-toggle="modal"><i
                                                                 class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف
                                                             البيانات</a>
 
                                                     </div>
-                                                </div>
-
+                                            </div>
 {{--                                                @include('dashboard.ambulances.delete')--}}
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                         </div>
