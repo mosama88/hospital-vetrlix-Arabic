@@ -47,7 +47,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($ambulances as $ambulance)
+                                    @if (isset($ambulances) && count($ambulances) > 0)
+                                        @foreach($ambulances as $ambulance)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$ambulance->car_number}}</td>
@@ -117,6 +118,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @else
+                                        <div class="alert alert-danger">
+                                            عفوآ لا توجد بيانات لعرضها!!
+                                        </div>
+                                    @endif
                                     </tbody>
                                 </table>
                         </div>

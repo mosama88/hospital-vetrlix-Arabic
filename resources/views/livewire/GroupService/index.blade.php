@@ -1,5 +1,6 @@
 
 <button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة مجموعة خدمات </button><br><br>
+
 <div class="table-responsive">
         <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
         <thead>
@@ -12,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+@if (isset($groups) && count($groups) > 0)
             @foreach ($groups as $group)
                 <tr>
                     <td>{{ $loop->iteration}}</td>
@@ -26,6 +28,11 @@
                 </tr>
               @include('livewire.GroupService.delete')
             @endforeach
+@else
+    <div class="alert alert-danger">
+        عفوآ لا توجد بيانات لعرضها!!
+    </div>
+            @endif
     </table>
 
 </div>

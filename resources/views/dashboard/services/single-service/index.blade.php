@@ -29,75 +29,76 @@
                                     @include('dashboard.services.single-service.add')
                                     <!-- /.modal -->
                                 </div>
-
                             </div>
 
-                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <table class="table  table-bordered " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th class="table-primary">م</th>
+                                            <th>الأسم</th>
+                                            <th>سعر الخدمه</th>
+                                            <th>الحاله</th>
+                                            <th>ملاحظات</th>
+                                            <th>تاريخ الأضافه</th>
+                                            <th>العمليات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                            @if (isset($services) && count($services) > 0)
+                                        @foreach ($services as $service)
+                                            <tr>
+                                                <td class="table-primary">{{ $loop->iteration }}</td>
+                                                <td><a href="#">{{ $service->name }}</a> </td>
+                                                <td>{{ number_format($service->price, 2) }}</td>
+                                                <td>
+                                                    @if ($service->status == '1')
+                                                        <span class="badge bg-success">مفعل</span>
+                                                    @else
+                                                        <span class="badge bg-danger">غير مفعل</span>
+                                                    @endif
+                                                    <div
+                                                        class="dot-label bg-{{ $service->status == 'active' ? 'success' : 'danger' }} ml-1">
+                                                    </div>
+                                                </td>                                    <td>{{ Str::limit($service->description, 50) }}</td>
+                                                <td>{{ $service->created_at->diffForHumans() }}</td>
 
-                    <table class="table  table-bordered "
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th class="table-primary">م</th>
-                                <th>الأسم</th>
-                                <th>سعر الخدمه</th>
-                                <th>الحاله</th>
-                                <th>ملاحظات</th>
-                                <th>تاريخ الأضافه</th>
-                                <th>العمليات</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($services as $service)
-                                <tr>
-                                    <td class="table-primary">{{ $loop->iteration }}</td>
-                                    <td><a href="#">{{ $service->name }}</a> </td>
-                                    <td>{{ number_format($service->price, 2) }}</td>
-                                    <td>
-                                        @if ($service->status == '1')
-                                            <span class="badge bg-success">مفعل</span>
-                                        @else
-                                            <span class="badge bg-danger">غير مفعل</span>
-                                        @endif
-                                        <div
-                                            class="dot-label bg-{{ $service->status == 'active' ? 'success' : 'danger' }} ml-1">
-                                        </div>
-                                    </td>                                    <td>{{ Str::limit($service->description, 50) }}</td>
-                                    <td>{{ $service->created_at->diffForHumans() }}</td>
+                                                <td>
+                                                    <div class="btn-group dropend">
+                                                        <button type="button"
+                                                                class="btn btn-outline-info btn-md"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                            العمليات <i class="mdi mdi-chevron-left"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="">
 
-                                    <td>
-                                        <div class="btn-group dropend">
-                                            <button type="button"
-                                                    class="btn btn-outline-info btn-md"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                العمليات <i class="mdi mdi-chevron-left"></i>
-                                            </button>
-                                            <div class="dropdown-menu" style="">
+                                                            {{-- Change Data --}}
+                                                            <a class="dropdown-item modal-effect" href="#edit{{ $service->id }}"
+                                                               data-bs-toggle="modal"><i
+                                                                    style="color: #0ba360"
+                                                                    class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
+                                                                البيانات</a>
 
-                                                {{-- Change Data --}}
-                                                <a class="dropdown-item modal-effect" href="#edit{{ $service->id }}"
-                                                   data-bs-toggle="modal"><i
-                                                        style="color: #0ba360"
-                                                        class="text-success ti-user"></i>&nbsp;&nbsp;تعديل
-                                                    البيانات</a>
+                                                            {{-- Delete Doctor --}}
+                                                            <a class="dropdown-item modal-effect" href="#delete{{ $service->id }}"
+                                                               data-bs-toggle="modal"><i
+                                                                    class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف
+                                                                البيانات</a>
 
-                                                {{-- Delete Doctor --}}
-                                                <a class="dropdown-item modal-effect" href="#delete{{ $service->id }}"
-                                                    data-bs-toggle="modal"><i
-                                                        class="text-danger ti-trash"></i>&nbsp;&nbsp;حذف
-                                                    البيانات</a>
+                                                        </div>
+                                                    </div>
 
-                                            </div>
-                                        </div>
-
-                                         @include('dashboard.services.single-service.delete')
-                                    </td>
-                                    @include('dashboard.services.single-service.edit')
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                                    @include('dashboard.services.single-service.delete')
+                                                </td>
+                                                @include('dashboard.services.single-service.edit')
+                                            </tr>
+                                        @endforeach
+                            @else
+                                <div class="alert alert-danger">
+                                    عفوآ لا توجد بيانات لعرضها!!
+                                </div>
+                            @endif
+                                        </tbody>
+                                    </table>
                 </div>
             </div>
         </div>

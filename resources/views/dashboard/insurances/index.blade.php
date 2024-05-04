@@ -44,7 +44,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($insurances as $insurance)
+                                    @if (isset($insurances) && count($insurances) > 0)
+                                        @foreach($insurances as $insurance)
                                         <tr>
                                             <td>#</td>
                                             <td>{{$insurance->insurance_code}}</td>
@@ -90,6 +91,11 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @else
+                                        <div class="alert alert-danger">
+                                            عفوآ لا توجد بيانات لعرضها!!
+                                        </div>
+                                    @endif
                                     </tbody>
                                 </table>
                         </div>
