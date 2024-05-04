@@ -39,4 +39,17 @@ class Doctor extends Model
         return $this->belongsToMany(Appointment::class, 'appointment_doctor');
     }
 
+
+    public function doctorPhoto(){
+        // Check if an image already exists for the specified doctor entity
+        $existingImage = $this->image()->exists();
+
+        // If an image already exists, return early without requiring a new photo
+        if ($existingImage) {
+            return null;
+        }
+    }
+
+
+
 }

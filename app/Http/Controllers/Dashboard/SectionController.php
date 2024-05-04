@@ -65,4 +65,9 @@ class SectionController extends Controller
         return $this->sections->destroy( $request);
 
     }
+
+    public function ajax_search(Request $request)
+    {
+        return $this->doctors->ajax_search($request);
+    }
 }

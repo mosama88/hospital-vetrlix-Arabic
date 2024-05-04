@@ -14,7 +14,7 @@
     {{-- Start Row --}}
     <div class="row">
         <div class="col-12">
-            @include('dashboard.messages_alert')
+{{--            @include('dashboard.messages_alert')--}}
 
             <div class="card">
                 <div class="card-body">
@@ -41,9 +41,11 @@
                         <div class="row mb-4">
                             <label for="example-text-input" class="col-sm-2 col-form-label">أسم الطبيب</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="text" name="name" value="{{ $doctors->name }}"
+                                <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{ $doctors->name }}"
                                     placeholder="اسم الطبيب" id="example-text-input">
-
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -52,9 +54,12 @@
                         <div class="row mb-4">
                             <label for="example-email-input" class="col-sm-2 col-form-label">البريد الالكترونى</label>
                             <div class="col-sm-10">
-                                <input class="form-control" name="email" type="email"
+                                <input class="form-control @error('email') is-invalid @enderror" name="email" type="email"
                                     placeholder="bootstrap@example.com" value="{{ $doctors->email }}"
                                     id="example-email-input" autocomplete="none">
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -65,9 +70,12 @@
                         <div class="row mb-4">
                             <label for="example-tel-input" class="col-sm-2 col-form-label">الموبايل</label>
                             <div class="col-sm-10">
-                                <input class="form-control" type="tel" name="phone" value="{{ $doctors->phone }}"
+                                <input class="form-control @error('phone') is-invalid @enderror" type="tel" name="phone" value="{{ $doctors->phone }}"
                                     placeholder="1-(555)-555-5555" id="example-tel-input">
                                 <input class="form-control" value="{{ $doctors->id }}" name="id" type="hidden">
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -76,7 +84,7 @@
                         <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">القسم</label>
                             <div class="col-sm-10">
-                                <select name="section_id" class="form-select" aria-label="Default select example">
+                                <select name="section_id" class="form-select @error('section_id') is-invalid @enderror" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach ($sections as $section)
                                         <option value="{{ $section->id }}"
@@ -85,6 +93,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('section_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -112,7 +123,7 @@
                         <div class="row mb-4">
                             <label class="col-sm-2 col-form-label">المواعيد</label>
                             <div class="col-sm-10">
-                                <select class="form-select" name="appointments[]" id="appointments" multiple>
+                                <select class="form-select @error('appointments') is-invalid @enderror" name="appointments[]" id="appointments" multiple>
                                     @foreach ($appointments as $appointment)
                                         @php $check = []; @endphp
                                         @foreach ($doctors->doctorappointments as $key => $appointmentDOC)
@@ -125,6 +136,9 @@
                                             {{ $appointment->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('appointments')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- end row -->
@@ -134,8 +148,11 @@
                         <div class="row mb-4">
                             <label for="example-text-input" class="col-sm-2 col-form-label">صورة الطبيب</label>
                             <div class="col-sm-10">
-                                <input class="form-control" accept="image/*" name="photo" type="file"
+                                <input class="form-control @error('photo') is-invalid @enderror" accept="image/*" name="photo" type="file"
                                     id="example-text-input" onchange="loadFile(event)">
+                                @error('photo')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <img class="rounded-circle avatar-xl my-3" id="output" />
 
 

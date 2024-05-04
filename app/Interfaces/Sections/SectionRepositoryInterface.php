@@ -4,6 +4,7 @@ namespace App\Interfaces\Sections;
 
 
 use App\Http\Requests\Dashboard\SectionRequest;
+use Illuminate\Http\Request;
 
 interface SectionRepositoryInterface
 {
@@ -21,4 +22,5 @@ interface SectionRepositoryInterface
 
     public function show( $id);
 
+    public function ajax_search(Request $request);
 }

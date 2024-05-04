@@ -24,12 +24,6 @@ class DoctorRepository implements DoctorRepositoryInterface
 
         DB::beginTransaction();
         try{
-            $request->validate([
-                'name'=> 'required|string|min:3| max:50',
-                'email'=> 'required|string|min:5| max:50',
-                'phone'=> 'required|string|min:1| max:18',
-                'section_id'=> 'required|exists:sections,id'
-            ]);
                 $doctors = new Doctor();
                 $doctors->email =$request->email;
                 $doctors['password'] = $request->has('password') ? bcrypt( $request->password) :
@@ -74,7 +68,7 @@ class DoctorRepository implements DoctorRepositoryInterface
         $appointments = Appointment::all();
        return view('dashboard.doctors.edit', compact('sections','doctors','appointments'));
    }
-   public function update($request)
+   public function update(DoctorRequest $request)
    {
        DB::beginTransaction();
 
@@ -99,9 +93,19 @@ class DoctorRepository implements DoctorRepositoryInterface
                 $old_img = $doctors->image->filename;
                 $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
             }
+
+            // Check if an image already exists for the specified doctor entity
+            if ($doctors->image) {
+                return null; // If an image already exists, return early without requiring a new photo
+            }
+
             //Upload img
             $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
+
         }
+
+
+
 
         DB::commit();
            session()->flash('success', 'تم تعديل الطبيب بنجاح');

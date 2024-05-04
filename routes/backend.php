@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 */
+define('PAGINATION_COUNT', 1);
 
         ##################################### Dashboard User #################################
         Route::get('/dashboard/user', function () {
@@ -40,7 +41,8 @@ use Illuminate\Support\Facades\Route;
 
          ##################################### Start Dashboard sections ################################
             Route::resource('/sections', SectionController::class);
-         ##################################### End Dashboard sections ################################
+            Route::post('/sections/search', [SectionController::class,'ajax_search'])->name('sections-search');
+            ##################################### End Dashboard sections ################################
           ##################################### Start Dashboard sections ################################
           Route::resource('/doctors', DoctorController::class);
           Route::post('/update-password', [DoctorController::class, 'update_password'])->name('update-password');

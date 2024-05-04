@@ -24,10 +24,10 @@ class DoctorRequest extends FormRequest
         return [
             'name'=>'required|string|min:3|max:30',
             'email'=>'required|email|min:3|unique:users,email',
-            'password'=>'required|string|min:6|max:255',
             'phone'=>'required|string|min:3|max:20',
             'appointments' => 'required',
             'section_id'=> 'required|exists:sections,id',
+            'photo'=> 'image|mimes:png,jpg,jpeg,gif,webp',
         ];
     }
 
@@ -44,10 +44,6 @@ class DoctorRequest extends FormRequest
             'email.min'=>'برجاء كتابة البريد الالكترونى بطريقه صحيحه',
             'email.unique'=>'البريد الالكترونى موجود بالفعل',
             ########################################################
-            'password.required'=>'كلمة المرور مطلوب',
-            'password.min'=>'يجب ان يكون كلمة المرور أكثر من 6 أحرف',
-            'password.max'=>'يجب ان يكون كلمة المرور أقل من 255 أحرف',
-            ########################################################
             'phone.required'=>'الموبايل مطلوب',
             'phone.min'=>'يجب ان يكون كلمة المرور أكثر من 3 أحرف',
             'phone.max'=>'برجاء كتابة الموبايل بطريقة صحيحه',
@@ -56,6 +52,8 @@ class DoctorRequest extends FormRequest
             ########################################################
             'appointments.required'=>'المواعيد مطلوبة',
             ########################################################
+            'photo.image'=>'يجب أن يكون حقل الصورة صورة.',
+            'photo.mimes'=>'يجب أن يكون حقل الصورة ملفًا من النوع:، gif png، jpg، jpeg، webp.',
         ];
     }
 

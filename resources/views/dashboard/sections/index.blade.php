@@ -11,14 +11,14 @@
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
 
-
     <div class="container-fluid">
     {{-- Start Row --}}
     <div class="row">
-        <div class="col-12">
             @include('dashboard.messages_alert')
             <div class="card">
                 <div class="card-body">
+
+
                     <div class="col-12 ">
                         <div class="col-sm-12 col-md-12 col-xl-12">
                             <div class="my-4">
@@ -33,9 +33,14 @@
                         </div>
 
                     </div>
-
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <div class="col-12">
+                        <input type="hidden" id="token_search" value="{{csrf_token() }}">
+                        <input type="hidden" id="ajax_search_url" value="{{ route('dashboard.sections-search') }}">
+                        <input type="text" id="search_by_text" placeholder="بحث بالاسم" class="form-control">
+                        <br>
+                    <div id="ajax_responce_serarchDiv">
+                        @if (isset($sections) && count($sections) > 0)
+                        <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">#</th>
@@ -74,8 +79,16 @@
                         </tbody>
                     </table>
                     {{-- {{ $sections->render('pagination::bootstrap-5') }} --}}
-
+                    </div>
                 </div>
+                <div class="col-md-12" id="ajax_pagination_in_search">
+                    {{ $sections->links() }}
+                </div>
+                @else
+                    <div class="alert alert-danger">
+                        عفوا لاتوجد بيانات لعرضها !!
+                    </div>
+                @endif
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
@@ -84,7 +97,11 @@
 
 
 
+<script src="{{asset('dashboard')}}/assets/js/admin/section.js"></script>
 
     @include('dashboard.layouts.scripts')
 
 @endsection
+
+
+

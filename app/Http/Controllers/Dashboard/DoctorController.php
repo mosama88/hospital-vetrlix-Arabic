@@ -57,7 +57,7 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(DoctorRequest $request)
     {
         return $this->doctors->update($request);
     }
@@ -80,7 +80,6 @@ class DoctorController extends Controller
     {
         return $this->doctors->update_status($request);
     }
-
 
 
 }

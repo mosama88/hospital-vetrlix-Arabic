@@ -10,7 +10,7 @@ use App\Interfaces\Sections\SectionRepositoryInterface;
 class SectionRepository implements SectionRepositoryInterface
 {
     public function index(){
-        $sections = Section::orderBy('created_at', 'desc')->get();
+        $sections = Section::orderBy('created_at', 'desc')->paginate(3);
         return view('dashboard.sections.index',compact('sections'));
     }
 
@@ -76,5 +76,14 @@ class SectionRepository implements SectionRepositoryInterface
              // Return a response indicating success
              return view ('dashboard.sections.show', compact('doctors', 'section'));
             }
-}
 
+
+
+    public function ajax_search(Request $request){
+        if($request->ajax()){
+            $search_by_text=$request->search_by_text;
+            $section=Section::where('name','LIKE',"%{$search_by_text}%")->orderBy('id','DESC')->paginate(PAGINATION_COUNT);;
+            return view('dashboard.sections.ajax-search',['section'=>$section]);
+}
+    }
+}

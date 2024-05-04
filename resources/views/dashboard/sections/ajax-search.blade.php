@@ -1,13 +1,8 @@
-@if (@isset($sections) && !@empty($sections))
-    @php
-        $i=1;
-    @endphp
+<div id="ajax_responce_serarchDiv">
+    @if (isset($sections) && count($sections) > 0)
+    <table id="example2" class="table table-bordered table-hover">
 
-
-
-    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-           style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-        <thead>
+    <thead>
         <tr>
             <th class="wd-15p border-bottom-0">#</th>
             <th class="wd-15p border-bottom-0">أسم القسم
@@ -41,16 +36,15 @@
                 </td>
             </tr>
             @include('dashboard.sections.edit')
-            @php
-                $i++;
-            @endphp
         @endforeach
         </tbody>
     </table>
-    <br>
-    <div class="col-md-12" id="ajax_pagination_in_search">
-        {{ $data->links() }}
-    </div>
+    {{-- {{ $sections->render('pagination::bootstrap-5') }} --}}
+</div>
+
+<div class="col-md-12" id="ajax_pagination_in_search">
+    {{ $sections->links() }}
+</div>
 @else
     <div class="alert alert-danger">
         عفوا لاتوجد بيانات لعرضها !!
