@@ -69,6 +69,7 @@
                         <div class="col-3 mb-4">
                             <label class="form-label" for="input-type_blood">نوع فصيلة الدم</label>
                             <select id="input-type_blood" name="type_blood" class="form-select" @error('type_blood') is-invalid @enderror value="{{old('type_blood')}}"    im-insert="true">
+                                <option value="" selected disabled> --أختر نوع فصيلة الدم -- </option>
                                 <option value="1"> A </option>
                                 <option value="2"> A+ </option>
                                 <option value="3"> B </option>
@@ -86,6 +87,7 @@
                         <div class="col-3 mb-4">
                             <label class="form-label" for="input-gender">الجنس</label>
                             <select id="input-gender" name="gender" value="{{old('gender')}}" class="form-select @error('gender') is-invalid @enderror"  im-insert="false">
+                                <option value="" selected disabled> --أختر النوع -- </option>
                                 <option value="male"> ذكر </option>
                                 <option value="female"> أنثى </option>
                             </select>
@@ -100,7 +102,8 @@
                     <div class="col-6 mb-4">
                         <label class="form-label" for="input-address_id">محافظة</label>
                         <select id="input-address_id" name="address_id" value="{{old('address_id')}}" class="form-select @error('address_id') is-invalid @enderror"  im-insert="false">
-                            @foreach($addresses as $address)
+                            <option value="" selected disabled> --أختر المحافظة -- </option>
+                        @foreach($addresses as $address)
                                 <option value="{{$address->id}}">{{$address->city}}</option>
                             @endforeach
                         </select>

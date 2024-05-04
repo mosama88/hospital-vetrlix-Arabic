@@ -90,7 +90,7 @@
                                     <div class="col-3 mb-4">
                                         <label class="form-label" for="input-gender">الجنس</label>
                                         <select id="input-gender" name="gender" value="{{$patient->sick_history}}" class="form-select @error('gender') is-invalid @enderror"  im-insert="false">
-                                            <option value="" disabled selected> -- أختر الجنس -- </option>
+                                            <option value="" disabled selected> -- أختر النوع -- </option>
                                             <option value="male"{{ $patient->gender === 'male' ? 'selected' : '' }}> ذكر </option>
                                             <option value="female"{{ $patient->gender === 'female' ? 'selected' : '' }}> أنثى </option>
                                         </select>

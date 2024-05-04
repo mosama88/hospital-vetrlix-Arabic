@@ -22,10 +22,10 @@ class PatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nation_number' => 'required|numeric',
-//            'nation_number' => 'required|numeric|min:14|max:14',
+//            'nation_number' => 'required|numeric',
+            'nation_number' => 'required|unique:patients,nation_number|min:14|max:14',
             'name'=>"required|string|min:3|max:100",
-            'email'=>"required|min:3",
+            'email'=>"required|unique:patients,email|email|min:3",
             'password'=>"required|min:6|max:50",
             'phone'=>"required|string|min:5|max:20",
             'birth_date'=>"required|date|before_or_equal:today",
@@ -41,17 +41,18 @@ class PatientRequest extends FormRequest
         return [
             'nation_number.required'=>'الرقم القومى مطلوب',
             'nation_number.numeric'=>'برجاء كتابة الرقم القومى بطريقة صحيحة',
-//            'nation_number.min'=>'يجب ان يكون الرقم القومى لا يقل عن 14 رقم',
-//            'nation_number.max'=>'يجب ان يكون الرقم القومى لا يزيد عن 14 رقم',
+            'nation_number.unique'=>'الرقم القومى مسجل بالفعل',
+            'nation_number.min'=>'يجب ان يكون الرقم القومى لا يقل عن 14 رقم',
+            'nation_number.max'=>'يجب ان يكون الرقم القومى لا يزيد عن 14 رقم',
             ########################################################
             'name.required'=>'الاسم مطلوب',
             'name.min'=>'يجب ان يكون الأسم أكثر من 3 أحرف',
             'name.max'=>'يجب ان يكون الأسم أقل من 100 حرف',
             ########################################################
             'email.required'=>'البريد الالكترونى مطلوب',
+            'email.unique'=>'البريد الالكترونى مسجل بالفعل',
             'email.email'=>'برجاء كتابة البريد الالكترونى بطريقه صحيحه',
             'email.min'=>'برجاء كتابة البريد الالكترونى بطريقه صحيحه',
-            'email.unique'=>'البريد الالكترونى موجود بالفعل',
             ########################################################
             'password.required'=>'كلمة المرور مطلوب',
             'password.min'=>'يجب ان يكون كلمة المرور أكثر من 6 أحرف',
