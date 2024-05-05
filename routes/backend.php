@@ -23,46 +23,49 @@ use Illuminate\Support\Facades\Route;
 */
 //define('PAGINATION_COUNT', 1);
 
-        ##################################### Dashboard User #################################
+        ##################################### Route User #################################
         Route::get('/dashboard/user', function () {
             return view('dashboard.user.dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard.user');
-        ##################################### End Dashboard User #################################
-        ##################################### Dashboard Admin ################################
+        ##################################### End Route User #################################
+        ##################################### Route Admin ################################
         Route::get('/dashboard/admin', function () {
             return view('dashboard.Admin.dashboard');
         })->middleware(['auth:admin', 'verified'])->name('dashboard.admin');
-        ##################################### End Dashboard Admin #################################
+        ##################################### End Route Admin #################################
         Route::middleware(['auth:admin', 'verified'])->name('dashboard.')->group(function(){
         Route::get('dashboard/index',[DashboardController::class,'index'])->name('index');
-            ##################################### Start Dashboard Profile ################################
+            ##################################### Start Route Profile ################################
             Route::view('/Profile', 'profile.profile')->name('my-profile');
-            ##################################### End Dashboard Profile ################################
+            ##################################### End Route Profile ################################
 
-         ##################################### Start Dashboard sections ################################
+         ##################################### Start Route sections ################################
             Route::resource('/sections', SectionController::class);
             Route::get('sections-search', [SectionController::class,'search'])->name('sections-search');
-            ##################################### End Dashboard sections ################################
-          ##################################### Start Dashboard sections ################################
+            ##################################### End Route sections ################################
+          ##################################### Start Route sections ################################
           Route::resource('/doctors', DoctorController::class);
           Route::post('/update-password', [DoctorController::class, 'update_password'])->name('update-password');
           Route::post('/update-status', [DoctorController::class, 'update_status'])->name('update-status');
-          ##################################### End Dashboard sections ################################
-        ##################################### Start Dashboard Services ################################
+          ##################################### End Route sections ################################
+        ##################################### Start Route Services ################################
         Route::resource('/services', SingleServiceController::class);
-        ##################################### End Dashboard Services ################################
-            ##################################### Start Dashboard Services ################################
+        ##################################### End Route Services ################################
+            ##################################### Start Route Services ################################
             Route::view('/Service/Group', 'livewire.GroupService.includeCreateGroup')->name('add-Service-Group');
-            ##################################### End Dashboard Services ################################
-            ##################################### Start Dashboard insurances ################################
+            ##################################### End Route Services ################################
+            ##################################### Start Route insurances ################################
             Route::resource( '/insurances',InsuranceController::class);
-            ##################################### End Dashboard insurances ################################
-            ##################################### Start Dashboard Ambulance ################################
+            ##################################### End Route insurances ################################
+            ##################################### Start Route Ambulance ################################
             Route::resource( '/ambulances',AmbulanceController::class);
-            ##################################### End Dashboard Ambulance ################################
-            ##################################### Start Dashboard Patients ################################
+            ##################################### End Route Ambulance ################################
+            ##################################### Start Route Patients ################################
             Route::resource( '/patients',PatientController::class);
-            ##################################### End Dashboard Patients ################################
+            ##################################### End Route Patients ################################
+            ##################################### Start Route Single Invoices ################################
+            Route::view( 'single-invoices','livewire.single_invoices.index')->name('single-invoices');
+            ##################################### End Route Single Invoices ################################
     });
 
 

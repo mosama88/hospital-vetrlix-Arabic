@@ -60,7 +60,7 @@
                         <span>الفواتير</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#"><i class="far fa-circle"></i>فاتورة خدمة مفرده</a></li>
+                        <li><a href="{{route('dashboard.single-invoices')}}"><i class="far fa-circle"></i>فاتورة خدمة مفرده</a></li>
                     </ul>
                 </li>
 
