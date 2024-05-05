@@ -19,12 +19,6 @@
                     <div class="card-body">
                         <div class="col-12 ">
                             <div class="col-sm-12 col-md-12 col-xl-12">
-                                <div class="my-4">
-                                    <!-- Satic modal -->
-                                    <a type="button" href="{{route('dashboard.patients.create')}}" class="btn btn-outline-primary btn-md">
-                                        <i class="fas fa-plus-square"></i> أضافة فاتورة
-                                    </a>
-                                </div>
                             <livewire:single-invoices />
                             </div>
 

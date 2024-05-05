@@ -1,6 +1,6 @@
 
 
-<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة فاتورة جديدة </button><br><br>
+<button class="btn btn-outline-primary btn-md" wire:click="show_form_add" type="button"> <i class="fas fa-plus-square"></i> اضافة فاتورة جديدة </button><br><br>
 <div class="table-responsive">
     <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
         <thead>
