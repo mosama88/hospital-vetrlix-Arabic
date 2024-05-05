@@ -14,7 +14,7 @@
 <script src="{{ asset('dashboard') }}/assets/js/pages/dashboard.init.js"></script>
 
 <script src="{{ asset('dashboard') }}/assets/js/app.js"></script>
-
+<script src="{{ asset('dashboard') }}/assets/js/jquery.min.js"></script>
 
 
 <!-- Extra JAVASCRIPT -->

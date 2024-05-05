@@ -10,7 +10,7 @@ use App\Interfaces\Sections\SectionRepositoryInterface;
 class SectionRepository implements SectionRepositoryInterface
 {
     public function index(){
-        $sections = Section::orderBy('created_at', 'desc')->paginate(3);
+        $sections = Section::orderBy('created_at', 'desc')->paginate(5);
         return view('dashboard.sections.index',compact('sections'));
     }
 
@@ -79,11 +79,20 @@ class SectionRepository implements SectionRepositoryInterface
 
 
 
-    public function ajax_search(Request $request){
-        if($request->ajax()){
-            $search_by_text=$request->search_by_text;
-            $section=Section::where('name','LIKE',"%{$search_by_text}%")->orderBy('id','DESC')->paginate(PAGINATION_COUNT);;
-            return view('dashboard.sections.ajax-search',['section'=>$section]);
-}
+//    public function ajax_search(Request $request){
+//        if($request->ajax()){
+//            $search_by_text=$request->search_by_text;
+//            $section=Section::where('name','LIKE',"%{$search_by_text}%")->orderBy('id','DESC')->paginate(PAGINATION_COUNT);;
+//            return view('dashboard.sections.ajax-search',['section'=>$section]);
+//}
+//    }
+
+
+    public function search(Request $request){
+        $search = $request->search;
+        $sections = Section::where(function($query) use ($search) {
+            $query->where('name', 'like', "%$search%")->orWhere('description', 'like', "%$search%");
+        })->get();
+        return view('dashboard.sections.search', compact('search','sections'));
     }
 }

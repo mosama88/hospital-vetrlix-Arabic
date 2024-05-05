@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 */
-define('PAGINATION_COUNT', 1);
+//define('PAGINATION_COUNT', 1);
 
         ##################################### Dashboard User #################################
         Route::get('/dashboard/user', function () {
@@ -41,7 +41,7 @@ define('PAGINATION_COUNT', 1);
 
          ##################################### Start Dashboard sections ################################
             Route::resource('/sections', SectionController::class);
-            Route::post('/sections/search', [SectionController::class,'ajax_search'])->name('sections-search');
+            Route::get('sections-search', [SectionController::class,'search'])->name('sections-search');
             ##################################### End Dashboard sections ################################
           ##################################### Start Dashboard sections ################################
           Route::resource('/doctors', DoctorController::class);

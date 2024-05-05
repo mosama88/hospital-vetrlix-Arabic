@@ -22,5 +22,5 @@ interface SectionRepositoryInterface
 
     public function show( $id);
 
-    public function ajax_search(Request $request);
+    public function search(Request $request);
 }

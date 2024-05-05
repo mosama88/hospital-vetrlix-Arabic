@@ -66,8 +66,8 @@ class SectionController extends Controller
 
     }
 
-    public function ajax_search(Request $request)
+    public function search(Request $request)
     {
-        return $this->doctors->ajax_search($request);
+        return $this->sections->search($request);
     }
 }

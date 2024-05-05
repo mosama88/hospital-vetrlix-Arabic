@@ -17,8 +17,6 @@
             @include('dashboard.messages_alert')
             <div class="card">
                 <div class="card-body">
-
-
                     <div class="col-12 ">
                         <div class="col-sm-12 col-md-12 col-xl-12">
                             <div class="my-4">
@@ -33,15 +31,20 @@
                         </div>
 
                     </div>
-                    <div class="col-12">
-                        <input type="hidden" id="token_search" value="{{csrf_token() }}">
-                        <input type="hidden" id="ajax_search_url" value="{{ route('dashboard.sections-search') }}">
-                        <input type="text" id="search_by_text" placeholder="بحث بالاسم" class="form-control">
-                        <br>
-                    <div id="ajax_responce_serarchDiv">
+
+                    <div class="text-center coming-soon-search-form my-3 pt-4">
+                        <form action="{{route('dashboard.sections-search')}}" method="GET">
+                            <input id="datatable-buttons_filter" name="search" type="text" placeholder="أدخل الاسم او الوصف...">
+                            <button type="submit" class="btn btn-primary">إبحث</button>
+                        </form>
+                        <!-- end form -->
+                    </div>
+
+
                         @if (isset($sections) && count($sections) > 0)
-                        <table id="example2" class="table table-bordered table-hover">
-                        <thead>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">#</th>
                                 <th class="wd-15p border-bottom-0">أسم القسم
@@ -79,11 +82,10 @@
                         </tbody>
                     </table>
                     {{-- {{ $sections->render('pagination::bootstrap-5') }} --}}
-                    </div>
                 </div>
-                <div class="col-md-12" id="ajax_pagination_in_search">
+                </div>
+
                     {{ $sections->links() }}
-                </div>
                 @else
                     <div class="alert alert-danger">
                         عفوا لاتوجد بيانات لعرضها !!
@@ -97,9 +99,11 @@
 
 
 
-<script src="{{asset('dashboard')}}/assets/js/admin/section.js"></script>
 
     @include('dashboard.layouts.scripts')
+
+
+<script src="{{asset('dashboard')}}/assets/js/admin/section.js"></script>
 
 @endsection
 

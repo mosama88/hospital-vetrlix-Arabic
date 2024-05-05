@@ -10,7 +10,9 @@
     @include('dashboard.layouts.page-link')
     <!--Internal   Notify -->
     <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
-        <div class="container-fluid">
+
+
+    <div class="container-fluid">
             {{-- Start Row --}}
             <div class="row">
                 <div class="col-12">
@@ -29,6 +31,14 @@
                                     @include('dashboard.services.single-service.add')
                                     <!-- /.modal -->
                                 </div>
+                            </div>
+
+                            <div class="text-center coming-soon-search-form my-3 pt-4">
+                                <form action="#" method="GET">
+                                    <input id="datatable-buttons_filter" name="search" type="text" placeholder="أدخل الاسم او الوصف...">
+                                    <button type="submit" class="btn btn-primary">إبحث</button>
+                                </form>
+                                <!-- end form -->
                             </div>
 
                                         <table class="table  table-bordered " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -99,9 +109,11 @@
                             @endif
                                         </tbody>
                                     </table>
+                    {{ $services->links() }}
                 </div>
             </div>
-        </div>
+
+                </div>
     </div>
     </div>
 

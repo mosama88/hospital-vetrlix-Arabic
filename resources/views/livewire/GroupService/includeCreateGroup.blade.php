@@ -18,17 +18,6 @@
 
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
     @include('dashboard.layouts.scripts')
 
 @endsection
