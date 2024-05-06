@@ -39,4 +39,6 @@ class single_invoice extends Model
         return $this->belongsTo(Patient::class);
     }
 
+
+
 }

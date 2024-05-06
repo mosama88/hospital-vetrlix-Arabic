@@ -34,7 +34,7 @@
                             </div>
 
                             <div class="text-center coming-soon-search-form my-3 pt-4">
-                                <form action="#" method="GET">
+                                <form action="{{route('dashboard.services-search')}}" method="GET">
                                     <input id="datatable-buttons_filter" name="search" type="text" placeholder="أدخل الاسم او الوصف...">
                                     <button type="submit" class="btn btn-primary">إبحث</button>
                                 </form>

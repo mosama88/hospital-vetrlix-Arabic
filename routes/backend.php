@@ -50,6 +50,7 @@ use Illuminate\Support\Facades\Route;
           ##################################### End Route sections ################################
         ##################################### Start Route Services ################################
         Route::resource('/services', SingleServiceController::class);
+        Route::get('services-search', [SingleServiceController::class,'search'])->name('services-search');
         ##################################### End Route Services ################################
             ##################################### Start Route Services ################################
             Route::view('/Service/Group', 'livewire.GroupService.includeCreateGroup')->name('add-Service-Group');

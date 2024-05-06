@@ -20,27 +20,18 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Rasha Mousa',
             'email' => 'rmousa@gamil.com',
-            'password' => Hash::make('password'), // Hashing the password using bcrypt 
-               ],
-        
-    );
-   
-
+            'password' => Hash::make('password'), // Hashing the password using bcrypt
+               ]);
     DB::table('users')->insert([
         'name' => 'Ahmed Azzoz',
         'email' => 'azooz@gamil.com',
         'password' => Hash::make('password'), // Hashing the password using bcrypt
-        ],
-
-
-
-);
+        ]);
 
 DB::table('users')->insert([
     'name' => 'Menan Ahmed',
     'email' => 'menan@gamil.com',
     'password' => Hash::make('password'), // Hashing the password using bcrypt
-],
-);
+]);
 }
 }

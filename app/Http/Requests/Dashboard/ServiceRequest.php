@@ -24,7 +24,7 @@ class ServiceRequest extends FormRequest
         return [
             'name'=> 'required|string|min:5|max:100',
             'price'=> 'required|string|regex:/^\d+(\.\d+)?%?$/',
-            'description'=> 'required|string|min:10|max:2000',
+            'description'=> 'nullable|string|min:10|max:2000',
         ];
     }
 

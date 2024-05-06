@@ -66,6 +66,16 @@ class ServiceRepository implements ServiceRepositoryInterface
         public function show( $id)
         {
             //
-}
+        }
+
+
+    public function search($request){
+        $search = $request->search;
+        $services = Service::where(function($query) use ($search) {
+            $query->where('name', 'like', "%$search%")->orWhere('description', 'like', "%$search%")
+                ->orWhere('price', 'like', "%$search%");
+        })->get();
+        return view('dashboard.services.single-service.search', compact('search','services'));
+    }
 
 }

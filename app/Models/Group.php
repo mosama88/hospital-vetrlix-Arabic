@@ -22,6 +22,5 @@ class Group extends Model
     public function group_service()
     {
         return $this->belongsToMany(Service::class,'group_service')->withPivot('quantity');
-
     }
 }

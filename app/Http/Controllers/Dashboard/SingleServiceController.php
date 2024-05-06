@@ -11,18 +11,18 @@ class SingleServiceController extends Controller
 {
 
 
-    private $singleSerice;
+    private $singleService;
 
-    public function __construct(ServiceRepositoryInterface $singleSerice)
+    public function __construct(ServiceRepositoryInterface $singleService)
     {
-        $this->singleSerice = $singleSerice;
+        $this->singleService = $singleService;
     }
 
 
 
     public function index()
     {
-        return $this->singleSerice->index();
+        return $this->singleService->index();
     }
 
     /**
@@ -38,7 +38,7 @@ class SingleServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        return $this->singleSerice->store($request);
+        return $this->singleService->store($request);
     }
 
     /**
@@ -54,7 +54,7 @@ class SingleServiceController extends Controller
      */
     public function edit(Request $request)
     {
-        return $this->singleSerice->edit($request);
+        return $this->singleService->edit($request);
     }
 
     /**
@@ -62,7 +62,7 @@ class SingleServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return $this->singleSerice->update($request);
+        return $this->singleService->update($request);
     }
 
     /**
@@ -70,6 +70,11 @@ class SingleServiceController extends Controller
      */
     public function destroy(Request $request)
     {
-        return $this->singleSerice->destroy($request);
+        return $this->singleService->destroy($request);
+    }
+
+    public function search(Request $request)
+    {
+        return $this->singleService->search($request);
     }
 }

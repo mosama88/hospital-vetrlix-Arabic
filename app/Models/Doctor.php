@@ -50,6 +50,8 @@ class Doctor extends Model
         }
     }
 
-
+    public function SingleInvoice(){
+        return $this->belongsTo(single_invoice::class);
+    }
 
 }

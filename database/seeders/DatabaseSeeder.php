@@ -32,6 +32,10 @@ class DatabaseSeeder extends Seeder
             SectionSeeder::class,
             DoctorSeeder::class,
             ImageSeeder::class,
+            ServiceSeeder::class,
+            PatientSeeder::class,
+            AmbulanceSeeder::class,
+            InsuranceSeeder::class,
         ]);
     }
 }
