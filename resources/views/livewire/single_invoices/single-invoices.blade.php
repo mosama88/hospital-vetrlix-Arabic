@@ -48,7 +48,7 @@
 
                 <div class="col">
                     <label>القسم</label>
-                    <input wire:model="section_id" type="text" class="form-control" readonly >
+                    <input wire:model="section_id" type="text" class="form-control" readonly style="background: #333547; color: #B4C9DE">
                 </div>
 
                 <div class="col">
@@ -96,11 +96,11 @@
                                                 @endforeach
                                             </select>
                                         </td>
-                                        <td><input wire:model="price" type="text" class="form-control" readonly></td>
+                                        <td><input wire:model="price" type="text" class="form-control" readonly style="background: #333547; color: #B4C9DE"></td>
                                         <td><input wire:model="discount_value" type="text" class="form-control"></td>
                                         <th><input wire:model="tax_rate" type="text" class="form-control"></th>
-                                        <td><input type="text" class="form-control" value="{{$tax_value}}" readonly ></td>
-                                        <td><input type="text" class="form-control" readonly value="{{$subtotal + $tax_value }}"></td>
+                                        <td><input type="text" class="form-control" value="{{$tax_value}}" readonly style="background: #333547; color: #B4C9DE"></td>
+                                        <td><input type="text" class="form-control" readonly value="{{$subtotal + $tax_value }}" style="background: #333547; color: #B4C9DE"></td>
                                     </tr>
                                     </tbody>
                                 </table>
