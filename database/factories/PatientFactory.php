@@ -30,9 +30,7 @@ class PatientFactory extends Factory
             'name'=> $this->faker->name,
             'email'=> $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'), // Hashing the password using bcrypt
-//            'phone' => $this->faker->phoneNumber,
-            'phone' => $this->faker->regexify('/^(012|015|010)[0-9]{8}$/'),
-
+            'phone' => $this->faker->regexify('/^(012|015|010|011)[0-9]{8}$/'),
         'birth_date' => $birthDate,
             'type_blood' => $this->faker->randomElement($bloodTypes),
             'gender' => $randomGender,
@@ -56,5 +54,9 @@ class PatientFactory extends Factory
     }
 
 
+
+
 }
+
+
 

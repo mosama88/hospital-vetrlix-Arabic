@@ -28,7 +28,7 @@ class DoctorFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'phone' => $this->faker->regexify('/^(012|015|010)[0-9]{8}$/'),
+            'phone' => $this->faker->regexify('/^(012|015|010|011)[0-9]{8}$/'),
             'status' => $this->faker->randomElement(['active', 'inactive']),
             'section_id' => Section::all()->random()->id,
         ];

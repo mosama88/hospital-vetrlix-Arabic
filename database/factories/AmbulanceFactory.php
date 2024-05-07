@@ -24,7 +24,7 @@ class AmbulanceFactory extends Factory
 'car_model' => $this->faker->randomElement($carModels),
 'car_year_model' => $this->faker->numberBetween(2000, date('Y')), // Generate a random year between 1950 and current year
 'license_number'=>$this->generatePhoneNumber(14),
-'phone' => $this->faker->regexify('/^(012|015|010)[0-9]{8}$/'),
+'phone' => $this->faker->regexify('/^(012|015|010|011)[0-9]{8}$/'),
 'available' => $this->faker->numberBetween(1, 2), // Generate a random number between 1 and 2
 'type'=>$this->faker->numberBetween(1, 2),
 'notes'=>$this->faker->paragraph(2),
