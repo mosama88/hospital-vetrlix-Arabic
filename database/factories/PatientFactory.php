@@ -51,6 +51,7 @@ class PatientFactory extends Factory
         }
 
         return $phoneNumber;
+
     }
 
 
