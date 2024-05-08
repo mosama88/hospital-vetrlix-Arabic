@@ -89,7 +89,7 @@
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>
-                                            <select wire:model="Service_id" class="form-control" wire:change="get_price" id="exampleFormControlSelect1">
+                                            <select wire:model="service_id" class="form-control" wire:change="get_price" id="exampleFormControlSelect1">
                                                 <option value="">-- اختار الخدمة --</option>
                                                 @foreach($Services as $Service)
                                                     <option value="{{$Service->id}}">{{$Service->name}}</option>

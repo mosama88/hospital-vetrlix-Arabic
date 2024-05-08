@@ -86,23 +86,16 @@ class DoctorRepository implements DoctorRepositoryInterface
         $doctors->doctorappointments()->sync($request->appointments);
         $doctors->save();
 
-        // update photo
-        if ($request->has('photo')){
-            // Delete old photo
-            if ($doctors->image){
-                $old_img = $doctors->image->filename;
-                $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
-            }
-
-            // Check if an image already exists for the specified doctor entity
-            if ($doctors->image) {
-                return null; // If an image already exists, return early without requiring a new photo
-            }
-
-            //Upload img
-            $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
-
-        }
+           // update photo
+           if ($request->has('photo')){
+               // Delete old photo
+               if ($doctors->image){
+                   $old_img = $doctors->image->filename;
+                   $this->Delete_attachment('upload_image','doctors/'.$old_img,$request->id);
+               }
+               //Upload img
+               $this->verifyAndStoreImage($request,'photo','doctors','upload_image',$request->id,'App\Models\Doctor');
+           }
 
 
 

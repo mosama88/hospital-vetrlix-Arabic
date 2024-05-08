@@ -116,11 +116,6 @@
                                                     href="#update_password{{ $doctor->id }}" data-bs-toggle="modal">
                                                     <i class="text-primary ti-key"></i>&nbsp;&nbsp;تغير كلمة المرور</a>
 
-                                                {{-- Change Status --}}
-                                                <a class="dropdown-item modal-effect"
-                                                    href="#update_status{{ $doctor->id }}" data-bs-toggle="modal"><i
-                                                        class="text-warning ti-back-left"></i>&nbsp;&nbsp;تغير الحالة</a>
-
                                                 {{-- Delete Doctor --}}
                                                 <a class="dropdown-item modal-effect" href="#delete{{ $doctor->id }}"
                                                     data-bs-toggle="modal"><i

@@ -154,15 +154,15 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <img class="rounded-circle avatar-xl my-3" id="output" />
-
-
-
-
-
-
                             </div>
                         </div>
                         <!-- end row -->
+                        <div class="form-check mt-4 my-4 mt-lg-0">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                حالة التفعيل
+                            </label>
+                            <input name="status" {{$doctors->status == 'active' ? 'checked' : ''}} value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        </div>
 
                         {{-- Submit --}}
                         <div class="col-12 mb-4 text-center">

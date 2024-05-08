@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('single_invoices', function (Blueprint $table) {
             $table->id();
             $table->date('invoice_date');
-            $table->foreignId('patient_id')->references('id')->on('patients')->cascadeOnDelete();
-            $table->foreignId('doctor_id')->references('id')->on('doctors')->cascadeOnDelete();
-            $table->foreignId('section_id')->references('id')->on('sections')->cascadeOnDelete();
-            $table->foreignId('service_id')->references('id')->on('services')->cascadeOnDelete();
+            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreignId('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreignId('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->double('price',8,2)->default(0);
             $table->double('discount_value',8,2)->default(0);     //قيمة الخصم قبل الضريبه
             $table->string('tax_rate');    //  20% نسبة الضريبه
