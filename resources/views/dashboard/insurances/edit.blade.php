@@ -13,8 +13,10 @@
 
     <div class="container-fluid">
         {{-- Start Row --}}
-        <div class="row">
-            <div class="col-10">
+        <div class="row ">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
                 @include('dashboard.messages_alert')
 
                 <form action="{{route('dashboard.insurances.update', $insurance->id)}}" method="POST">
@@ -23,12 +25,11 @@
                     {{-- input hidden value => id   --}}
                     <input type="hidden" name="id" value="{{$insurance->id}}">
                     <div class="row mx-auto">
-
                         <div class="col-lg-5">
                             <div>
                                 <div class="mb-4">
                                     <label class="form-label" for="input-mask-code">كود الشركة</label>
-                                    <input id="input-mask-code" type="number" class="form-control input-mask"  name="insurance_code" im-insert="false" style="background: #d8d9e9" disabled>
+                        <span style="color: blue; font-weight: bolder; width: 50px;height: 50px;">{{$insurance->insurance_code}}</span>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label" for="input-mask-code2">نسبة خصم المريض %</label>

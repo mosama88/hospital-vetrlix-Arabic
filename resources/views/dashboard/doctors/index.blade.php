@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card-body">
-                        <div class="col-sm-12 col-md-12 col-xl-12 text-end">
+                        <div class="col-sm-12 col-md-12 col-xl-12">
                             <div class="my-4">
                                 <!-- Satic modal -->
                                 <a href="{{ route('dashboard.doctors.create') }}"
