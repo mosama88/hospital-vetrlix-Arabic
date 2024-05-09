@@ -24,7 +24,7 @@
         @foreach ($single_invoices as $single_invoice)
             <tr>
                 <td>{{ $loop->iteration}}</td>
-                <td>{{ $single_invoice->Service->name }}</td>
+                <td>{{ Str::limit($single_invoice->Service->name, 10) }}</td>
                 <td>{{ $single_invoice->Patient->name }}</td>
                 <td>{{ $single_invoice->invoice_date }}</td>
                 <td>{{ $single_invoice->doctor->name }}</td>
@@ -35,10 +35,29 @@
                 <td>{{ number_format($single_invoice->tax_value, 2) }}</td>
                 <td>{{ number_format($single_invoice->total_with_tax, 2) }}</td>
                 <td>{{ $single_invoice->type == 1 ? 'نقدي':'اجل' }}</td>
+
                 <td>
-                    <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_invoice" wire:click="delete({{ $single_invoice->id }})" ><i class="fa fa-trash"></i></button>
-                    <button wire:click="print({{ $single_invoice->id }})" class="btn btn-primary btn-sm"><i class="fas fa-print"></i></button>
+                <div class="btn-group dropend">
+                    <button type="button"
+                            class="btn btn-outline-info btn-md"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        العمليات <i class="mdi mdi-chevron-left"></i>
+                    </button>
+                    <div class="dropdown-menu text-center" style="">
+
+                        {{-- Edit Data --}}
+                        <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-primary btn-sm my-1"><i class="fa fa-edit"></i>
+                           &nbsp;&nbsp;</button>
+
+                        {{-- Delete Doctor --}}
+                        <button type="button" class="btn btn-danger btn-sm my-1" data-toggle="modal" data-target="#delete_invoice" wire:click="delete({{ $single_invoice->id }})">
+                            <i class="fa fa-trash"></i></button>
+
+                        {{-- Print Doctor --}}
+                        <button wire:click="print({{ $single_invoice->id }})" class="btn btn-primary btn-sm">
+                             <i class="fas fa-print"></i></button>
+                    </div>
+                </div>
                 </td>
             </tr>
 
