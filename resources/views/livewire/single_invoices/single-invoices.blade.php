@@ -17,7 +17,7 @@
 
     @if($show_table)
 
-        @include('livewire.single_invoices.Table')
+        @include('livewire.single_invoices.table')
 
     @else
 
@@ -48,7 +48,7 @@
 
                 <div class="col">
                     <label>القسم</label>
-                    <input wire:model="section_id" type="text" class="form-control" readonly style="background: #333547; color: #B4C9DE">
+                    <input wire:model="section_id" type="text" class="form-control" readonly >
                 </div>
 
                 <div class="col">
@@ -89,18 +89,18 @@
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>
-                                            <select wire:model="service_id" class="form-control" wire:change="get_price" id="exampleFormControlSelect1">
+                                            <select wire:model="Service_id" class="form-control" wire:change="get_price" id="exampleFormControlSelect1">
                                                 <option value="">-- اختار الخدمة --</option>
                                                 @foreach($Services as $Service)
                                                     <option value="{{$Service->id}}">{{$Service->name}}</option>
                                                 @endforeach
                                             </select>
                                         </td>
-                                        <td><input wire:model="price" type="text" class="form-control" readonly style="background: #333547; color: #B4C9DE"></td>
+                                        <td><input wire:model="price" type="text" class="form-control" readonly></td>
                                         <td><input wire:model="discount_value" type="text" class="form-control"></td>
                                         <th><input wire:model="tax_rate" type="text" class="form-control"></th>
-                                        <td><input type="text" class="form-control" value="{{$tax_value}}" readonly style="background: #333547; color: #B4C9DE"></td>
-                                        <td><input type="text" class="form-control" readonly value="{{$subtotal + $tax_value }}" style="background: #333547; color: #B4C9DE"></td>
+                                        <td><input type="text" class="form-control" value="{{$tax_value}}" readonly ></td>
+                                        <td><input type="text" class="form-control" readonly value="{{$subtotal + $tax_value }}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

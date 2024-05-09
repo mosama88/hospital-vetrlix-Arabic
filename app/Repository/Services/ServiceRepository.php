@@ -41,6 +41,7 @@ class ServiceRepository implements ServiceRepositoryInterface
        $singleService->name = $request->name;
        $singleService->price = $request->price;
        $singleService->description = $request->description;
+       $singleService->status = 1;
        $singleService->status = $request->status;
 
        $singleService->save();
