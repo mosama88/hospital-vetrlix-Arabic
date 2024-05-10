@@ -63,6 +63,11 @@ class SingleInvoices extends Component
         $this->patient_id = $single_invoice->patient_id;
         $this->doctor_id = $single_invoice->doctor_id;
         $section = DB::table('sections')->where('name', $this->section_id)->first();
+        if ($section) {
+            $this->section_id = $section->id;
+        } else {
+            // Handle the case when the section doesn't exist
+        }
         $this->Service_id = $single_invoice->Service_id;
         $this->price = $single_invoice->price;
         $this->discount_value = $single_invoice->discount_value;
@@ -77,11 +82,16 @@ class SingleInvoices extends Component
             // في حالة التعديل
             if($this->updateMode){
                 $single_invoices = single_invoice::findorfail($this->single_invoice_id);
-                $single_invoices->invoice_type = 1;
+                $single_invoices->type = 1;
                 $single_invoices->invoice_date = date('Y-m-d');
                 $single_invoices->patient_id = $this->patient_id;
                 $single_invoices->doctor_id = $this->doctor_id;
                 $section = DB::table('sections')->where('name', $this->section_id)->first();
+                if ($section) {
+                    $single_invoices->section_id = $section->id;
+                } else {
+                    // Handle the case when the section doesn't exist
+                }
                 $single_invoices->Service_id = $this->Service_id;
                 $single_invoices->price = $this->price;
                 $single_invoices->discount_value = $this->discount_value;
@@ -95,51 +105,49 @@ class SingleInvoices extends Component
 
                 $fund_accounts = FundAccount::where('single_invoice_id',$this->single_invoice_id)->first();
                 $fund_accounts->date = date('Y-m-d');
-                $fund_accounts->invoice_id = $single_invoices->id;
+                $fund_accounts->single_invoice_id = $single_invoices->id;
                 $fund_accounts->Debit = $single_invoices->total_with_tax;
                 $fund_accounts->credit = 0.00;
                 $fund_accounts->save();
                 $this->InvoiceUpdated =true;
                 $this->show_table =true;
-
-
             }
             // في حالة الاضافة
-        else{
+            else{
 
 //حفظ فى جدول الفواتير
-            $single_invoices = new single_invoice();
-            $single_invoices->invoice_date = date('Y-m-d');
-            $single_invoices->patient_id = $this->patient_id;
-            $single_invoices->doctor_id = $this->doctor_id;
-            $section = DB::table('sections')->where('name', $this->section_id)->first();
-            if ($section) {
-                $single_invoices->section_id = $section->id;
-            } else {
-                // Handle the case when the section doesn't exist
-            }
-            $single_invoices->Service_id = $this->Service_id;
-            $single_invoices->price = $this->price;
-            $single_invoices->discount_value = $this->discount_value;
-            $single_invoices->tax_rate = $this->tax_rate;
-            // قيمة الضريبة = السعر - الخصم * نسبة الضريبة /100
-            $single_invoices->tax_value = ($this->price -$this->discount_value) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
-            // الاجمالي شامل الضريبة  = السعر - الخصم + قيمة الضريبة
-            $single_invoices->total_with_tax = $single_invoices->price -  $single_invoices->discount_value + $single_invoices->tax_value;
-            $single_invoices->type = $this->type;
-            $single_invoices->save();
+                $single_invoices = new single_invoice();
+                $single_invoices->invoice_date = date('Y-m-d');
+                $single_invoices->patient_id = $this->patient_id;
+                $single_invoices->doctor_id = $this->doctor_id;
+                $section = DB::table('sections')->where('name', $this->section_id)->first();
+                if ($section) {
+                    $single_invoices->section_id = $section->id;
+                } else {
+                    // Handle the case when the section doesn't exist
+                }
+                $single_invoices->Service_id = $this->Service_id;
+                $single_invoices->price = $this->price;
+                $single_invoices->discount_value = $this->discount_value;
+                $single_invoices->tax_rate = $this->tax_rate;
+                // قيمة الضريبة = السعر - الخصم * نسبة الضريبة /100
+                $single_invoices->tax_value = ($this->price -$this->discount_value) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
+                // الاجمالي شامل الضريبة  = السعر - الخصم + قيمة الضريبة
+                $single_invoices->total_with_tax = $single_invoices->price -  $single_invoices->discount_value + $single_invoices->tax_value;
+                $single_invoices->type = $this->type;
+                $single_invoices->save();
 
-            //حفظ فى جدول الصندوق
-            $fund_accounts = new FundAccount();
-            $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->single_invoice_id = $single_invoices->id;
-            $fund_accounts->Debit = $single_invoices->total_with_tax;
-            $fund_accounts->credit = 0.00;
-            $fund_accounts->save();
+                //حفظ فى جدول الصندوق
+                $fund_accounts = new FundAccount();
+                $fund_accounts->date = date('Y-m-d');
+                $fund_accounts->single_invoice_id = $single_invoices->id;
+                $fund_accounts->Debit = $single_invoices->total_with_tax;
+                $fund_accounts->credit = 0.00;
+                $fund_accounts->save();
 
 
-            $this->InvoiceUpdated =true;
-            $this->show_table =true;
+                $this->InvoiceUpdated =true;
+                $this->show_table =true;
             }
         }else{
 
@@ -175,9 +183,21 @@ class SingleInvoices extends Component
             $this->InvoiceUpdated =true;
             $this->show_table =true;
         }
+    }
 
+    public function delete($id){
 
+        $this->single_invoice_id = $id;
 
     }
+
+    public function destroy(){
+        single_invoice::destroy($this->single_invoice_id);
+        return redirect()->to('single-invoices');
+    }
 }
+
+
+
+
 

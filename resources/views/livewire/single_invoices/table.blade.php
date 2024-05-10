@@ -1,8 +1,7 @@
 
 
 <button class="btn btn-outline-primary btn-md" wire:click="show_form_add" type="button"> <i class="fas fa-plus-square"></i> اضافة فاتورة جديدة </button><br><br>
-<div class="table-responsive">
-    <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
+    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
         <tr>
             <th>#</th>
@@ -46,15 +45,16 @@
                     <div class="dropdown-menu text-center" style="">
 
                         {{-- Edit Data --}}
-                        <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-info btn-sm my-1"><i class="fa fa-edit"></i>
+                        <button wire:click="edit({{ $single_invoice->id }})" class="modal-effect btn btn-outline-info btn-sm"><i class="fa fa-edit"></i>
                            &nbsp;&nbsp;</button>
 
                         {{-- Delete Doctor --}}
-                        <button type="button" class="btn btn-danger btn-sm my-1" data-toggle="modal" data-target="#delete_invoice" wire:click="delete({{ $single_invoice->id }})">
-                            <i class="fa fa-trash"></i></button>
+                        <button type="button" class="modal-effect btn btn-outline-danger btn-sm"
+                        data-bs-toggle="modal" href="#delete_invoice" wire:click="delete({{ $single_invoice->id }})" ><i class="fa fa-trash"></i></button>
+
 
                         {{-- Print Doctor --}}
-                        <button wire:click="print({{ $single_invoice->id }})" class="btn btn-primary btn-sm">
+                        <button wire:click="print({{ $single_invoice->id }})" class="modal-effect btn btn-outline-success btn-sm">
                              <i class="fas fa-print"></i></button>
                     </div>
                 </div>
@@ -64,6 +64,7 @@
         @endforeach
     </table>
 
-{{--    @include('livewire.single_invoices.delete')--}}
+    @include('livewire.single_invoices.delete')
+{{--    @include('livewire.single_invoices.print')--}}
 
 </div>

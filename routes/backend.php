@@ -66,13 +66,13 @@ use Illuminate\Support\Facades\Route;
             ##################################### End Route Patients ################################
             ##################################### Start Route Single Invoices ################################
             Route::view( 'single-invoices','livewire.single_invoices.index')->name('single-invoices');
+            Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
+
             ##################################### End Route Single Invoices ################################
     });
 
 
 
     require __DIR__.'/auth.php';
-
-
 
 
