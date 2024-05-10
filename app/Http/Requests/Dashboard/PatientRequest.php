@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PatientRequest extends FormRequest
 {
@@ -21,8 +22,10 @@ class PatientRequest extends FormRequest
      */
     public function rules(): array
     {
+        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
+            return $this->Updaterules();
+        }
         return [
-//            'nation_number' => 'required|numeric',
             'nation_number' => 'required|unique:patients,nation_number|min:14|max:14',
             'name'=>"required|string|min:3|max:100",
             'email'=>"required|unique:patients,email|email|min:3",
@@ -77,5 +80,22 @@ class PatientRequest extends FormRequest
 
 
         ];
+    }
+    public function Updaterules()
+    {
+        $patientId = $this->route('patient');
+        $rules = [
+            'nation_number' => ['required', 'min:14', 'max:14',
+                Rule::unique('patients', 'nation_number')->ignore($patientId),
+            ],
+
+            'email' => ['required', 'email', 'min:3',
+                Rule::unique('patients', 'email')->ignore($patientId),
+            ],
+
+            // Include other rules for update operation...
+        ];
+
+        return $rules;
     }
 }
