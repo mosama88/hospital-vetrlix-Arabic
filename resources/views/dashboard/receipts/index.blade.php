@@ -20,7 +20,7 @@
                         <div class="col-12 ">
                             <div class="col-sm-12 col-md-12 col-xl-12">
                                 <div class="my-4">
-                                    <a href="{{route('dashboard.receipts.create')}}" class="btn btn-primary" role="button"
+                                    <a href="{{route('dashboard.receipts.create')}}" class="btn btn-outline-primary btn-md" role="button"
                                        aria-pressed="true">اضافة سند جديد</a>
                                 </div>
                             </div>
@@ -46,10 +46,10 @@
                                                 <td>{{ \Str::limit($receipt->description, 50) }}</td>
                                                 <td>{{ $receipt->created_at?->diffForHumans() }}</td>
                                                 <td>
-                                    <a href="{{route('dashboard.receipts.edit',$receipt->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$receipt->id}}">
+                                    <a href="{{route('dashboard.receipts.edit',$receipt->id)}}" class="btn btn-outline-info btn-sm"><i class="fas fa-edit"></i></a>
+                                    <a class="modal-effect btn btn-outline-danger btn-sm" data-bs-toggle="modal" href="#delete{{$receipt->id}}">
                                         <i class="fas fa-trash-alt"></i></a>
-                                    <a href="{{route('dashboard.receipts.show',$receipt->id)}}" class="btn btn-primary btn-sm" target="_blank" title="طباعه سند قبض"><i class="fas fa-print"></i></a>
+                                    <a href="{{route('dashboard.receipts.show',$receipt->id)}}" class="btn btn-outline-primary btn-sm" target="_blank" title="طباعه سند قبض"><i class="fas fa-print"></i></a>
 
                                     </td>
                                             </tr>
