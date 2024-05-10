@@ -11,6 +11,7 @@ use App\Models\Section;
 use App\Models\Service;
 use App\Models\single_invoice;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
 class SingleInvoices extends Component
@@ -43,6 +44,23 @@ class SingleInvoices extends Component
         $this->show_table = false;
     }
 
+    public function print($id)
+    {
+        $single_invoice = single_invoice::findorfail($id);
+        return Redirect::route('Print_single_invoices',[
+            'invoice_date' => $single_invoice->invoice_date,
+            'doctor_id' => $single_invoice->Doctor->name,
+            'section_id' => $single_invoice->Section->name,
+            'Service_id' => $single_invoice->Service->name,
+            'type' => $single_invoice->type,
+            'price' => $single_invoice->price,
+            'discount_value' => $single_invoice->discount_value,
+            'tax_rate' => $single_invoice->tax_rate,
+            'total_with_tax' => $single_invoice->total_with_tax,
+        ]);
+
+    }
+
     public function get_section()
     {
         $doctor_id = Doctor::with('section')->where('id', $this->doctor_id)->first();
@@ -53,6 +71,8 @@ class SingleInvoices extends Component
     {
         $this->price = Service::where('id', $this->Service_id)->first()->price;
     }
+
+
 
     public function edit($id){
 

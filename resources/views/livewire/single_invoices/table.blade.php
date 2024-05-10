@@ -1,6 +1,5 @@
-
-
-<button class="btn btn-outline-primary btn-md" wire:click="show_form_add" type="button"> <i class="fas fa-plus-square"></i> اضافة فاتورة جديدة </button><br><br>
+<button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة فاتورة جديدة </button><br><br>
+<div>
     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
         <thead>
         <tr>
@@ -65,6 +64,4 @@
     </table>
 
     @include('livewire.single_invoices.delete')
-{{--    @include('livewire.single_invoices.print')--}}
-
 </div>

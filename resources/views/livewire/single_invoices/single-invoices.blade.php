@@ -20,7 +20,6 @@
         @include('livewire.single_invoices.table')
 
     @else
-
         <form wire:submit.prevent="store" autocomplete="off">
             @csrf
             <div class="row">
