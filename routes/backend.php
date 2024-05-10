@@ -4,6 +4,7 @@ use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\PatientController;
+use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\SectionController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
@@ -67,9 +68,11 @@ use Illuminate\Support\Facades\Route;
             ##################################### Start Route Single Invoices ################################
             Route::view( 'single-invoices','livewire.single_invoices.index')->name('single-invoices');
             Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
-
             ##################################### End Route Single Invoices ################################
-    });
+            ##################################### Start Route Single Invoices ################################
+            Route::resource('/Receipt', ReceiptAccountController::class);
+            ##################################### End Route Single Invoices ################################
+        });
 
 
 
