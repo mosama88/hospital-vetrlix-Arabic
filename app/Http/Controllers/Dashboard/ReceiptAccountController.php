@@ -8,51 +8,51 @@ use Illuminate\Http\Request;
 
 class ReceiptAccountController extends Controller
 {
-    private $Receipt;
+    private $receipts;
 
-    public function __construct(ReceiptRepositoryInterface $Receipt)
+    public function __construct(ReceiptRepositoryInterface $receipts)
     {
-        $this->Receipt = $Receipt;
+        $this->receipts = $receipts;
     }
 
 
     public function index()
     {
-        return $this->Receipt->index();
+        return $this->receipts->index();
     }
 
     public function create()
     {
-        return $this->Receipt->create();
+        return $this->receipts->create();
     }
 
 
     public function store(Request $request)
     {
-       return $this->Receipt->store($request);
+       return $this->receipts->store($request);
     }
 
 
     public function show($id)
     {
-        return $this->Receipt->show($id);
+        return $this->receipts->show($id);
     }
 
 
     public function edit($id)
     {
-        return $this->Receipt->edit($id);
+        return $this->receipts->edit($id);
     }
 
 
     public function update(Request $request)
     {
-        return $this->Receipt->update($request);
+        return $this->receipts->update($request);
     }
 
 
     public function destroy(Request $request)
     {
-        return $this->Receipt->destroy($request);
+        return $this->receipts->destroy($request);
     }
 }

@@ -70,7 +70,7 @@ use Illuminate\Support\Facades\Route;
             Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
             ##################################### End Route Single Invoices ################################
             ##################################### Start Route Single Invoices ################################
-            Route::resource('/Receipt', ReceiptAccountController::class);
+            Route::resource('/receipts', ReceiptAccountController::class);
             ##################################### End Route Single Invoices ################################
         });
 

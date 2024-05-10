@@ -18,19 +18,19 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     public function index()
     {
         $receipts =  ReceiptAccount::all();
-        return view('Dashboard.Receipt.index',compact('receipts'));
+        return view('dashboard.receipts.index',compact('receipts'));
     }
 
     public function create()
     {
         $Patients = Patient::all();
-        return view('Dashboard.Receipt.add',compact('Patients'));
+        return view('dashboard.receipts.add',compact('Patients'));
     }
 
     public function show($id)
     {
         $receipt = ReceiptAccount::findorfail($id);
-        return view('Dashboard.Receipt.print',compact('receipt'));
+        return view('dashboard.receipts.print',compact('receipt'));
     }
 
     public function store($request)
@@ -63,7 +63,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
 
             DB::commit();
             session()->flash('add');
-            return redirect()->route('Receipt.create');
+            return redirect()->route('dashboard.receipts.create');
         }
 
         catch (\Exception $e) {
@@ -78,7 +78,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     {
         $receipt_accounts = ReceiptAccount::findorfail($id);
         $Patients = Patient::all();
-        return view('Dashboard.Receipt.edit',compact('receipt_accounts','Patients'));
+        return view('dashboard.receipts.edit',compact('receipt_accounts','Patients'));
     }
 
     public function update($request)
@@ -112,7 +112,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
 
             DB::commit();
             session()->flash('edit');
-            return redirect()->route('Receipt.index');
+            return redirect()->route('dashboard.receipts.index');
         }
 
         catch (\Exception $e) {

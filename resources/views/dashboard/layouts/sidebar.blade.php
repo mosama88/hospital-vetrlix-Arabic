@@ -61,7 +61,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('dashboard.single-invoices')}}"><i class="far fa-circle"></i>فاتورة خدمة مفرده</a></li>
-                        <li><a href="{{route('dashboard.Receipt.index')}}"><i class="far fa-circle"></i>سندات القبض</a></li>
+                        <li><a href="{{route('dashboard.receipts.index')}}"><i class="far fa-circle"></i>سندات القبض</a></li>
                     </ul>
                 </li>
 
