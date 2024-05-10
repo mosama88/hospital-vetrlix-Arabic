@@ -54,12 +54,61 @@ class SingleInvoices extends Component
         $this->price = Service::where('id', $this->Service_id)->first()->price;
     }
 
+    public function edit($id){
+
+        $this->show_table = false;
+        $this->updateMode = true;
+        $single_invoice = single_invoice::findorfail($id);
+        $this->single_invoice_id = $single_invoice->id;
+        $this->patient_id = $single_invoice->patient_id;
+        $this->doctor_id = $single_invoice->doctor_id;
+        $section = DB::table('sections')->where('name', $this->section_id)->first();
+        $this->Service_id = $single_invoice->Service_id;
+        $this->price = $single_invoice->price;
+        $this->discount_value = $single_invoice->discount_value;
+        $this->type = $single_invoice->type;
+
+
+    }
+
     public function store(){
         //فى حالة كانت الفاتورة نقدى
         if($this->type == 1){
+            // في حالة التعديل
+            if($this->updateMode){
+                $single_invoices = single_invoice::findorfail($this->single_invoice_id);
+                $single_invoices->invoice_type = 1;
+                $single_invoices->invoice_date = date('Y-m-d');
+                $single_invoices->patient_id = $this->patient_id;
+                $single_invoices->doctor_id = $this->doctor_id;
+                $section = DB::table('sections')->where('name', $this->section_id)->first();
+                $single_invoices->Service_id = $this->Service_id;
+                $single_invoices->price = $this->price;
+                $single_invoices->discount_value = $this->discount_value;
+                $single_invoices->tax_rate = $this->tax_rate;
+                // قيمة الضريبة = السعر - الخصم * نسبة الضريبة /100
+                $single_invoices->tax_value = ($this->price -$this->discount_value) * ((is_numeric($this->tax_rate) ? $this->tax_rate : 0) / 100);
+                // الاجمالي شامل الضريبة  = السعر - الخصم + قيمة الضريبة
+                $single_invoices->total_with_tax = $single_invoices->price -  $single_invoices->discount_value + $single_invoices->tax_value;
+                $single_invoices->type = $this->type;
+                $single_invoices->save();
+
+                $fund_accounts = FundAccount::where('single_invoice_id',$this->single_invoice_id)->first();
+                $fund_accounts->date = date('Y-m-d');
+                $fund_accounts->invoice_id = $single_invoices->id;
+                $fund_accounts->Debit = $single_invoices->total_with_tax;
+                $fund_accounts->credit = 0.00;
+                $fund_accounts->save();
+                $this->InvoiceUpdated =true;
+                $this->show_table =true;
+
+
+            }
+            // في حالة الاضافة
+        else{
+
 //حفظ فى جدول الفواتير
             $single_invoices = new single_invoice();
-//                    $single_invoices->invoice_type = 1;
             $single_invoices->invoice_date = date('Y-m-d');
             $single_invoices->patient_id = $this->patient_id;
             $single_invoices->doctor_id = $this->doctor_id;
@@ -91,7 +140,7 @@ class SingleInvoices extends Component
 
             $this->InvoiceUpdated =true;
             $this->show_table =true;
-
+            }
         }else{
 
             $single_invoices = new single_invoice();

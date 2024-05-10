@@ -46,7 +46,7 @@
                     <div class="dropdown-menu text-center" style="">
 
                         {{-- Edit Data --}}
-                        <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-primary btn-sm my-1"><i class="fa fa-edit"></i>
+                        <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-info btn-sm my-1"><i class="fa fa-edit"></i>
                            &nbsp;&nbsp;</button>
 
                         {{-- Delete Doctor --}}

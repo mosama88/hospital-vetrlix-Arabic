@@ -48,7 +48,7 @@
 
                 <div class="col">
                     <label>القسم</label>
-                    <input wire:model="section_id" type="text" class="form-control" readonly >
+                    <input wire:model="section_id" type="text" class="form-control" style="background-color: #C9C9C9;color: black" readonly >
                 </div>
 
                 <div class="col">
@@ -79,10 +79,10 @@
                                         <th>#</th>
                                         <th>اسم الخدمة</th>
                                         <th>سعر الخدمة</th>
-                                        <th>قيمة الخصم</th>
-                                        <th>نسبة الضريبة</th>
-                                        <th>قيمة الضريبة</th>
-                                        <th>الاجمالي مع الضريبة</th>
+                                        <th>قيمة الخصم ( LE )</th>
+                                        <th>نسبة الضريبة ( % )</th>
+                                        <th>قيمة الضريبة (  LE )</th>
+                                        <th>الاجمالي بالضريبة ( LE )</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -96,11 +96,11 @@
                                                 @endforeach
                                             </select>
                                         </td>
-                                        <td><input wire:model="price" type="text" class="form-control" readonly></td>
+                                        <td><input wire:model="price" type="text" class="form-control" style="background-color: #C9C9C9;color: black" readonly></td>
                                         <td><input wire:model="discount_value" type="text" class="form-control"></td>
                                         <th><input wire:model="tax_rate" type="text" class="form-control"></th>
-                                        <td><input type="text" class="form-control" value="{{$tax_value}}" readonly ></td>
-                                        <td><input type="text" class="form-control" readonly value="{{$subtotal + $tax_value }}"></td>
+                                        <td><input type="text" class="form-control" value="{{$tax_value}}" style="background-color: #C9C9C9;color: black" readonly ></td>
+                                        <td><input type="text" class="form-control" style="background-color: #C9C9C9;color: black" readonly value="{{$subtotal + $tax_value }}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
