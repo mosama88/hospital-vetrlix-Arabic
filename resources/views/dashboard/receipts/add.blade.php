@@ -36,7 +36,7 @@
                             <!-- end -->
                         </div>
 
-                        {{--Amount--}}
+                        {{--Debit--}}
                         <div class="form-group mb-3">
                             <label for="recipient-name" class="col-form-label">المبلغ</label>
                             <input type="number" name="Debit" class="form-control" id="recipient-name">

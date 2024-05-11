@@ -62,8 +62,8 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $patient_accounts->save();
 
             DB::commit();
-            session()->flash('add');
-            return redirect()->route('dashboard.receipts.create');
+            session()->flash('success', 'تم أضافة سند القبض بنجاح');
+            return redirect()->route('dashboard.receipts.index');
         }
 
         catch (\Exception $e) {
@@ -111,7 +111,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
 
 
             DB::commit();
-            session()->flash('edit');
+            session()->flash('success', 'تم تعديل سند القبض بنجاح');
             return redirect()->route('dashboard.receipts.index');
         }
 
@@ -125,7 +125,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     {
         try {
             ReceiptAccount ::destroy($request->id);
-            session()->flash('delete');
+            session()->flash('success', 'تم حذف سند القبض بنجاح');
             return redirect()->back();
         }
         catch (\Exception $e) {

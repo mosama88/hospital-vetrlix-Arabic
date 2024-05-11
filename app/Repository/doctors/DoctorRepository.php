@@ -19,6 +19,14 @@ class DoctorRepository implements DoctorRepositoryInterface
         return view('dashboard.doctors.index', compact('doctors'));
     }
 
+
+    public function create()
+    {
+        $sections = Section::all();
+        $appointments = Appointment::all();
+        return view('dashboard.doctors.add', compact('sections','appointments'));
+    }
+
     public function store(DoctorRequest $request)
     {
 
@@ -51,15 +59,6 @@ class DoctorRepository implements DoctorRepositoryInterface
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
     }
-
-    public function create()
-    {
-        $sections = Section::all();
-        $appointments = Appointment::all();
-        return view('dashboard.doctors.add', compact('sections','appointments'));
-    }
-
-
 
 
     public function edit($id){

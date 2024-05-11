@@ -37,10 +37,10 @@
                                     <!-- end -->
                                 </div>
 
-                                {{--Amount--}}
+                                {{--Debit--}}
                                 <div class="form-group mb-3">
                                     <label for="recipient-name" class="col-form-label">المبلغ</label>
-                                    <input value="{{$receipt_accounts->Debit}}" name="Debit" type="number" class="form-control" id="recipient-name">
+                                    <input value="{{$receipt_accounts->amount}}" name="Debit" type="number" class="form-control" id="recipient-name">
                                 </div>
 
                                 {{--Description--}}
