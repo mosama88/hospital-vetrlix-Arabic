@@ -71,6 +71,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('dashboard.receipts.index')}}"><i class="far fa-circle"></i>سندات القبض</a></li>
+                        <li><a href="{{route('dashboard.payments.index')}}"><i class="far fa-circle"></i>سندات صرف</a></li>
+
                     </ul>
                 </li>
 

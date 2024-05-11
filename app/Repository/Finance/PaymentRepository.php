@@ -15,19 +15,19 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function index()
     {
         $payments =  PaymentAccount::all();
-        return view('Dashboard.Payment.index',compact('payments'));
+        return view('dashboard.payments.index',compact('payments'));
     }
 
     public function create()
     {
         $Patients = Patient::all();
-        return view('Dashboard.Payment.add',compact('Patients'));
+        return view('dashboard.payments.add',compact('Patients'));
     }
 
     public function show($id)
     {
         $payment_account = PaymentAccount::findorfail($id);
-        return view('Dashboard.Payment.print',compact('payment_account'));
+        return view('dashboard.payments.print',compact('payment_account'));
     }
 
     public function store($request)
@@ -63,7 +63,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
             DB::commit();
             session()->flash('add');
-            return redirect()->route('Payment.create');
+            return redirect()->route('dashboard.payments.create');
 
         }
         catch (\Exception $e) {
@@ -76,7 +76,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         $payment_accounts = PaymentAccount::findorfail($id);
         $Patients = Patient::all();
-        return view('Dashboard.Payment.edit',compact('payment_accounts','Patients'));
+        return view('dashboard.payments.edit',compact('payment_accounts','Patients'));
     }
 
     public function update($request)
@@ -112,7 +112,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
             DB::commit();
             session()->flash('edit');
-            return redirect()->route('Payment.index');
+            return redirect()->route('dashboard.payments.index');
 
         }
         catch (\Exception $e) {
