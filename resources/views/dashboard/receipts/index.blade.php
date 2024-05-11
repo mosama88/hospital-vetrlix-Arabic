@@ -41,7 +41,7 @@
                                         @foreach($receipts as $receipt)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td>{{ $receipt->patients->name }}</td>
+                                                <td>{{ $receipt->patient->name }}</td>
                                                 <td>{{ number_format($receipt->amount, 2) }}</td>
                                                 <td>{{ \Str::limit($receipt->description, 50) }}</td>
                                                 <td>{{ $receipt->created_at?->diffForHumans() }}</td>

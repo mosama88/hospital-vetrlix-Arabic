@@ -12,7 +12,7 @@ class ReceiptAccount extends Model
     protected $guarded=[];
 
 
-    public function patients()
+    public function patient()
     {
         return $this->belongsTo(Patient::class,'patient_id');
     }

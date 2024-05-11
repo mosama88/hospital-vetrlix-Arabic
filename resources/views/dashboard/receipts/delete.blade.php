@@ -13,7 +13,7 @@
                 {{ csrf_field() }}
             <div class="modal-body">
                 <input type="hidden" name="id" value="{{ $receipt->id }}">
-                هل تريد حذف سند قبض <strong class="text-danger">{{ $receipt->patients->name }}</strong> ؟
+                هل تريد حذف سند قبض <strong class="text-danger">{{ $receipt->patient->name }}</strong> ؟
             </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-outline-danger">حذف</button>
