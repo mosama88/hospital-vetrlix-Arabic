@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ReceiptAccount extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
-    public function patients()
-    {
+
+    public function patient(){
         return $this->belongsTo(Patient::class,'patient_id');
     }
 }
