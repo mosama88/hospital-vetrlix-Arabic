@@ -1,21 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\InsuranceRequest;
-use App\Interfaces\Insurances\InsuranceRepositoryInterface;
+use App\Interfaces\Finance\PaymentRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Models\Insurance;
+use App\Models\PaymentAccount;
 
-
-class InsuranceController extends Controller
+class PaymentAccountController extends Controller
 {
-
 
     private $payments;
 
-    public function __construct(InsuranceRepositoryInterface $payments)
+
+    public function __construct(PaymentRepositoryInterface $payments)
     {
         $this->payments = $payments;
     }
@@ -23,7 +20,7 @@ class InsuranceController extends Controller
 
     public function index()
     {
-        return $this->insurances->index();
+        return $this->payments->index();
     }
 
     /**
@@ -31,15 +28,15 @@ class InsuranceController extends Controller
      */
     public function create()
     {
-        return $this->insurances->create();
+        return $this->payments->create();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(InsuranceRequest  $request)
+    public function store(Request  $request)
     {
-        return $this->insurances->store($request);
+        return $this->payments->store($request);
     }
 
     /**
@@ -55,15 +52,15 @@ class InsuranceController extends Controller
      */
     public function edit($id)
     {
-        return $this->insurances->edit($id);
+        return $this->payments->edit($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(InsuranceRequest $request)
+    public function update(Request $request)
     {
-        return $this->insurances->update($request);
+        return $this->payments->update($request);
     }
 
     /**
@@ -71,6 +68,8 @@ class InsuranceController extends Controller
      */
     public function destroy(Request $request)
     {
-        return $this->insurances->destroy($request);
+        return $this->payments->destroy($request);
     }
+
+
 }
