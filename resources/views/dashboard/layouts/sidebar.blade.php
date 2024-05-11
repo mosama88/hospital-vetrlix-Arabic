@@ -56,11 +56,20 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="fas fa-file-invoice"></i>
+                        <i class="fas fa-receipt"></i>
                         <span>الفواتير</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('dashboard.single-invoices')}}"><i class="far fa-circle"></i>فاتورة خدمة مفرده</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>الحسابات</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('dashboard.receipts.index')}}"><i class="far fa-circle"></i>سندات القبض</a></li>
                     </ul>
                 </li>

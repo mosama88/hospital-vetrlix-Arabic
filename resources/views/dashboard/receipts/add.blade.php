@@ -5,6 +5,9 @@
     <li class="breadcrumb-item"><a href="{{ route('dashboard.receipts.index') }}">سندات القبض</a>
     </li>
 @endsection
+
+<link href="{{ asset('dashboard/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+
 @section('current-page', 'أضافة سند قبض')
 @section('content')
     @include('dashboard.layouts.page-link')
@@ -14,50 +17,43 @@
 
     <div class="container-fluid">
         {{-- Start Row --}}
-        <div class="row ">
-            <div class="col-12">
+        <div class="row">
+            <div class="col-10  mx-auto">
                 <div class="card">
                     <div class="card-body">
-                    <form action="{{ route('dashboard.receipts.store') }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.receipts.store') }}" method="post" autocomplete="off">
                         {{ csrf_field() }}
 
-                            <div class="row row-xs mb-4 align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label>اسم المريض</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                   <select name="patient_id" class="form-control select2" required>
-                                      @foreach($Patients as $Patient)
-                                           <option value=""></option>
-                                           <option value="{{$Patient->id}}">{{$Patient->name}}</option>
-                                      @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                        {{--patient_id--}}
+                        <div class="mb-3">
+                            <label class="form-label">أسم المريض</label>
+                            <select name="patient_id" class="form-control select2">
+                                <option selected disabled>أختر أسم المريض</option>
+                                    @foreach($Patients as $Patient)
+                                        <option value="{{$Patient->id}}">{{$Patient->name}}</option>
+                                    @endforeach
+                            </select>
+                            <!-- end -->
+                        </div>
 
-                            <div class="row mb-4 row-xs align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label>المبلغ</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <input class="form-control" name="Debit" type="number">
-                                </div>
-                            </div>
+                        {{--Amount--}}
+                        <div class="form-group mb-3">
+                            <label for="recipient-name" class="col-form-label">المبلغ</label>
+                            <input type="number" name="Debit" class="form-control" id="recipient-name">
+                        </div>
 
-                            <div class="row mb-4 row-xs align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label>البيان</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <textarea class="form-control" name="description" rows="3"></textarea>
-                                </div>
-                            </div>
+                        {{--Description--}}
+                        <div class="form-group mb-3">
+                            <label for="recipient-name" class="col-form-label">البيان</label>
+                            <textarea id="textarea" name="description" class="form-control" rows="3"
+                                      placeholder="This textarea has a limit of 225 chars."></textarea>
+                        </div>
 
-                            <div class="col-12 mb-4 text-center">
-                                <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
-                                <a href="{{ route('dashboard.receipts.index') }}"
-                                   class="btn btn-outline-dark mx-2">رجوع</a>
-                            </div>
+
+                        <div class="col-12 mb-4 text-center">
+                            <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
+                            <a href="{{ route('dashboard.receipts.index') }}"
+                               class="btn btn-outline-dark mx-2">رجوع</a>
                         </div>
                     </form>
                 </div>
@@ -67,15 +63,14 @@
     <!-- row closed -->
     </div>
     <!-- Container closed -->
-    </div>
-    <!-- main-content closed -->
+
 
     @include('dashboard.layouts.scripts')
 
     <!--Internal  Notify js -->
-    <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifIt.js"></script>
-    <script src="{{ asset('dashboard') }}/assets/plugins/notify/js/notifit-custom.js"></script>
-    <script src="{{ asset('dashboard') }}/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
+    <script src="{{ asset('dashboard/assets/plugins/notify/js/notifIt.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/plugins/notify/js/notifit-custom.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/libs/select2/js/select2.min.js') }}"></script>
 
 @endsection

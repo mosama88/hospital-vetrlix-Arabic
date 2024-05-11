@@ -1,8 +1,10 @@
-@extends('Dashboard.layouts.master')
-@section('title')
-   معاينة الطباعة
-@stop
-@section('css')
+    @extends('dashboard.layouts.master')
+    @section('title', 'طباعة سند قبض')
+    @section('page-title', 'طباعة سند قبض')
+    @section('page-link-back')
+        <li class="breadcrumb-item"><a href="{{ route('dashboard.receipts.index') }}">سندات القبض</a>
+        </li>
+    @endsection
     <style>
         @media print {
             #print_Button {
@@ -10,19 +12,21 @@
             }
         }
     </style>
-@endsection
-@section('page-header')
-    <!-- breadcrumb -->
-    <div class="breadcrumb-header justify-content-between">
-        <div class="my-auto">
-            <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">سند قبض</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ طباعه سند</span>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb -->
-@endsection
-@section('content')
+    <link href="{{ asset('dashboard/assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+
+    @section('current-page', 'طباعة سند قبض')
+    @section('content')
+        @include('dashboard.layouts.page-link')
+        <!--Internal   Notify -->
+        <link href="{{ asset('dashboard') }}/assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
+        {{--    @include('dashboard.messages_alert')--}}
+
+        <div class="container-fluid">
+            {{-- Start Row --}}
+            <div class="row">
+                <div class="col-10  mx-auto">
+                    <div class="card">
+                        <div class="card-body">
     <!-- row -->
     <div class="row row-sm">
         <div class="col-md-12 col-xl-12">
@@ -79,20 +83,24 @@
     <!-- Container closed -->
     </div>
     <!-- main-content closed -->
-@endsection
-@section('js')
-    <!--Internal  Chart.bundle js -->
-    <script src="{{URL::asset('Admin/assets/plugins/chart.js/Chart.bundle.min.js')}}"></script>
 
+                    @include('dashboard.layouts.scripts')
 
-    <script type="text/javascript">
-        function printDiv() {
-            var printContents = document.getElementById('print').innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-            location.reload();
-        }
-    </script>
-@endsection
+                    <script type="text/javascript">
+                        function printDiv() {
+                            var printContents = document.getElementById('print').innerHTML;
+                            var originalContents = document.body.innerHTML;
+                            document.body.innerHTML = printContents;
+                            window.print();
+                            document.body.innerHTML = originalContents;
+                            location.reload();
+                        }
+                    </script>
+
+                    <!--Internal  Notify js -->
+                    <script src="{{ asset('dashboard/assets/plugins/notify/js/notifIt.js') }}"></script>
+                    <script src="{{ asset('dashboard/assets/plugins/notify/js/notifit-custom.js') }}"></script>
+                    <script src="{{ asset('dashboard/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+                    <script src="{{ asset('dashboard/assets/libs/select2/js/select2.min.js') }}"></script>
+
+    @endsection

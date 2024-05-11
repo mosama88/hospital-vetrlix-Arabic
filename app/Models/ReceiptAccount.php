@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Patient;
 
 class ReceiptAccount extends Model
 {
@@ -11,7 +12,8 @@ class ReceiptAccount extends Model
     protected $guarded=[];
 
 
-    public function patient(){
+    public function patients()
+    {
         return $this->belongsTo(Patient::class,'patient_id');
     }
 }
