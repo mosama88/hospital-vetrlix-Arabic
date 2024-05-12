@@ -14,7 +14,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function index()
     {
-        $payments =  PaymentAccount::orderBy('created_at', 'desc')->all();
+        $payments =  PaymentAccount::orderBy('created_at', 'desc')->get();
         return view('dashboard.payments.index',compact('payments'));
     }
 
