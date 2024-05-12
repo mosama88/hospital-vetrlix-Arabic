@@ -34,25 +34,25 @@
                 <div class="card card-invoice">
                     <div class="card-body">
                         <div class="invoice-header">
-                            <h1 class="invoice-title">سند قبض</h1>
+                            <h1 class="invoice-title text-center my-2">سند قبض</h1>
                             <div class="billed-from">
                                 <h6>برنامج ادراه المستشفي </h6>
                                 <p>201 المهندسين<br>
-                                    Tel No: 011111111<br>
-                                    Email: Hospital@gmail.com</p>
+                                    رقم الموبايل: 01500551005<br>
+                                    Email: info@hospital.com</p>
                             </div><!-- billed-from -->
                         </div><!-- invoice-header -->
                         <div class="row mg-t-20">
                             <div class="col-md">
-                                <label class="tx-gray-600">معلومات السند</label>
-                                <p class="invoice-info-row"><span>تاريخ الاصدار</span> <span>{{$receipt->date}}</span>
+                                <label class="tx-gray-900">معلومات السند</label>
+                                <p class="invoice-info-row"><span>تاريخ الاصدار</span> <span>: {{$receipt->date}}</span>
                                 </p>
-                                <p class="invoice-info-row "><span>اسم المريض</span>
-                                    <span>{{$receipt->patients->name}}</span></p>
+                                <p class="invoice-info-row "><span>اسم المريض : </span>
+                                    <span>{{$receipt->patient->name}}</span></p>
                             </div>
                         </div>
                         <div class="table-responsive mg-t-40">
-                            <table class="table table-invoice border text-md-nowrap mb-0">
+                                <table class="table table-invoice border text-md-nowrap mb-0">
                                 <thead>
                                 <tr>
                                     <th class="wd-20p">#</th>
