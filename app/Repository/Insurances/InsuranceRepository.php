@@ -10,7 +10,7 @@ class InsuranceRepository implements InsuranceRepositoryInterface
 {
 
     public function index(){
-        $insurances = Insurance::get();
+        $insurances = Insurance::orderBy('created_at', 'desc')->get();
         return view('dashboard.insurances.index',compact('insurances'));
     }
 

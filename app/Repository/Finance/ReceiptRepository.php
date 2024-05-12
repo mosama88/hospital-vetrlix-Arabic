@@ -17,7 +17,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
 
     public function index()
     {
-        $receipts =  ReceiptAccount::all();
+        $receipts =  ReceiptAccount::orderBy('created_at', 'desc')->all();
         return view('dashboard.receipts.index',compact('receipts'));
     }
 

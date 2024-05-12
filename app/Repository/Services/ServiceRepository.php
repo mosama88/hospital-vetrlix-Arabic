@@ -9,7 +9,7 @@ use App\Models\Service;
 class ServiceRepository implements ServiceRepositoryInterface
 {
     public function index(){
-        $services = Service::paginate(5);
+        $services = Service::orderBy('created_at', 'desc')->paginate(5);
        return view ('dashboard.services.single-service.index', compact('services'));
     }
 

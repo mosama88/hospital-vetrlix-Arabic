@@ -11,7 +11,7 @@ class PatientRepository implements PatientRepositoryInterface
 {
 
     public function index(){
-        $patients = Patient::get();
+        $patients = Patient::orderBy('created_at', 'desc')->get();
         return view('dashboard.patients.index',compact('patients'));
     }
 

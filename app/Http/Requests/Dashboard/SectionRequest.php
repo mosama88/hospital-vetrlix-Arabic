@@ -23,7 +23,7 @@ class SectionRequest extends FormRequest
     {
         return [
             'name'=> 'required|string|min:5|max:100',
-            'description'=> 'required|string|min:10|max:2000',
+            'description'=> 'nullable|string|min:10|max:2000',
         ];
     }
 
@@ -34,7 +34,7 @@ class SectionRequest extends FormRequest
             'name.min'=>'يجب ان يكون أسم القسم أكثر من 5 أحرف',
             'name.max'=>'يجب ان يكون أسم القسم أقل من 100 أحرف',
             #######################################################################
-            'description.required'=>'وصف القسم مطلوب',
+//            'description.required'=>'وصف القسم مطلوب',
             'description.min'=>'يجب ان يكون وصف القسم أكثر من 10 أحرف',
             'description.max'=>'يجب ان يكون وصف القسم أقل من 2000 أحرف',
             #######################################################################
