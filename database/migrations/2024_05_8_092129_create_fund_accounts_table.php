@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('Debit',8,2)->nullable(); //مدين
             $table->decimal('credit',8,2)->nullable();  //دائن
             $table->foreignId('receipt_id')->nullable()->references('id')->on('receipt_accounts')->onDelete('cascade');
-//          $table->foreignId('Payment_id')->nullable()->references('id')->on('payment_accounts')->onDelete('cascade');
+          $table->foreignId('Payment_id')->nullable()->references('id')->on('payment_accounts')->onDelete('cascade');
             $table->timestamps();
         });
     }

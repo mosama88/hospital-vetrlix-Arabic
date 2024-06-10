@@ -34,7 +34,6 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         DB::beginTransaction();
 
-        try {
 
             // store receipt_accounts
             $payment_accounts = new PaymentAccount();
@@ -47,7 +46,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             // store fund_accounts
             $fund_accounts = new FundAccount();
             $fund_accounts->date =date('y-m-d');
-            $fund_accounts->Payment_id = $payment_accounts->id;
+//            $fund_accounts->Payment_id = $payment_accounts->id;
             $fund_accounts->credit = $request->credit;
             $fund_accounts->Debit = 0.00;
             $fund_accounts->save();
@@ -56,7 +55,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             $patient_accounts = new PatientAccount();
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
-            $patient_accounts->Payment_id = $payment_accounts->id;
+//            $patient_accounts->Payment_id = $payment_accounts->id;
             $patient_accounts->Debit = $request->credit;
             $patient_accounts->credit = 0.00;
             $patient_accounts->save();
@@ -65,11 +64,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             session()->flash('add');
             return redirect()->route('dashboard.payments.create');
 
-        }
-        catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+
     }
 
     public function edit($id)
